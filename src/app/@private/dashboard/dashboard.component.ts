@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AppMediaQueryService } from 'src/app/@core/provider/app-media-query.service';
+import { AppMenuStateService } from 'src/app/@core/provider/app-menu-state.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,8 +10,13 @@ import { AppMediaQueryService } from 'src/app/@core/provider/app-media-query.ser
 })
 export class DashboardComponent implements OnInit {
   isSmallScreen: Observable<boolean>;
-  constructor(mediaQueryService: AppMediaQueryService) {
+  menuState: Observable<boolean>;
+  constructor(
+    mediaQueryService: AppMediaQueryService,
+    menuState: AppMenuStateService
+  ) {
     this.isSmallScreen = mediaQueryService.isSmallScreen;
+    this.menuState = menuState.onStateChange;
   }
 
   ngOnInit(): void {}

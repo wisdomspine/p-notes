@@ -1,8 +1,17 @@
 <div class="app-container">
     <!-- Dashboard layout for larg screens -->
     <div *ngIf="!(isSmallScreen | async)">
+        <mat-toolbar color="basic">
+            <app-toolbar></app-toolbar>
+        </mat-toolbar>
         <mat-sidenav-container>
-            <mat-sidenav mode="side" disableClose></mat-sidenav>
+            <mat-sidenav mode="side" disableClose [class.expanded]="menuState | async" fixedInViewport
+                [fixedTopGap]="64" [fixedBottomGap]="0" [opened]="menuState | async">
+                <app-sidenav>
+
+                </app-sidenav>
+                <button mat-fab color="accent">Hello</button>
+            </mat-sidenav>
             <mat-sidenav-content>
             </mat-sidenav-content>
         </mat-sidenav-container>

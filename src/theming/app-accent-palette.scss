@@ -1,0 +1,33 @@
+@import "~@angular/material/theming";
+/* For use in src/lib/core/theming/_palette.scss */
+$app-accent: (50 : #e4f4fd,
+  100 : #bbe3fb,
+  200 : #8ed0f9,
+  300 : #61bdf6,
+  400 : #3faff4,
+  500 : #1da1f2,
+  600 : #1a99f0,
+  700 : #158fee,
+  800 : #1185ec,
+  900 : #0a74e8,
+  A100 : #ffffff,
+  A200 : #dfedff,
+  A400 : #acd0ff,
+  A700 : #92c1ff,
+  contrast: (50 : #14171a,
+    100 : #14171a,
+    200 : #14171a,
+    300 : #14171a,
+    400 : #14171a,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #14171a,
+    A200 : #14171a,
+    A400 : #14171a,
+    A700 : #14171a,
+  ));
+
+$app-accent-palette: mat-palette($app-accent);

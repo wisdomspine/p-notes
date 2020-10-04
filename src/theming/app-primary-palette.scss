@@ -1,0 +1,34 @@
+@import "~@angular/material/theming";
+/* For use in src/lib/core/theming/_palette.scss */
+$app-primary: (50 : #ffffff,
+  100 : #ffffff,
+  200 : #ffffff,
+  300 : #ffffff,
+  400 : #ffffff,
+  500 : #ffffff,
+  600 : #ffffff,
+  700 : #ffffff,
+  800 : #ffffff,
+  900 : #ffffff,
+  A100 : #ffffff,
+  A200 : #ffffff,
+  A400 : #ffffff,
+  A700 : #ffffff,
+  contrast: (50 : #14171a,
+    100 : #14171a,
+    200 : #14171a,
+    300 : #14171a,
+    400 : #14171a,
+    500 : #14171a,
+    600 : #14171a,
+    700 : #14171a,
+    800 : #14171a,
+    900 : #14171a,
+    A100 : #14171a,
+    A200 : #14171a,
+    A400 : #14171a,
+    A700 : #14171a,
+  ));
+
+
+$app-primary-palette: mat-palette($app-primary);

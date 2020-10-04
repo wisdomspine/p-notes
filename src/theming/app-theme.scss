@@ -1,0 +1,10 @@
+@import "~@angular/material/theming";
+@import "./app-accent-palette.scss";
+@import "./app-background-palette.scss";
+@import "./app-primary-palette.scss";
+@import "./app-warn-palette.scss";
+$app-theme: mat-light-theme((color: (primary: $app-primary-palette,
+      accent: $app-accent-palette,
+      background: $app-background-palette,
+      warn: $app-warn-palette,
+    )));
