@@ -4,3 +4,9 @@ export declare interface MenuItemModel {
   text?: String;
   icon?: String;
 }
+
+export declare interface AppUser {
+  name?: String;
+  email?: String;
+  image?: String;
+}

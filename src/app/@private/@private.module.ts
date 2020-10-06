@@ -12,9 +12,10 @@ import { NotebooksComponent } from './notebooks/notebooks.component';
 import { NotesComponent } from './notes/notes.component';
 import { SettingsComponent } from './settings/settings.component';
 import { NoteComponent } from './note/note.component';
+import { AppMobileSearchComponent } from './app-mobile-search/app-mobile-search.component';
 
 @NgModule({
-  declarations: [DashboardComponent, NotebooksComponent, NotesComponent, SettingsComponent, NoteComponent],
+  declarations: [DashboardComponent, NotebooksComponent, NotesComponent, SettingsComponent, NoteComponent, AppMobileSearchComponent],
   imports: [
     CommonModule,
     PrivateRoutingModule,
