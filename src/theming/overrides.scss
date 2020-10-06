@@ -11,6 +11,15 @@
   @if $color-config !=null {
     $primary-palette: map-get($map: $color-config, $key: primary);
     $accent-palette: map-get($map: $color-config, $key: accent);
+    $background-palette: map-get($map: $color-config, $key: 'background');
+  }
+
+
+
+  @if $background-palette $background-palette !=null {
+    .mat-drawer-container {
+      background-color: mat-color($primary-palette, 500) !important;
+    }
   }
 
   .mat-menu-panel {
