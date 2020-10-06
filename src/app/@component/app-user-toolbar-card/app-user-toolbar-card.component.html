@@ -1,9 +1,6 @@
 <div class="comp-container">
-    <img src="{{image}}" alt="picture of {{name}}" class="user-avatar app-border-boundary">
-    <div class="user-info">
-        <p class="mat-body-1"> {{name}} </p>
-        <p class="mat-caption"> {{email}} </p>
-    </div>
+
+    <app-user-summary></app-user-summary>
     <button mat-icon-button [matMenuTriggerFor]="userMenu">
         <mat-icon>
             expand_more

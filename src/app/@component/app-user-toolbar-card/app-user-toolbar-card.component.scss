@@ -1,21 +1,8 @@
-.user-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 40px;
-  flex-shrink: 0;
-  object-fit: cover;
-}
-
 .comp-container {
   display: flex;
   align-items: center;
 
-  .user-info {
-    margin-left: 14px;
+  app-user-summary {
     margin-right: 14px;
-
-    p {
-      margin-bottom: 0;
-    }
   }
 }

@@ -17,6 +17,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppMenuItemComponent } from './app-menu-item/app-menu-item.component';
 import { RouterModule } from '@angular/router';
 import { AppNewObjectComponent } from './app-new-object/app-new-object.component';
+import { AppMobileToolbarComponent } from './app-mobile-toolbar/app-mobile-toolbar.component';
+import { AppUserSummaryComponent } from './app-user-summary/app-user-summary.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { AppNewObjectComponent } from './app-new-object/app-new-object.component
     AppSearchInputFieldComponent,
     AppMenuItemComponent,
     AppNewObjectComponent,
+    AppMobileToolbarComponent,
+    AppUserSummaryComponent,
   ],
   imports: [
     CommonModule,
@@ -47,6 +51,8 @@ import { AppNewObjectComponent } from './app-new-object/app-new-object.component
     AppSearchInputFieldComponent,
     AppMenuItemComponent,
     AppNewObjectComponent,
+    AppMobileToolbarComponent,
+    AppUserSummaryComponent,
   ],
 })
 export class ComponentModule {}
