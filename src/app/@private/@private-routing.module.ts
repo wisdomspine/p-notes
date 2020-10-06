@@ -3,7 +3,10 @@ export const AppPrivateModuleBaseRoute = '';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { NoteComponent } from './note/note.component';
 import { NotebooksComponent } from './notebooks/notebooks.component';
+import { NotesComponent } from './notes/notes.component';
+import { SettingsComponent } from './settings/settings.component';
 
 const routes: Routes = [
   {
@@ -11,6 +14,20 @@ const routes: Routes = [
     component: DashboardComponent,
     children: [
       { path: NotebooksComponent.routeName, pathMatch: 'full' },
+      {
+        path: NotesComponent.routeName,
+        pathMatch: 'full',
+        component: NotesComponent,
+      },
+      {
+        path: SettingsComponent.routeName,
+        pathMatch: 'prefix',
+        component: SettingsComponent,
+      },
+      {
+        path: `${NoteComponent.routeName}/:${NoteComponent.param}`,
+        component: NoteComponent,
+      },
       { path: '', pathMatch: 'full', redirectTo: NotebooksComponent.routeName },
     ],
   },

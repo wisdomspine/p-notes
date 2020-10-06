@@ -9,6 +9,7 @@ import { AppPrivateModuleBaseRoute } from '../@private-routing.module';
 export class NoteComponent implements OnInit {
   static routeName: string = 'notes';
   static route: String = `notes`;
+  static param: String = 'note';
   constructor() {}
 
   ngOnInit(): void {}
