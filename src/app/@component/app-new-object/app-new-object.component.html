@@ -1,0 +1,27 @@
+<button mat-fab color="accent" [class.expanded]="expanded" class="app-new-object app-fab" *ngIf="expanded"
+    [matMenuTriggerFor]="menu">
+    New
+</button>
+
+<button mat-fab color="accent" c [matMenuTriggerFor]="menu" lass="app-new-object app-fab" *ngIf="!expanded">
+    <mat-icon>
+        add
+    </mat-icon>
+</button>
+
+<mat-menu #menu xPosition="after">
+    <button mat-menu-item (click)="newNotebook.emit($event)">
+        <mat-icon>
+            book
+        </mat-icon>
+        <span>New Notebook</span>
+    </button>
+
+    <button mat-menu-item (click)="newNote.emit($event)">
+        <mat-icon>
+            description
+        </mat-icon>
+        <span>New Note</span>
+    </button>
+
+</mat-menu>

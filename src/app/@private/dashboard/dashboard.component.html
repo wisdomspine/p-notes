@@ -20,7 +20,9 @@
                 <app-sidenav [menu]="menu" [expanded]="menuState | async">
 
                 </app-sidenav>
-                <!-- <button mat-fab color="accent">Hello</button> -->
+                <div class="new-button">
+                    <app-new-object [expanded]="menuState | async"></app-new-object>
+                </div>
             </mat-sidenav>
             <mat-sidenav-content color="primary">
                 <router-outlet></router-outlet>

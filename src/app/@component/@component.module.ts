@@ -16,6 +16,7 @@ import { AppSearchInputFieldComponent } from './app-search-input-field/app-searc
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppMenuItemComponent } from './app-menu-item/app-menu-item.component';
 import { RouterModule } from '@angular/router';
+import { AppNewObjectComponent } from './app-new-object/app-new-object.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { RouterModule } from '@angular/router';
     AppUserToolbarCardComponent,
     AppSearchInputFieldComponent,
     AppMenuItemComponent,
+    AppNewObjectComponent,
   ],
   imports: [
     CommonModule,
@@ -44,6 +46,7 @@ import { RouterModule } from '@angular/router';
     AppUserToolbarCardComponent,
     AppSearchInputFieldComponent,
     AppMenuItemComponent,
+    AppNewObjectComponent,
   ],
 })
 export class ComponentModule {}

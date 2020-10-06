@@ -10,6 +10,7 @@
 
   @if $color-config !=null {
     $primary-palette: map-get($map: $color-config, $key: primary);
+    $accent-palette: map-get($map: $color-config, $key: accent);
   }
 
   .mat-menu-panel {
@@ -17,6 +18,12 @@
 
     @if $primary-palette !=null {
       @include mat-elevation(7, mat-color($primary-palette, '100-contrast', 0.07), 0.45);
+    }
+  }
+
+  @if $primary-palette !=null {
+    .app-fab.mat-fab {
+      @include mat-elevation(6, mat-color($primary-palette, '100-contrast', 0.07), .5);
     }
   }
 }

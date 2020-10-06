@@ -26,11 +26,39 @@
           right: 0;
           bottom: 0;
           left: 0;
+          $new-button-side-padding: 14px;
 
           mat-sidenav.expanded {
             width: $kSidenavWidth;
+
+            .new-button {
+              padding-left: $new-button-side-padding;
+              padding-right: $new-button-side-padding;
+              width: calc(100% - #{2 * $new-button-side-padding});
+            }
           }
 
+          mat-sidenav {
+            .new-button {
+              position: absolute;
+              bottom: $kEdgePadding * 2;
+
+            }
+
+            &:not(.expanded) {
+              .new-button {
+                width: 100%;
+                display: flex;
+
+                app-new-object {
+
+                  margin: 0 auto;
+                }
+              }
+
+
+            }
+          }
 
         }
       }
