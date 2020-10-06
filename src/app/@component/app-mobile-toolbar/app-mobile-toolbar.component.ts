@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { MenuItemModel } from 'src/types';
 
 @Component({
   selector: 'app-mobile-toolbar',
@@ -7,6 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppMobileToolbarComponent implements OnInit {
   constructor() {}
-
+  @Input()
+  menu: MenuItemModel[] = [];
   ngOnInit(): void {}
+
+  expandMore(event) {
+    console.log(event);
+    event.stopImmediatePropagation();
+  }
+
+  logout() {}
+
+  review() {}
+
+  account() {}
 }

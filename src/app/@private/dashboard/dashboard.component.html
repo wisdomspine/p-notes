@@ -34,8 +34,9 @@
     <!-- Dashboard layout for small screens -->
     <div *ngIf="(isSmallScreen | async)">
         <div class="mobile-container">
+            <app-new-object [expanded]="false"></app-new-object>
             <mat-toolbar color="primary" class="app-border-boundary-top">
-                <app-mobile-toolbar></app-mobile-toolbar>
+                <app-mobile-toolbar [menu]="mobileMenu"></app-mobile-toolbar>
             </mat-toolbar>
         </div>
     </div>

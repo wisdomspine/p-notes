@@ -9,7 +9,7 @@
 </a>
 
 <a *ngIf="!expanded" mat-icon-button color="accent" routerLinkActive="active" [routerLink]="[link]"
-    (click)="clickEvent.emit($event)" class="app-menu-item">
+    (click)="clickEvent.emit($event)" class="app-menu-item" [routerLinkActiveOptions]="{exact: true}">
     <mat-icon>
         {{icon}}
     </mat-icon>

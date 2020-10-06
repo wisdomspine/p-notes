@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AppMobileSearchComponent } from './app-mobile-search.component';
+import { MobileSearchComponent } from './mobile-search.component';
 
-describe('AppMobileSearchComponent', () => {
-  let component: AppMobileSearchComponent;
-  let fixture: ComponentFixture<AppMobileSearchComponent>;
+describe('MobileSearchComponent', () => {
+  let component: MobileSearchComponent;
+  let fixture: ComponentFixture<MobileSearchComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AppMobileSearchComponent ]
+      declarations: [ MobileSearchComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AppMobileSearchComponent);
+    fixture = TestBed.createComponent(MobileSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

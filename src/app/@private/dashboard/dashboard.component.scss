@@ -51,12 +51,9 @@
                 display: flex;
 
                 app-new-object {
-
                   margin: 0 auto;
                 }
               }
-
-
             }
           }
 
@@ -76,7 +73,16 @@
           position: absolute;
           bottom: 0;
 
+          app-mobile-toolbar {
+            display: block;
+            width: 100%;
+          }
+        }
 
+        app-new-object {
+          position: absolute;
+          bottom: calc(#{$mat-toolbar-height-mobile * 1.25});
+          left: calc(#{$kEdgePadding});
         }
       }
     }

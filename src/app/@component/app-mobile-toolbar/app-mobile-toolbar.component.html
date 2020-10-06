@@ -1,1 +1,30 @@
-<p>app-mobile-toolbar works!</p>
+<mat-list>
+    <app-menu-item *ngFor="let item of menu" [icon]="item?.icon" [link]="item?.link" [linkText]="item?.text"
+        [expanded]="false" mat-list-item>
+    </app-menu-item>
+    <app-menu-item icon="account_circle" linkText="More" expanded="false" mat-list-item [expanded]="false"
+        (click)="expandMore($event)" [matMenuTriggerFor]="userMenu">
+    </app-menu-item>
+</mat-list>
+
+<mat-menu #userMenu>
+    <button mat-menu-item (click)="account()">
+        <mat-icon>
+            account_circle
+        </mat-icon>
+        <span>Account</span>
+    </button>
+    <button mat-menu-item (click)="review()">
+        <mat-icon>
+            rate_review
+        </mat-icon>
+        <span>Leave a review</span>
+    </button>
+    <button mat-menu-item (click)="logout()">
+        <mat-icon color="warn">
+            power_settings_new
+        </mat-icon>
+        <span class="app-warn-color">Logout</span>
+    </button>
+
+</mat-menu>
