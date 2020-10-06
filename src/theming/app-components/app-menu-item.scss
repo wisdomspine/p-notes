@@ -1,0 +1,29 @@
+@import "~@angular/material/theming";
+@import "../constant.scss";
+
+@mixin app-menu-item($config-or-theme, $typography-config) {
+  $color-config: mat-get-color-config($config-or-theme);
+  $primary-palette: map-get($map: $color-config, $key: primary);
+  $accent-palette: map-get($map: $color-config, $key: accent);
+
+  a.app-menu-item,
+  button.app-menu-item {
+    @include mat-typography-level-to-styles($typography-config, title);
+
+    color: mat-color($primary-palette, '500-contrast') !important;
+    ;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: mat-color($accent-palette) !important;
+      ;
+      background-color: mat-color($accent-palette, 50);
+    }
+
+    &.active {
+      color: mat-color($accent-palette) !important;
+      ;
+    }
+  }
+}

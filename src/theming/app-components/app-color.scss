@@ -1,0 +1,13 @@
+@import "~@angular/material/theming";
+
+@mixin app-color($theme-or-config) {
+  $config: mat-get-color-config($theme-or-config);
+
+  @if $config !=null {
+    $warn-palette: map-get($map: $config, $key: warn);
+
+    .app-warn-color {
+      color: mat-color($warn-palette) !important;
+    }
+  }
+}

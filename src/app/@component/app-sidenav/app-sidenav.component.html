@@ -1,1 +1,5 @@
-<p>app-sidenav works!</p>
+<mat-nav-list>
+    <app-menu-item *ngFor="let item of menu" [icon]="item?.icon" [link]="item?.link" [linkText]="item?.text"
+        [expanded]="expanded" mat-list-item>
+    </app-menu-item>
+</mat-nav-list>

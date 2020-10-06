@@ -1,0 +1,17 @@
+@import "~@angular/material/theming";
+@import "./app-border-boundary.scss";
+@import "./app-mat-toolbar.scss";
+@import "./../app-typography.scss";
+@import "./app-color.scss";
+@import "../overrides.scss";
+@import "./app-search-input-field.scss";
+@import "./app-menu-item.scss";
+
+@mixin app-components($theme-or-config) {
+  @include app-mat-toolbar($app-typography);
+  @include app-border-boundary($theme-or-config);
+  @include app-color($theme-or-config);
+  @include overrides($theme-or-config);
+  @include app-search-input-field($theme-or-config);
+  @include app-menu-item($theme-or-config, $app-typography);
+}

@@ -1,0 +1,9 @@
+<mat-form-field appearance="outline" color="accent" class="app-search-input-field">
+    <input type="search" matNativeControl placeholder="Search for notes, tags, ..." [formControl]="control"
+        (input)="input.emit($event)" (focus)="focused=true" (blur)="focused=false">
+    <button mat-icon-button matSuffix (click)="submit()" [color]="focused? 'accent': 'basic'">
+        <mat-icon>
+            search
+        </mat-icon>
+    </button>
+</mat-form-field>

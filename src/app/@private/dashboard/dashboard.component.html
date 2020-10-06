@@ -1,24 +1,42 @@
 <div class="app-container">
     <!-- Dashboard layout for larg screens -->
     <div *ngIf="!(isSmallScreen | async)">
-        <mat-toolbar color="basic">
-            <app-toolbar></app-toolbar>
+        <mat-toolbar color="primary" class="app-border-boundary-bottom">
+            <app-toolbar>
+                <div search>
+                    <button mat-icon-button color="accent" *ngIf="searching" (click)="stopSearch()">
+                        <mat-icon>
+                            arrow_back
+                        </mat-icon>
+                    </button>
+                    <app-search-input-field (input)="startSearch($event)" (submit)="startSearch($event)">
+                    </app-search-input-field>
+                </div>
+            </app-toolbar>
         </mat-toolbar>
         <mat-sidenav-container>
             <mat-sidenav mode="side" disableClose [class.expanded]="menuState | async" fixedInViewport
-                [fixedTopGap]="64" [fixedBottomGap]="0" [opened]="menuState | async">
-                <app-sidenav>
+                [fixedTopGap]="64" [fixedBottomGap]="0" [opened]="true" class="app-border-boundary-right">
+                <app-sidenav [menu]="menu" [expanded]="menuState | async">
 
                 </app-sidenav>
-                <button mat-fab color="accent">Hello</button>
+                <!-- <button mat-fab color="accent">Hello</button> -->
             </mat-sidenav>
-            <mat-sidenav-content>
+            <mat-sidenav-content color="primary">
+                <router-outlet></router-outlet>
+
             </mat-sidenav-content>
         </mat-sidenav-container>
     </div>
 
     <!-- Dashboard layout for small screens -->
     <div *ngIf="(isSmallScreen | async)">
+        <div class="mobile-container">
+            <mat-toolbar color="primary" class="app-border-boundary-top">
+                <app-toolbar>
 
+                </app-toolbar>
+            </mat-toolbar>
+        </div>
     </div>
 </div>

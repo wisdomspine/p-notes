@@ -1,6 +1,16 @@
+@import "../../../theming/constant.scss";
+@import "~@angular/material/theming";
+
 .app-container {
   width: 100vw;
   height: 100vh;
+
+  mat-toolbar {
+    app-toolbar {
+      width: 100%;
+      display: block;
+    }
+  }
 
   > {
     div {
@@ -12,14 +22,33 @@
       > {
         mat-sidenav-container {
           position: absolute;
-          top: 64;
+          top: $mat-toolbar-height-desktop;
           right: 0;
           bottom: 0;
           left: 0;
 
           mat-sidenav.expanded {
-            width: 230px;
+            width: $kSidenavWidth;
           }
+
+
+        }
+      }
+
+      .mobile-container {
+        position: absolute;
+        bottom: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+
+        padding-bottom: $mat-toolbar-height-mobile; //this is to ensure a user can scroll to content covered by the bottom toolbar
+
+        mat-toolbar {
+          position: absolute;
+          bottom: 0;
+
+
         }
       }
     }

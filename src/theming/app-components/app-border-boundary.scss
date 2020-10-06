@@ -1,0 +1,38 @@
+@import "~@angular/material/theming";
+@import "../constant.scss";
+
+
+@mixin _app-border-boundary ($config-or-theme) {
+  $config: mat-get-color-config($config-or-theme);
+  $primary: map-get($map: $config, $key: primary);
+  $opacity: 0.075;
+
+  @each $side in $kSides {
+    .app-border-boundary-#{$side} {
+      border-#{$side}: {
+        width: 1px;
+        color: mat-color($primary, '500-contrast', $opacity);
+        style: solid;
+      }
+
+      ;
+    }
+  }
+
+  .app-border-boundary {
+    border: {
+      width: 1px;
+      color: mat-color($primary, '500-contrast', $opacity);
+      style: solid;
+    }
+  }
+
+}
+
+@mixin app-border-boundary($theme) {
+  $color: mat-get-color-config($theme);
+
+  @if $color !=null {
+    @include _app-border-boundary($color);
+  }
+}

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MenuItemModel } from 'src/types';
 
 @Component({
   selector: 'app-sidenav',
@@ -6,7 +7,12 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./app-sidenav.component.scss'],
 })
 export class AppSidenavComponent implements OnInit {
-  constructor() {}
+  @Input()
+  menu: MenuItemModel[] = [];
 
+  @Input()
+  expanded: boolean = false;
+
+  constructor() {}
   ngOnInit(): void {}
 }

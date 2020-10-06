@@ -1,0 +1,16 @@
+<a *ngIf="expanded" mat-button color="accent" routerLinkActive="active" [routerLink]="[link]" class="app-menu-item"
+    (click)="clickEvent.emit($event)" [class.expanded]="expanded">
+    <mat-icon>
+        {{icon}}
+    </mat-icon>
+    <span>
+        {{linkText}}
+    </span>
+</a>
+
+<a *ngIf="!expanded" mat-icon-button color="accent" routerLinkActive="active" [routerLink]="[link]"
+    (click)="clickEvent.emit($event)" class="app-menu-item">
+    <mat-icon>
+        {{icon}}
+    </mat-icon>
+</a>

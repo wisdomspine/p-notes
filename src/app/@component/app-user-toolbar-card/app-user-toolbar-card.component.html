@@ -1,0 +1,36 @@
+<div class="comp-container">
+    <img src="{{image}}" alt="picture of {{name}}" class="user-avatar app-border-boundary">
+    <div class="user-info">
+        <p class="mat-body-1"> {{name}} </p>
+        <p class="mat-caption"> {{email}} </p>
+    </div>
+    <button mat-icon-button [matMenuTriggerFor]="userMenu">
+        <mat-icon>
+            expand_more
+        </mat-icon>
+    </button>
+</div>
+
+<!-- User menu -->
+
+<mat-menu #userMenu>
+    <button mat-menu-item (click)="account.emit()">
+        <mat-icon>
+            account_circle
+        </mat-icon>
+        <span>Account</span>
+    </button>
+    <button mat-menu-item (click)="review.emit()">
+        <mat-icon>
+            rate_review
+        </mat-icon>
+        <span>Leave a review</span>
+    </button>
+    <button mat-menu-item (click)="logout.emit()">
+        <mat-icon color="warn">
+            power_settings_new
+        </mat-icon>
+        <span class="app-warn-color">Logout</span>
+    </button>
+
+</mat-menu>

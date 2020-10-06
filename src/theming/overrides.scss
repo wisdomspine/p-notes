@@ -1,0 +1,22 @@
+@import "~@angular/material/theming";
+@import "./constant.scss";
+
+@mixin overrides($theme-or-config) {
+  $color-config: mat-get-color-config($theme-or-config);
+  $primary-palette: null;
+  $accent-palette: null;
+  $background-palette: null;
+  $warn-palette: null;
+
+  @if $color-config !=null {
+    $primary-palette: map-get($map: $color-config, $key: primary);
+  }
+
+  .mat-menu-panel {
+    border-radius: $kCardBorderRadius !important;
+
+    @if $primary-palette !=null {
+      @include mat-elevation(7, mat-color($primary-palette, '100-contrast', 0.07), 0.45);
+    }
+  }
+}

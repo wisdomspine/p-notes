@@ -1,0 +1,10 @@
+app-menu-item:not(:last-child) {
+  display: block;
+  margin-bottom: 10px;
+}
+
+mat-nav-list {
+
+  padding-left: 9px;
+  padding-right: 9px;
+}

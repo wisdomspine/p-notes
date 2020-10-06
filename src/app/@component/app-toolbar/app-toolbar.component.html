@@ -1,1 +1,19 @@
-<p>app-tool-bar works!</p>
+<div class="app-container mat-typography">
+    <div class="menu">
+        <button mat-icon-button (click)="toggleMenu()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <h1 class="mat-h1">
+            {{appInfoService.name | async | uppercase}}
+        </h1>
+    </div>
+    <div class="search">
+        <ng-content select="[search]"></ng-content>
+
+    </div>
+    <div class="user">
+        <app-user-toolbar-card>
+            simple
+        </app-user-toolbar-card>
+    </div>
+</div>

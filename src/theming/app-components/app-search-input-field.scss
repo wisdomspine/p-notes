@@ -1,0 +1,66 @@
+@import "~@angular/material/theming";
+@import "../constant.scss";
+
+
+@mixin app-search-input-field($theme-or-config) {
+  $color-config: mat-get-color-config($theme-or-config);
+  $accent: null;
+
+  @if $color-config !=null {
+    $accent: map-get($map: $color-config, $key: accent);
+  }
+
+  body::before {
+    content: "#{mat-color($accent, '100')}";
+  }
+
+  mat-form-field.app-search-input-field {
+    // height: 40px;
+    height: auto;
+    width: 350px;
+    max-width: 100%;
+
+    .mat-form-field-wrapper {
+      margin-top: 0px;
+      margin-bottom: 0px;
+      padding-bottom: 0px;
+
+    }
+
+    .mat-form-field-flex {
+      padding-left: 14px;
+      padding-right: 14px;
+    }
+
+    .mat-form-field-infix {
+      border-top-width: 0px;
+      padding-top: 17px;
+      padding-bottom: 13px;
+
+    }
+
+    .mat-form-field-outline-end {
+      border-radius: 100px !important;
+      border-left-style: solid;
+      border-style: none;
+
+      @if $accent !=null {
+        background-color: mat-color($accent, 900, .05);
+      }
+
+    }
+
+    .mat-form-field-outline-start {
+      border: none !important;
+    }
+
+    &.mat-focused {
+      .mat-form-field-outline-end {
+        border-style: solid;
+        border-width: 1px;
+        background-color: inherit;
+      }
+
+    }
+  }
+}
