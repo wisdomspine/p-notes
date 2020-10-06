@@ -7,3 +7,15 @@
         </mat-icon>
     </button>
 </mat-form-field>
+<button mat-icon-button color="accent" [matMenuTriggerFor]="option">
+    <mat-icon>
+        filter_list
+    </mat-icon>
+</button>
+
+<mat-menu #option>
+    <mat-selection-list (selectionChange)="selectionChange($event)">
+        <mat-list-option [selected]="notebooks" [value]="_notebooksValue">Search Notebooks</mat-list-option>
+        <mat-list-option [selected]="notes" [value]="_notesValue">Search Notes</mat-list-option>
+    </mat-selection-list>
+</mat-menu>

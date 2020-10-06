@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MatSelectionListChange } from '@angular/material/list';
+import { Event } from '@angular/router';
 
 @Component({
   selector: 'app-search-input-field',
@@ -27,5 +29,30 @@ export class AppSearchInputFieldComponent implements OnInit {
 
   submit() {
     this.submitEvent.emit(this.control.value);
+  }
+
+  @Input()
+  notes: boolean = true;
+
+  @Input()
+  notebooks: boolean = true;
+
+  _notesValue: String = 'notes';
+  _notebooksValue: String = 'notebooks';
+
+  @Output()
+  notesChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  @Output()
+  notebooksChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  selectionChange(event: MatSelectionListChange) {
+    if (event.option.value === this._notebooksValue) {
+      this.notebooks = event.option.selected;
+      this.notebooksChange.emit(this.notebooks);
+    } else {
+      this.notes = event.option.selected;
+      this.notesChange.emit(this.notebooks);
+    }
   }
 }

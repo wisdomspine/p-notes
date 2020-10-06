@@ -7,6 +7,3 @@ $app-theme: mat-light-theme((color: (primary: $app-primary-palette,
       accent: $app-accent-palette,
       warn: $app-warn-palette,
     )));
-$_background: map-get($map: $app-theme, $key: background);
-$_background: map-merge($map1: $_background, $map2:(background: mat-color($app-background-palette)));
-$app-theme: map-merge($map1: $app-theme, $map2: (background: $_background));
