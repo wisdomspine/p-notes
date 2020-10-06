@@ -13,6 +13,7 @@ import { NotesComponent } from './notes/notes.component';
 import { SettingsComponent } from './settings/settings.component';
 import { NoteComponent } from './note/note.component';
 import { MobileSearchComponent } from './mobile-search/mobile-search.component';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { MobileSearchComponent } from './mobile-search/mobile-search.component';
     ComponentModule,
     MatButtonModule,
     MatIconModule,
+    MatListModule,
   ],
 })
 export class PrivateModule {

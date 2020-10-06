@@ -1,0 +1,10 @@
+<div class="comp">
+    <div class="app-action-bar desktop">
+        <ng-content select="[appPageTitle]"></ng-content>
+        <div class="app-action-bar-inner" *ngIf="appPageActions">
+            <ng-content select="[appPageActions]"></ng-content>
+
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,23 @@
+@import "~@angular/material/theming";
+@import "../constant.scss";
+
+
+@mixin app-action-bar($config-or-theme) {
+  $config: mat-get-color-config($config-or-theme);
+  $primary: map-get($map: $config, $key: primary);
+  $accent: map-get($map: $config, $key: accent);
+  $opacity: 0.075;
+
+  .app-action-bar.desktop {
+    background-color: mat-color($accent);
+    color: mat-color($accent, '500-contrast');
+
+    .app-action-bar-inner {
+      color: mat-color($primary, '500-contrast');
+      background-color: mat-color($primary);
+    }
+
+    @include mat-elevation(10, mat-color($primary, '100-contrast', 0.07), .4);
+  }
+
+}

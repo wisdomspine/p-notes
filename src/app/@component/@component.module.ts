@@ -19,6 +19,9 @@ import { RouterModule } from '@angular/router';
 import { AppNewObjectComponent } from './app-new-object/app-new-object.component';
 import { AppMobileToolbarComponent } from './app-mobile-toolbar/app-mobile-toolbar.component';
 import { AppUserSummaryComponent } from './app-user-summary/app-user-summary.component';
+import { AppPageActionsComponent } from './app-page-actions/app-page-actions.component';
+import { AppPageActionsMobileComponent } from './app-page-actions-mobile/app-page-actions-mobile.component';
+import { AppPageActionsDesktopComponent } from './app-page-actions-desktop/app-page-actions-desktop.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,9 @@ import { AppUserSummaryComponent } from './app-user-summary/app-user-summary.com
     AppNewObjectComponent,
     AppMobileToolbarComponent,
     AppUserSummaryComponent,
+    AppPageActionsComponent,
+    AppPageActionsMobileComponent,
+    AppPageActionsDesktopComponent,
   ],
   imports: [
     CommonModule,
@@ -53,6 +59,9 @@ import { AppUserSummaryComponent } from './app-user-summary/app-user-summary.com
     AppNewObjectComponent,
     AppMobileToolbarComponent,
     AppUserSummaryComponent,
+    AppPageActionsComponent,
+    AppPageActionsMobileComponent,
+    AppPageActionsDesktopComponent,
   ],
 })
 export class ComponentModule {}

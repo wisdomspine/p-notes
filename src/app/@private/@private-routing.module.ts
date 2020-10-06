@@ -13,7 +13,11 @@ const routes: Routes = [
     path: '',
     component: DashboardComponent,
     children: [
-      { path: NotebooksComponent.routeName, pathMatch: 'full' },
+      {
+        path: NotebooksComponent.routeName,
+        pathMatch: 'full',
+        component: NotebooksComponent,
+      },
       {
         path: NotesComponent.routeName,
         pathMatch: 'full',
