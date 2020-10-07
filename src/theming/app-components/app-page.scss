@@ -1,0 +1,46 @@
+@import "~@angular/material/theming";
+@import "../constant.scss";
+
+
+@mixin app-page() {
+  .app-page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: $kEdgePadding;
+
+    &.no-header {
+      .app-page-content {
+        top: 0px;
+      }
+
+      .app-page-header {
+        display: none;
+      }
+    }
+
+    .app-page-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: $kAppPageHeaderHeight;
+
+      z-index: 20;
+    }
+
+    .app-page-content {
+      position: absolute;
+      top: $kAppPageHeaderHeight;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+      overflow-y: auto;
+      padding-left: $kEdgePadding;
+      padding-right: $kEdgePadding;
+    }
+  }
+}

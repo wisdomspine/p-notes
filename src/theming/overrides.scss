@@ -35,4 +35,9 @@
       @include mat-elevation(6, mat-color($primary-palette, '100-contrast', 0.07), .5);
     }
   }
+
+  html {
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
 }

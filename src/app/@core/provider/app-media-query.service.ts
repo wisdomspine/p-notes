@@ -31,7 +31,7 @@ export class AppMediaQueryService {
   }
 
   static get maxSmallScreenSize(): number {
-    return 670;
+    return 599;
   }
 
   static maxSmallScreenSizeToUnit(unit: CSSUnit = 'px'): string {

@@ -1,7 +1,7 @@
 @import "~@angular/material/theming";
 @import "../constant.scss";
 
-@mixin app-action-bar($config-or-theme) {
+@mixin app-action-bar($config-or-theme, $typography) {
   $config: mat-get-color-config($config-or-theme);
   $primary: map-get($map: $config,
       $key: primary,
@@ -24,6 +24,23 @@
 
     mat-action-list.mat-list-base {
       padding-top: 0px;
+    }
+  }
+
+
+
+  .app-action-bar.mobile {
+    mat-action-list.mat-list-base {
+      padding-top: 0px;
+    }
+
+
+
+    h3 {
+      margin-left: 0px !important;
+      margin-right: 0px !important;
+      @include mat-typography-level-to-styles($typography, subheading-2);
+      color: mat-color($accent, 500);
     }
   }
 }

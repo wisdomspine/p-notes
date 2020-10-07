@@ -1,16 +1,23 @@
 <ng-container *ngIf="!(mediaQueryService.isSmallScreen | async)">
-    <app-page-actions-desktop [appPageActions]="appPageActions">
-        <ng-container appPageTitle>
-            <ng-content select="[appPageTitle]"></ng-content>
-        </ng-container>
-        <ng-container appPageActions>
-            <ng-content select="mat-action-list"></ng-content>
-        </ng-container>
+    <div class="desktop">
+        <app-page-actions-desktop [appPageActions]="appPageActions" [title]="title">
+            <ng-container appPageActions>
+                <ng-content select="mat-action-list.desktop"></ng-content>
+            </ng-container>
 
-    </app-page-actions-desktop>
+        </app-page-actions-desktop>
+    </div>
 </ng-container>
 <ng-container *ngIf="(mediaQueryService.isSmallScreen | async)">
-    <app-page-actions-mobile>
+    <div class="app-border-boundary-bottom mobile">
+        <app-page-actions-mobile [title]="title">
+            <ng-container appPageActions>
+                <ng-content select="mat-action-list.mobile"></ng-content>
+            </ng-container>
+        </app-page-actions-mobile>
 
-    </app-page-actions-mobile>
+
+
+    </div>
+
 </ng-container>

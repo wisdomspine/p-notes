@@ -3,7 +3,7 @@
         [expanded]="false" mat-list-item>
     </app-menu-item>
     <app-menu-item icon="account_circle" linkText="More" expanded="false" mat-list-item [expanded]="false"
-        (click)="expandMore($event)" [matMenuTriggerFor]="userMenu">
+        (click)="expandMore($event)" [matMenuTriggerFor]="userMenu" [link]="'./more'">
     </app-menu-item>
 </mat-list>
 

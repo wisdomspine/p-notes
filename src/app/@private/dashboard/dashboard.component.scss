@@ -77,12 +77,24 @@
             display: block;
             width: 100%;
           }
+
+          z-index: 3;
         }
 
         app-new-object {
           position: absolute;
           bottom: calc(#{$mat-toolbar-height-mobile * 1.25});
           left: calc(#{$kEdgePadding});
+          z-index: 4;
+        }
+
+        .outlet {
+          position: absolute;
+          bottom: $mat-toolbar-height-mobile;
+          left: 0;
+          right: 0;
+          top: 0;
+          z-index: 0;
         }
       }
     }

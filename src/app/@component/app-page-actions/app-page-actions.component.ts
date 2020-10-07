@@ -9,6 +9,9 @@ import { AppMediaQueryService } from 'src/app/@core/provider/app-media-query.ser
 export class AppPageActionsComponent implements OnInit {
   @Input('appPageActions')
   appPageActions: any = true;
+
+  @Input()
+  title: String;
   constructor(public mediaQueryService: AppMediaQueryService) {}
 
   ngOnInit(): void {}

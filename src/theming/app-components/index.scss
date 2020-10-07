@@ -7,6 +7,7 @@
 @import "./app-search-input-field.scss";
 @import "./app-menu-item.scss";
 @import "./app-action-bar.scss";
+@import "./app-page.scss";
 
 @mixin app-components($theme-or-config) {
   @include app-mat-toolbar($app-typography);
@@ -15,5 +16,6 @@
   @include overrides($theme-or-config);
   @include app-search-input-field($theme-or-config);
   @include app-menu-item($theme-or-config, $app-typography);
-  @include app-action-bar($theme-or-config);
+  @include app-action-bar($theme-or-config, $app-typography);
+  @include app-page();
 }
