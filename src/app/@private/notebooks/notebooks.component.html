@@ -1,10 +1,19 @@
 <div>
-    <app-page-actions [showActions]="false">
+    <app-page-actions [appPageActions]="true">
         <h3 appPageTitle>
             Hello world
         </h3>
         <mat-action-list>
-            <button mat-list-item> Save </button>
+            <button mat-icon-button>
+                <mat-icon>
+                    save
+                </mat-icon>
+            </button>
+            <button mat-icon-button>
+                <mat-icon>
+                    print
+                </mat-icon>
+            </button>
         </mat-action-list>
     </app-page-actions>
 </div>

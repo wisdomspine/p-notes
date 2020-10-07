@@ -12,4 +12,7 @@ export class AppPageActionsDesktopComponent implements OnInit, AfterViewInit {
 
   @Input('appPageActions')
   appPageActions: any;
+
+  @Input()
+  title: String = 'Notebooks';
 }

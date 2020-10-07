@@ -14,7 +14,7 @@
                 </div>
             </app-toolbar>
         </mat-toolbar>
-        <mat-sidenav-container>
+        <mat-sidenav-container autosize>
             <mat-sidenav mode="side" disableClose [class.expanded]="menuState | async" fixedInViewport
                 [fixedTopGap]="64" [fixedBottomGap]="0" [opened]="true" class="app-border-boundary-right">
                 <app-sidenav [menu]="menu" [expanded]="menuState | async">

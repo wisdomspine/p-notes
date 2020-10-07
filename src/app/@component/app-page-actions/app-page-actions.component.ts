@@ -7,7 +7,7 @@ import { AppMediaQueryService } from 'src/app/@core/provider/app-media-query.ser
   styleUrls: ['./app-page-actions.component.scss'],
 })
 export class AppPageActionsComponent implements OnInit {
-  @Input('showActions')
+  @Input('appPageActions')
   appPageActions: any = true;
   constructor(public mediaQueryService: AppMediaQueryService) {}
 

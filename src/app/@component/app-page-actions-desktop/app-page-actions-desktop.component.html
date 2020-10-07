@@ -1,6 +1,8 @@
 <div class="comp">
     <div class="app-action-bar desktop">
-        <ng-content select="[appPageTitle]"></ng-content>
+        <h3>
+            {{title}}
+        </h3>
         <div class="app-action-bar-inner" *ngIf="appPageActions">
             <ng-content select="[appPageActions]"></ng-content>
 
