@@ -1,0 +1,50 @@
+<div class="app-notebook-card" matTooltip="{{notebook?.name}}" [style.background-image]="cover">
+
+    <div class="content">
+
+        <div class="actions">
+            <div class="info">
+                <mat-icon>
+                    book
+                </mat-icon>
+                <p class="mat-caption">
+                    Notebook
+                </p>
+            </div>
+            <div>
+                <button mat-icon-button [matMenuTriggerFor]="menu">
+                    <mat-icon>
+                        more_vert
+                    </mat-icon>
+                </button>
+            </div>
+
+        </div>
+        <a [routerLink]="notebook?.link" [queryParams]="query" class="title">
+            <p class="mat-body-2">
+                {{notebook?.name}}
+            </p>
+        </a>
+    </div>
+</div>
+
+<mat-menu #menu>
+    <button mat-menu-item (click)="detailsClicked.emit()">
+        <mat-icon>
+            info_outline
+        </mat-icon>
+        <span>Notebook details</span>
+    </button>
+    <button mat-menu-item (click)="settingsClicked.emit()">
+        <mat-icon>
+            settings
+        </mat-icon>
+        <span>Notebook settings</span>
+    </button>
+    <button mat-menu-item (click)="onDelete.emit()" *ngIf="canDelete">
+        <mat-icon color="warn">
+            delete_forever
+        </mat-icon>
+        <span class="app-warn-color">Delete notebook</span>
+    </button>
+</mat-menu>

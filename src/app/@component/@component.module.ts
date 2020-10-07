@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { AppSidenavComponent } from './app-sidenav/app-sidenav.component';
 import { AppToolBarComponent } from './app-toolbar/app-toolbar.component';
@@ -22,6 +23,7 @@ import { AppUserSummaryComponent } from './app-user-summary/app-user-summary.com
 import { AppPageActionsComponent } from './app-page-actions/app-page-actions.component';
 import { AppPageActionsMobileComponent } from './app-page-actions-mobile/app-page-actions-mobile.component';
 import { AppPageActionsDesktopComponent } from './app-page-actions-desktop/app-page-actions-desktop.component';
+import { NotebookCardComponent } from './notebook-card/notebook-card.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,7 @@ import { AppPageActionsDesktopComponent } from './app-page-actions-desktop/app-p
     AppPageActionsComponent,
     AppPageActionsMobileComponent,
     AppPageActionsDesktopComponent,
+    NotebookCardComponent,
   ],
   imports: [
     CommonModule,
@@ -49,6 +52,7 @@ import { AppPageActionsDesktopComponent } from './app-page-actions-desktop/app-p
     MatSidenavModule,
     MatListModule,
     RouterModule,
+    MatTooltipModule,
   ],
   exports: [
     AppSidenavComponent,
@@ -62,6 +66,7 @@ import { AppPageActionsDesktopComponent } from './app-page-actions-desktop/app-p
     AppPageActionsComponent,
     AppPageActionsMobileComponent,
     AppPageActionsDesktopComponent,
+    NotebookCardComponent,
   ],
 })
 export class ComponentModule {}
