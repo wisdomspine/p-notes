@@ -26,6 +26,7 @@ export class NotebooksComponent implements OnInit {
       )
       .map(function (n, i) {
         n.key = i;
+        n.id = `${i}`;
         return n;
       });
   }
