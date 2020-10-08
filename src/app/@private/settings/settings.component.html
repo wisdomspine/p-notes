@@ -1,1 +1,52 @@
-<p>settings works!</p>
+<div class="app-page" [class.no-header]="!(mediaQueryService.isSmallScreen | async)">
+    <div class="app-page-header app-border-boundary-bottom" *ngIf="mediaQueryService.isSmallScreen | async">
+        <ng-container *ngTemplateOutlet="head">
+
+        </ng-container>
+
+    </div>
+    <div class="app-page-content">
+        <div class="content">
+            <ng-container *ngIf="!(mediaQueryService.isSmallScreen | async)">
+                <ng-container *ngTemplateOutlet="head">
+
+                </ng-container>
+            </ng-container>
+
+
+            <div class="body">
+                <mat-accordion>
+                    <mat-expansion-panel expanded class="app-elevation">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Global Font Styles
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <mat-form-field color="accent" appearance="fill">
+                            <mat-label>
+                                Font family
+                            </mat-label>
+                            <mat-select [compareWith]="fontFamilyService.isEqual" [(value)]="userFont">
+                                <mat-option *ngFor="let font of fontFamilyService.all" [value]="font"
+                                    [style.font-family]="font.value">
+                                    {{font?.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #head>
+    <div class="head">
+        <h2>
+            Settings
+        </h2>
+        <button mat-button color="accent">
+            Save
+        </button>
+    </div>
+</ng-template>

@@ -1,0 +1,48 @@
+@import "../../../theming/constant.scss";
+
+.app-page-content {
+  padding: $kEdgePadding;
+
+  .content {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-flow: column;
+    align-items: stretch;
+
+    .body mat-expansion-panel {
+      display: flex;
+      flex-flow: column nowrap;
+
+      mat-form-field {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $kEdgePadding;
+
+  h2 {
+    margin-bottom: 0px;
+  }
+
+  button {
+    border-radius: 100px;
+  }
+}
+
+.app-page-header {
+  padding-left: $kEdgePadding;
+  padding-right: $kEdgePadding;
+
+  .head {
+    height: 100%;
+
+  }
+}

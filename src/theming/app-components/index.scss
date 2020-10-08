@@ -9,6 +9,7 @@
 @import "./app-action-bar.scss";
 @import "./app-page.scss";
 @import "./app-notebook-card.scss";
+@import "./app-note-card.scss";
 
 @mixin app-components($theme-or-config) {
   @include app-mat-toolbar($app-typography);
@@ -20,4 +21,5 @@
   @include app-action-bar($theme-or-config, $app-typography);
   @include app-page();
   @include app-notebook-card($theme-or-config, $app-typography);
+  @include app-note-card($theme-or-config, $app-typography);
 }

@@ -1,0 +1,31 @@
+@import "~@angular/material/theming";
+@import "../constant.scss";
+
+@mixin app-note-card($config-or-theme, $typography-config) {
+  $color-config: mat-get-color-config($config-or-theme);
+  $primary-palette: map-get($map: $color-config, $key: primary);
+  $accent-palette: map-get($map: $color-config, $key: accent);
+
+  .app-note-card {
+    @include mat-elevation(6, mat-color($primary-palette, '500-contrast', .5), .05);
+
+    &:hover,
+    &:focus,
+    &:active {
+      @include mat-elevation(10, mat-color($primary-palette, '500-contrast', .5), .5);
+    }
+
+    .content {
+      background-color: mat-color($primary-palette, '500-contrast', .35);
+      color: mat-color($primary-palette, 500, .75);
+
+      a,
+      a:hover,
+      a:active,
+      a:focus {
+        color: mat-color($primary-palette, 500, .75);
+        text-decoration: none;
+      }
+    }
+  }
+}

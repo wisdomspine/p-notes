@@ -11,6 +11,13 @@
     );
   $opacity: 0.075;
 
+  .app-action-bar {
+    mat-icon {
+      font-size: mat-font-size($typography, 'subheading-2');
+
+    }
+  }
+
   .app-action-bar.desktop {
     border-color: mat-color($accent, "500-contrast", 0.2);
     color: mat-color($accent, 500, .7);

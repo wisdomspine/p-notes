@@ -30,8 +30,4 @@ export class NotebooksComponent implements OnInit {
         return n;
       });
   }
-
-  get notebook(): Notebook {
-    return this.notebooks[0];
-  }
 }

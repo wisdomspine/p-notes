@@ -1,1 +1,46 @@
-<p>notes works!</p>
+<div class="app-page">
+    <div class="app-page-header">
+        <app-page-actions [title]="title">
+            <mat-action-list class="desktop" *ngIf="showActions">
+                <button mat-icon-button matTooltip="Notebook details">
+                    <mat-icon>
+                        info_outline
+                    </mat-icon>
+                </button>
+                <button mat-icon-button matTooltip="Notebook settings">
+                    <mat-icon>
+                        settings
+                    </mat-icon>
+                </button>
+
+                <button mat-icon-button matTooltip="Delete notebook" *ngIf="canDeleteNotebook" class="app-warn-color">
+                    <mat-icon>
+                        delete_forever
+                    </mat-icon>
+                </button>
+            </mat-action-list>
+            <mat-action-list class="mobile" *ngIf="showActions">
+                <button mat-icon-button matTooltip="Notebook details">
+                    <mat-icon>
+                        info_outline
+                    </mat-icon>
+                </button>
+                <button mat-icon-button matTooltip="Notebook settings">
+                    <mat-icon>
+                        settings
+                    </mat-icon>
+                </button>
+
+                <button mat-icon-button matTooltip="Delete notebook" *ngIf="canDeleteNotebook" class="app-warn-color">
+                    <mat-icon>
+                        delete_forever
+                    </mat-icon>
+                </button>
+            </mat-action-list>
+        </app-page-actions>
+    </div>
+
+    <div class="app-page-content">
+        <app-note-card-list [notes]="notes"></app-note-card-list>
+    </div>
+</div>

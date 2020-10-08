@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AppPrivateModuleBaseRoute } from '../@private-routing.module';
+import { Note } from 'src/app/@core/models/Note';
+import { Notebook } from 'src/app/@core/models/Notebook';
 
 @Component({
   selector: 'app-notes',
@@ -12,4 +13,41 @@ export class NotesComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  get notes(): Note[] {
+    return Array(100)
+      .fill(
+        new Note({
+          id: 'guy',
+          key: 24,
+          createdAt: '',
+          updatedAt: '',
+          link: `/${NotesComponent.route}/guy`,
+          notebook: new Notebook({}),
+          title: 'Chapter 1',
+          characters: 0,
+          words: 0,
+          description: '',
+          cover:
+            'https://images.unsplash.com/photo-1585108592681-d0db82bab204?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80',
+        })
+      )
+      .map(function (n, i) {
+        n.key = i;
+        n.id = `${i}`;
+        return n;
+      });
+  }
+
+  get showActions(): boolean {
+    return true;
+  }
+
+  get title(): String {
+    return 'The agony of Tom Sawyer';
+  }
+
+  get canDeleteNotebook(): boolean {
+    return true;
+  }
 }
