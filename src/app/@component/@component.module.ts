@@ -26,6 +26,7 @@ import { AppPageActionsDesktopComponent } from './app-page-actions-desktop/app-p
 import { NotebookCardComponent } from './notebook-card/notebook-card.component';
 import { NotebookCardListComponent } from './notebook-card-list/notebook-card-list.component';
 import { NoteCardComponent } from './note-card/note-card.component';
+import { NoteCardListComponent } from './note-card-list/note-card-list.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { NoteCardComponent } from './note-card/note-card.component';
     NotebookCardComponent,
     NotebookCardListComponent,
     NoteCardComponent,
+    NoteCardListComponent,
   ],
   imports: [
     CommonModule,
@@ -73,6 +75,7 @@ import { NoteCardComponent } from './note-card/note-card.component';
     NotebookCardComponent,
     NotebookCardListComponent,
     NoteCardComponent,
+    NoteCardListComponent,
   ],
 })
 export class ComponentModule {}
