@@ -1,0 +1,56 @@
+<div class="app-note-card" matTooltip="{{note?.title}}" [style.background-image]="cover">
+
+    <div class="content">
+
+        <div class="actions">
+            <div class="info">
+                <mat-icon>
+                    description
+                </mat-icon>
+                <p class="mat-caption">
+                    Note
+                </p>
+            </div>
+            <div>
+                <button mat-icon-button [matMenuTriggerFor]="menu">
+                    <mat-icon>
+                        more_vert
+                    </mat-icon>
+                </button>
+            </div>
+
+        </div>
+        <a [routerLink]="note?.link" class="title">
+            <p class="mat-body-2">
+                {{note?.title}}
+            </p>
+        </a>
+    </div>
+</div>
+
+<mat-menu #menu>
+    <button mat-menu-item (click)="detailsClicked.emit()">
+        <mat-icon>
+            info_outline
+        </mat-icon>
+        <span>Note details</span>
+    </button>
+    <button mat-menu-item (click)="settingsClicked.emit()">
+        <mat-icon>
+            settings
+        </mat-icon>
+        <span>Note settings</span>
+    </button>
+    <button mat-menu-item (click)="onPrint.emit()">
+        <mat-icon>
+            print
+        </mat-icon>
+        <span>Print PDF</span>
+    </button>
+    <button mat-menu-item (click)="onDelete.emit()">
+        <mat-icon color="warn">
+            delete_forever
+        </mat-icon>
+        <span class="app-warn-color">Delete note</span>
+    </button>
+</mat-menu>
