@@ -41,7 +41,7 @@
         </mat-icon>
         <span>Notebook settings</span>
     </button>
-    <button mat-menu-item (click)="onDelete.emit()" *ngIf="canDelete">
+    <button mat-menu-item (click)="onDelete.emit()" *ngIf="!notebook?.permanent">
         <mat-icon color="warn">
             delete_forever
         </mat-icon>

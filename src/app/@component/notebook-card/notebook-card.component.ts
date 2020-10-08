@@ -18,12 +18,6 @@ export class NotebookCardComponent implements OnInit {
     description: 'The agony of Tom Sawyer',
   });
 
-  // @Input()
-  // query: object = { notebook: '1' };
-
-  @Input()
-  canDelete: boolean = true;
-
   @Output('details')
   detailsClicked: EventEmitter<any> = new EventEmitter<any>();
 

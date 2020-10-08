@@ -9,6 +9,7 @@ export class Notebook {
   cover?: String;
   description?: String;
   link?: String;
+  permanent?: boolean;
 
   constructor(notebook: Notebook) {
     Object.assign(this, notebook);
