@@ -1,7 +1,7 @@
 import { Note } from './Note';
 
 export class Notebook {
-  id?: String;
+  key?: number;
   name?: String;
   createdAt?: String;
   updatedAt?: String;
@@ -10,6 +10,7 @@ export class Notebook {
   description?: String;
   link?: String;
   permanent?: boolean;
+  id?: String;
 
   constructor(notebook: Notebook) {
     Object.assign(this, notebook);

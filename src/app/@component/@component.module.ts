@@ -24,6 +24,7 @@ import { AppPageActionsComponent } from './app-page-actions/app-page-actions.com
 import { AppPageActionsMobileComponent } from './app-page-actions-mobile/app-page-actions-mobile.component';
 import { AppPageActionsDesktopComponent } from './app-page-actions-desktop/app-page-actions-desktop.component';
 import { NotebookCardComponent } from './notebook-card/notebook-card.component';
+import { NotebookCardListComponent } from './notebook-card-list/notebook-card-list.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { NotebookCardComponent } from './notebook-card/notebook-card.component';
     AppPageActionsMobileComponent,
     AppPageActionsDesktopComponent,
     NotebookCardComponent,
+    NotebookCardListComponent,
   ],
   imports: [
     CommonModule,
@@ -67,6 +69,7 @@ import { NotebookCardComponent } from './notebook-card/notebook-card.component';
     AppPageActionsMobileComponent,
     AppPageActionsDesktopComponent,
     NotebookCardComponent,
+    NotebookCardListComponent,
   ],
 })
 export class ComponentModule {}
