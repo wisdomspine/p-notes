@@ -23,12 +23,12 @@ export class FontFamilyService {
       value: 'Overlock',
     }),
     new FontFamily({
-      name: 'Peddana',
-      value: 'Peddana',
-    }),
-    new FontFamily({
       name: 'Roboto',
       value: 'Roboto',
+    }),
+    new FontFamily({
+      name: 'Roboto Slab',
+      value: 'Roboto Slab',
     }),
   ];
   constructor() {}

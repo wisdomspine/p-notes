@@ -26,7 +26,8 @@
                             <mat-label>
                                 Font family
                             </mat-label>
-                            <mat-select [compareWith]="fontFamilyService.isEqual" [(value)]="userFont">
+                            <mat-select [compareWith]="fontFamilyService.isEqual" [(value)]="userFont"
+                                [style.font-family]="userFont?.value">
                                 <mat-option *ngFor="let font of fontFamilyService.all" [value]="font"
                                     [style.font-family]="font.value">
                                     {{font?.name}}
