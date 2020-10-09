@@ -27,6 +27,7 @@ import { NotebookCardComponent } from './notebook-card/notebook-card.component';
 import { NotebookCardListComponent } from './notebook-card-list/notebook-card-list.component';
 import { NoteCardComponent } from './note-card/note-card.component';
 import { NoteCardListComponent } from './note-card-list/note-card-list.component';
+import { AppTextEditorComponent } from './app-text-editor/app-text-editor.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { NoteCardListComponent } from './note-card-list/note-card-list.component
     NotebookCardListComponent,
     NoteCardComponent,
     NoteCardListComponent,
+    AppTextEditorComponent,
   ],
   imports: [
     CommonModule,
