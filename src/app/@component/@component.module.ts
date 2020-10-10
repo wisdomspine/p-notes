@@ -29,6 +29,7 @@ import { NoteCardComponent } from './note-card/note-card.component';
 import { NoteCardListComponent } from './note-card-list/note-card-list.component';
 import { AppTextEditorComponent } from './app-text-editor/app-text-editor.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
+import { AppTextEditorTitleComponent } from './app-text-editor-title/app-text-editor-title.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { EditorModule } from '@tinymce/tinymce-angular';
     NoteCardComponent,
     NoteCardListComponent,
     AppTextEditorComponent,
+    AppTextEditorTitleComponent,
   ],
   imports: [
     CommonModule,

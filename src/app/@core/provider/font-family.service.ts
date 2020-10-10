@@ -9,26 +9,34 @@ export class FontFamilyService {
     new FontFamily({
       name: 'Default',
       value: 'Roboto',
+      ulr:
+        'https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap',
     }),
     new FontFamily({
       name: 'Courier Prime',
       value: 'Courier Prime',
+      ulr: 'https://fonts.googleapis.com/css?family=Courier%20Prime',
     }),
     new FontFamily({
       name: 'Great Vibes',
       value: 'Great Vibes',
+      ulr: 'https://fonts.googleapis.com/css?family=Great%20Vibes',
     }),
     new FontFamily({
       name: 'Overlock',
       value: 'Overlock',
+      ulr: 'https://fonts.googleapis.com/css?family=Overlock',
     }),
     new FontFamily({
       name: 'Roboto',
       value: 'Roboto',
+      ulr:
+        'https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap',
     }),
     new FontFamily({
       name: 'Roboto Slab',
       value: 'Roboto Slab',
+      ulr: 'https://fonts.googleapis.com/css?family=Roboto+Slab',
     }),
   ];
   constructor() {}

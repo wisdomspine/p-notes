@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { interval, Subject } from 'rxjs';
 import { debounce } from 'rxjs/operators';
+import { FontFamily } from 'src/app/@core/models/FontFamily';
 import { EditorSettings } from 'tinymce';
 import { UploadHandler } from 'tinymce/tinymce';
 
@@ -10,6 +11,34 @@ import { UploadHandler } from 'tinymce/tinymce';
   styleUrls: ['./app-text-editor.component.scss'],
 })
 export class AppTextEditorComponent implements OnInit {
+  @Input()
+  fonts: FontFamily[] = [
+    new FontFamily({
+      name: 'Default',
+      value: 'Roboto',
+    }),
+    new FontFamily({
+      name: 'Courier Prime',
+      value: 'Courier Prime',
+    }),
+    new FontFamily({
+      name: 'Great Vibes',
+      value: 'Great Vibes',
+    }),
+    new FontFamily({
+      name: 'Overlock',
+      value: 'Overlock',
+    }),
+    new FontFamily({
+      name: 'Roboto',
+      value: 'Roboto',
+    }),
+    new FontFamily({
+      name: 'Roboto Slab',
+      value: 'Roboto Slab',
+    }),
+  ];
+
   @Input('fileHandler')
   fileHandler: UploadHandler;
 
@@ -18,7 +47,9 @@ export class AppTextEditorComponent implements OnInit {
 
   private subject: Subject<String> = new Subject<String>();
 
+  @Input()
   content: String = 'Give God the praise';
+
   constructor() {
     //emit input events in an interval of 200ms
     //I have to delay it because handleChange can be called multiple times in a row
@@ -49,7 +80,7 @@ export class AppTextEditorComponent implements OnInit {
         cust_formatting: {
           icon: 'format',
           tooltip: 'Format',
-          items: 'bold italic underline | superscript subscript',
+          items: 'fontselect | bold italic underline | superscript subscript',
         },
         align: {
           icon: 'align-left',
@@ -73,7 +104,7 @@ export class AppTextEditorComponent implements OnInit {
           );
         },
       height: '100%',
-      selector: 'textarea',
+      font_formats: this.fonts.map((f) => `${f.name}=${f.value}`).join('; '),
     };
   }
 
