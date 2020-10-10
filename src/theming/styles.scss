@@ -1,0 +1,14 @@
+@import "./constant.scss";
+
+
+@for $var from 0 to $kEdgePadding {
+  .padding-#{$var} {
+    padding: #{$var}px;
+  }
+
+  @each $side in $kSides {
+    .padding-#{$side}-#{$var} {
+      padding-#{$side}:#{$var}px;
+    }
+  }
+}

@@ -10,6 +10,8 @@
 @import "./app-page.scss";
 @import "./app-notebook-card.scss";
 @import "./app-note-card.scss";
+@import "../styles.scss";
+@import "./app-text-editor.scss";
 
 @mixin app-components($theme-or-config) {
   @include app-mat-toolbar($app-typography);
@@ -22,4 +24,5 @@
   @include app-page();
   @include app-notebook-card($theme-or-config, $app-typography);
   @include app-note-card($theme-or-config, $app-typography);
+  @include app-text-editor($theme-or-config, $app-typography);
 }

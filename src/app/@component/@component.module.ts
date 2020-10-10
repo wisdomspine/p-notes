@@ -14,7 +14,7 @@ import { AppSidenavComponent } from './app-sidenav/app-sidenav.component';
 import { AppToolBarComponent } from './app-toolbar/app-toolbar.component';
 import { AppUserToolbarCardComponent } from './app-user-toolbar-card/app-user-toolbar-card.component';
 import { AppSearchInputFieldComponent } from './app-search-input-field/app-search-input-field.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppMenuItemComponent } from './app-menu-item/app-menu-item.component';
 import { RouterModule } from '@angular/router';
 import { AppNewObjectComponent } from './app-new-object/app-new-object.component';
@@ -28,6 +28,7 @@ import { NotebookCardListComponent } from './notebook-card-list/notebook-card-li
 import { NoteCardComponent } from './note-card/note-card.component';
 import { NoteCardListComponent } from './note-card-list/note-card-list.component';
 import { AppTextEditorComponent } from './app-text-editor/app-text-editor.component';
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,8 @@ import { AppTextEditorComponent } from './app-text-editor/app-text-editor.compon
     MatListModule,
     RouterModule,
     MatTooltipModule,
+    EditorModule,
+    FormsModule,
   ],
   exports: [
     AppSidenavComponent,
@@ -78,6 +81,7 @@ import { AppTextEditorComponent } from './app-text-editor/app-text-editor.compon
     NotebookCardListComponent,
     NoteCardComponent,
     NoteCardListComponent,
+    AppTextEditorComponent,
   ],
 })
 export class ComponentModule {}

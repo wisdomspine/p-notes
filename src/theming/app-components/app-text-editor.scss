@@ -1,0 +1,74 @@
+@import "~@angular/material/theming";
+@import "../constant.scss";
+
+@mixin app-text-editor($config-or-theme, $typography) {
+  $config: mat-get-color-config($config-or-theme);
+  $primary: map-get($map: $config,
+      $key: primary,
+    );
+  $accent: map-get($map: $config,
+      $key: accent,
+    );
+
+  .tox .tox-tbtn svg {
+    fill: mat-color($accent) !important;
+  }
+
+  .tox .tox-tbtn--enabled svg,
+  .tox .tox-tbtn--enabled:hover svg {
+    fill: mat-color($accent) !important;
+  }
+
+  .tox .tox-collection--list .tox-collection__item--active:not(.tox-collection__item--state-disabled),
+  .tox .tox-collection__item {
+    color: mat-color($primary, '500-contrast') !important;
+  }
+
+  .tox .tox-menu {
+    border-width: 0px !important;
+    box-shadow: 0 4px 8px 0 mat-color($primary, '100-contrast', 0.07) !important;
+  }
+
+  .tox .tox-button {
+    background-color: mat-color($accent) !important;
+    color: mat-color($accent, '500-contrast') !important;
+    border-width: 0px !important;
+    border-radius: 100px !important;
+    font-weight: mat-font-weight($typography, body-1) !important;
+
+    &.tox-button--secondary {
+      background-color: mat-color($primary) !important;
+      color: mat-color($accent) !important;
+      border-width: 1px !important;
+      border-color: mat-color($accent) !important;
+    }
+  }
+
+  .tox .tox-listboxfield .tox-listbox--select,
+  .tox .tox-textarea,
+  .tox .tox-textfield,
+  .tox .tox-toolbar-textfield,
+  .tox .tox-selectfield select {
+    color: mat-color($primary, '500-contrast') !important;
+
+    &.tox-textfield {
+      border-radius: 100px !important;
+    }
+
+    font-size: mat-font-size($typography, body-1) !important;
+
+    &:hover {
+      border-color: mat-color($accent) !important;
+    }
+  }
+
+  .tox .tox-dialog {
+    border-width: 0px !important;
+    border-radius: $kCardBorderRadiusMid !important;
+    box-shadow: 0 16px 16px -10px mat-color($primary, '100-contrast', 0.07), 0 0 40px 1px mat-color($primary, '100-contrast', 0.07) !important;
+  }
+
+  .tox .tox-dialog-wrap__backdrop--opaque {
+    background-color: mat-color($primary, '500-contrast', .35) !important;
+  }
+}

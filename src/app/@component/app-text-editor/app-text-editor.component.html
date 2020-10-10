@@ -1,3 +1,7 @@
-<editor [init]="init">
+<editor [init]="init" [(ngModel)]="content" (onKeyUp)="handleChange()" (cut)="handleChange()"
+    (onObjectResized)="handleChange()" (onObjectSelected)="handleChange()" (onRemove)="handleChange()"
+    (onSetContent)="handleChange()" (onUndo)="handleChange()" (onSaveContent)="handleChange()"
+    (onExecCommand)="handleChange()" (onSetAttrib)="handleChange()" (onSubmit)="handleChange()"
+    (onNodeChange)="handleChange()">
 
 </editor>

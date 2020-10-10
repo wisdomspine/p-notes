@@ -39,8 +39,14 @@
       bottom: 0;
       z-index: 1;
       overflow-y: auto;
-      padding-left: $kEdgePadding;
-      padding-right: $kEdgePadding;
+
+      &:not([class*=padding-]) {
+        padding-left: $kEdgePadding;
+        padding-right: $kEdgePadding;
+      }
+
+
+
     }
   }
 }
