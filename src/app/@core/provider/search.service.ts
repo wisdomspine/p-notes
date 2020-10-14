@@ -28,7 +28,7 @@ export class SearchService {
         })
       )
       .map(function (n, i) {
-        n.key = i;
+        n.key = 0 - i;
         n.id = `${i}`;
         return n;
       });

@@ -1,3 +1,5 @@
+@import "../../../theming/constant.scss";
+
 .app-page-header {
   display: flex;
   align-items: center;
@@ -5,4 +7,10 @@
   app-search-input-field {
     flex-grow: 1;
   }
+
+
+}
+
+._content {
+  padding-top: $kEdgePadding;
 }

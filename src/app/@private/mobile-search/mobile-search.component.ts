@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Note } from 'src/app/@core/models/Note';
+import { Notebook } from 'src/app/@core/models/Notebook';
+import { AppMediaQueryService } from 'src/app/@core/provider/app-media-query.service';
+import { SearchService } from 'src/app/@core/provider/search.service';
 
 @Component({
   selector: 'app-mobile-search',
@@ -8,9 +13,24 @@ import { Component, OnInit } from '@angular/core';
 export class MobileSearchComponent implements OnInit {
   static routeName: string = 'search';
   static route: String = `search`;
-  constructor() {}
+  constructor(
+    private searchService: SearchService,
+    router: Router,
+    appMediaQueryService: AppMediaQueryService
+  ) {
+    appMediaQueryService.isSmallScreen.subscribe((e) => {
+      if (!e) {
+        //mobile search component can only be accessed on small screens
+        router.navigateByUrl('/');
+      }
+    });
+  }
 
   ngOnInit(): void {}
 
   startSearch(term: String) {}
+
+  get results(): (Notebook | Note)[] {
+    return this.searchService.search();
+  }
 }
