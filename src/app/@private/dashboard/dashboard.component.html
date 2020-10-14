@@ -1,6 +1,6 @@
 <div class="app-container">
     <!-- Dashboard layout for larg screens -->
-    <div *ngIf="!(isSmallScreen | async)">
+    <div *ngIf="!(isSmallScreen | async) ">
         <mat-toolbar color="primary" class="app-border-boundary-bottom">
             <app-toolbar>
                 <div search>
@@ -9,7 +9,7 @@
                             arrow_back
                         </mat-icon>
                     </button>
-                    <app-search-input-field (input)="startSearch($event)" (submit)="startSearch($event)">
+                    <app-search-input-field (search)="startSearch($event)" (submit)="startSearch($event)">
                     </app-search-input-field>
                 </div>
             </app-toolbar>
@@ -25,11 +25,32 @@
                 </div>
             </mat-sidenav>
             <mat-sidenav-content color="background">
-                <router-outlet></router-outlet>
+                <ng-container *ngIf="!searching">
+                    <router-outlet></router-outlet>
+                </ng-container>
+                <ng-container *ngIf="searching">
+                    <div class="_result-output">
+                        <ng-container *ngIf="(search?.search?.length > 0)">
+                            <app-search-result-list [results]="searchResults">
+
+                            </app-search-result-list>
+                        </ng-container>
+                        <ng-container *ngIf="search?.search?.length <= 0">
+                            <app-search-failed [short]="true"></app-search-failed>
+                        </ng-container>
+                        <ng-container *ngIf="search?.search?.length > 0 && (searchResults?.length > 0)">
+                            <app-search-failed [empty]="true"></app-search-failed>
+                        </ng-container>
+
+
+                    </div>
+                </ng-container>
+
 
             </mat-sidenav-content>
         </mat-sidenav-container>
     </div>
+
 
     <!-- Dashboard layout for small screens -->
     <div *ngIf="(isSmallScreen | async)">

@@ -31,6 +31,7 @@ import { AppTextEditorComponent } from './app-text-editor/app-text-editor.compon
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { AppTextEditorTitleComponent } from './app-text-editor-title/app-text-editor-title.component';
 import { AppSearchResultListComponent } from './app-search-result-list/app-search-result-list.component';
+import { AppSearchFailedComponent } from './app-search-failed/app-search-failed.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { AppSearchResultListComponent } from './app-search-result-list/app-searc
     AppTextEditorComponent,
     AppTextEditorTitleComponent,
     AppSearchResultListComponent,
+    AppSearchFailedComponent,
   ],
   imports: [
     CommonModule,
@@ -87,6 +89,7 @@ import { AppSearchResultListComponent } from './app-search-result-list/app-searc
     NoteCardListComponent,
     AppTextEditorComponent,
     AppSearchResultListComponent,
+    AppSearchFailedComponent,
   ],
 })
 export class ComponentModule {}

@@ -1,6 +1,6 @@
 <div class="container">
     <div class="app-note-card-list">
-        <div *ngFor="let note of notes; let i=index;trackBy:trackBy">
+        <div *ngFor="let note of notes;let i=index;trackBy:trackBy">
             <app-note-card (details)="detailsClicked.emit(i)" (settings)="settingsClicked.emit(i)"
                 (delete)="onDelete.emit(i)" [note]="note" (print)="onPrint.emit(i)">
 

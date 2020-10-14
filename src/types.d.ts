@@ -10,3 +10,9 @@ export declare interface AppUser {
   email?: String;
   image?: String;
 }
+
+export declare interface SearchFieldOutput {
+  search?: String;
+  notes?: boolean;
+  notebooks?: boolean;
+}

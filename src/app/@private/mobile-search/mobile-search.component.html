@@ -1,13 +1,20 @@
 <div class="app-page">
     <div class="app-page-header app-border-boundary-bottom">
-        <app-search-input-field (input)="startSearch($event)" (submit)="startSearch($event)">
+        <app-search-input-field (search)="startSearch($event)" (submit)="startSearch($event)">
         </app-search-input-field>
     </div>
     <div class="app-page-content">
         <div class="_content">
-            <app-search-result-list [results]="results">
+            <app-search-result-list [results]="results" *ngIf="(search?.search?.length > 0)">
 
             </app-search-result-list>
+
+            <ng-container *ngIf="search?.search?.length <= 0">
+                <app-search-failed [short]="true"></app-search-failed>
+            </ng-container>
+            <ng-container *ngIf="search?.search?.length > 0 && (results?.length > 0)">
+                <app-search-failed [empty]="true"></app-search-failed>
+            </ng-container>
         </div>
     </div>
 </div>

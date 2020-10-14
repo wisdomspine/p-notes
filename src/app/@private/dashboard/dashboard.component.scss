@@ -9,11 +9,16 @@
     app-toolbar {
       width: 100%;
       display: block;
+      display: flex;
+
+      [search] {
+        display: flex;
+      }
 
       app-search-input-field {
-        max-width: 450px;
+        max-width: 500px;
         display: block;
-        ;
+        flex-grow: 1;
       }
     }
   }
@@ -33,6 +38,10 @@
           bottom: 0;
           left: 0;
           $new-button-side-padding: 14px;
+
+          ._result-output {
+            padding: $kEdgePadding;
+          }
 
           mat-sidenav.expanded {
             width: $kSidenavWidth;
