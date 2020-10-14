@@ -12,32 +12,7 @@ import { UploadHandler } from 'tinymce/tinymce';
 })
 export class AppTextEditorComponent implements OnInit {
   @Input()
-  fonts: FontFamily[] = [
-    new FontFamily({
-      name: 'Default',
-      value: 'Roboto',
-    }),
-    new FontFamily({
-      name: 'Courier Prime',
-      value: 'Courier Prime',
-    }),
-    new FontFamily({
-      name: 'Great Vibes',
-      value: 'Great Vibes',
-    }),
-    new FontFamily({
-      name: 'Overlock',
-      value: 'Overlock',
-    }),
-    new FontFamily({
-      name: 'Roboto',
-      value: 'Roboto',
-    }),
-    new FontFamily({
-      name: 'Roboto Slab',
-      value: 'Roboto Slab',
-    }),
-  ];
+  fonts: FontFamily[] = [];
 
   @Input('fileHandler')
   fileHandler: UploadHandler;
@@ -104,6 +79,7 @@ export class AppTextEditorComponent implements OnInit {
           );
         },
       height: '100%',
+      content_style: this.fonts.map((f) => `@import url(${f.ulr});`).join(''),
       font_formats: this.fonts.map((f) => `${f.name}=${f.value}`).join('; '),
     };
   }

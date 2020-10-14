@@ -1,21 +1,23 @@
-<mat-form-field appearance="outline" color="accent" class="app-search-input-field">
-    <input type="search" matNativeControl placeholder="Search for notes, tags, ..." [formControl]="control"
-        (input)="input.emit($event)" (focus)="focused=true" (blur)="focused=false">
-    <button mat-icon-button matSuffix (click)="submit()" [color]="focused? 'accent': 'basic'">
+<div class="_search">
+    <mat-form-field appearance="outline" color="accent" class="app-search-input-field">
+        <input type="search" matNativeControl placeholder="Search for notes, tags, ..." [formControl]="control"
+            (input)="input.emit($event)" (focus)="focused=true" (blur)="focused=false">
+        <button mat-icon-button matSuffix (click)="submit()" [color]="focused? 'accent': 'basic'">
+            <mat-icon>
+                search
+            </mat-icon>
+        </button>
+    </mat-form-field>
+    <button mat-icon-button color="accent" [matMenuTriggerFor]="option">
         <mat-icon>
-            search
+            filter_list
         </mat-icon>
     </button>
-</mat-form-field>
-<button mat-icon-button color="accent" [matMenuTriggerFor]="option">
-    <mat-icon>
-        filter_list
-    </mat-icon>
-</button>
 
-<mat-menu #option>
-    <mat-selection-list (selectionChange)="selectionChange($event)">
-        <mat-list-option [selected]="notebooks" [value]="_notebooksValue">Search Notebooks</mat-list-option>
-        <mat-list-option [selected]="notes" [value]="_notesValue">Search Notes</mat-list-option>
-    </mat-selection-list>
-</mat-menu>
+    <mat-menu #option>
+        <mat-selection-list (selectionChange)="selectionChange($event)">
+            <mat-list-option [selected]="notebooks" [value]="_notebooksValue">Search Notebooks</mat-list-option>
+            <mat-list-option [selected]="notes" [value]="_notesValue">Search Notes</mat-list-option>
+        </mat-selection-list>
+    </mat-menu>
+</div>

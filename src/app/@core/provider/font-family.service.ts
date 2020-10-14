@@ -18,9 +18,9 @@ export class FontFamilyService {
       ulr: 'https://fonts.googleapis.com/css?family=Courier%20Prime',
     }),
     new FontFamily({
-      name: 'Great Vibes',
-      value: 'Great Vibes',
-      ulr: 'https://fonts.googleapis.com/css?family=Great%20Vibes',
+      name: 'Chilanka',
+      value: 'Chilanka',
+      ulr: 'https://fonts.googleapis.com/css?family=Chilanka',
     }),
     new FontFamily({
       name: 'Overlock',

@@ -9,6 +9,12 @@
     app-toolbar {
       width: 100%;
       display: block;
+
+      app-search-input-field {
+        max-width: 450px;
+        display: block;
+        ;
+      }
     }
   }
 

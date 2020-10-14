@@ -30,6 +30,7 @@ import { NoteCardListComponent } from './note-card-list/note-card-list.component
 import { AppTextEditorComponent } from './app-text-editor/app-text-editor.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { AppTextEditorTitleComponent } from './app-text-editor-title/app-text-editor-title.component';
+import { AppSearchResultListComponent } from './app-search-result-list/app-search-result-list.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { AppTextEditorTitleComponent } from './app-text-editor-title/app-text-ed
     NoteCardListComponent,
     AppTextEditorComponent,
     AppTextEditorTitleComponent,
+    AppSearchResultListComponent,
   ],
   imports: [
     CommonModule,
@@ -84,6 +86,7 @@ import { AppTextEditorTitleComponent } from './app-text-editor-title/app-text-ed
     NoteCardComponent,
     NoteCardListComponent,
     AppTextEditorComponent,
+    AppSearchResultListComponent,
   ],
 })
 export class ComponentModule {}

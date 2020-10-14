@@ -11,4 +11,6 @@ export class MobileSearchComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  startSearch(term: String) {}
 }

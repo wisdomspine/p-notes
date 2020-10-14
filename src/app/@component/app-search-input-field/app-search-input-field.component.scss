@@ -1,0 +1,8 @@
+._search {
+  display: flex;
+  flex-flow: row nowrap;
+
+  mat-form-field {
+    flex-grow: 1;
+  }
+}

@@ -3,6 +3,7 @@ export const AppPrivateModuleBaseRoute = '';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { MobileSearchComponent } from './mobile-search/mobile-search.component';
 import { NoteComponent } from './note/note.component';
 import { NotebooksComponent } from './notebooks/notebooks.component';
 import { NotesComponent } from './notes/notes.component';
@@ -32,7 +33,15 @@ const routes: Routes = [
         path: `${NoteComponent.routeName}/:${NoteComponent.param}`,
         component: NoteComponent,
       },
-      { path: '', pathMatch: 'full', redirectTo: NotebooksComponent.routeName },
+      {
+        path: `${MobileSearchComponent.routeName}`,
+        component: MobileSearchComponent,
+      },
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: NotebooksComponent.routeName,
+      },
     ],
   },
 ];

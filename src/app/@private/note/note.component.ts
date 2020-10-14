@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FontFamilyService } from 'src/app/@core/provider/font-family.service';
 import { AppPrivateModuleBaseRoute } from '../@private-routing.module';
 
 @Component({
@@ -10,7 +11,7 @@ export class NoteComponent implements OnInit {
   static routeName: string = 'notes';
   static route: String = `notes`;
   static param: String = 'note';
-  constructor() {}
+  constructor(public fontsProvider: FontFamilyService) {}
 
   ngOnInit(): void {}
 }

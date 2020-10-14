@@ -1,1 +1,11 @@
-<p>mobile-search works!</p>
+<div class="app-page">
+    <div class="app-page-header app-border-boundary-bottom">
+        <app-search-input-field (input)="startSearch($event)" (submit)="startSearch($event)">
+        </app-search-input-field>
+    </div>
+    <div class="app-page-content">
+        <app-search-result-list>
+
+        </app-search-result-list>
+    </div>
+</div>
