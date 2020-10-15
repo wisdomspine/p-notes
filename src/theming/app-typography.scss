@@ -1,8 +1,8 @@
 @import "~@angular/material/theming";
 $app-typography: mat-typography-config($font-family: 'Roboto, monospace',
-  $display-4: mat-typography-level(28px, 42px, 500),
-  $display-3: mat-typography-level(24px, 36px, 500),
-  $display-2: mat-typography-level(20px, 30px, 500),
+  $display-4: mat-typography-level(100px, 150px, 500),
+  $display-3: mat-typography-level(50px, 75px, 500),
+  $display-2: mat-typography-level(25px, 38px, 500),
   $display-1: mat-typography-level(18px, 27px, 400),
   $headline: mat-typography-level(19px, 29px, 500),
   $title: mat-typography-level(17px, 26px, 500),

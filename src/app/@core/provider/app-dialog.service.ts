@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { DeleteNoteDialogComponent } from 'src/app/@component/dialogs/delete-note-dialog/delete-note-dialog.component';
 import { DeleteNotebookDialogComponent } from 'src/app/@component/dialogs/delete-notebook-dialog/delete-notebook-dialog.component';
 import { LeaveAReviewComponent } from 'src/app/@component/dialogs/leave-areview/leave-areview.component';
+import { ReviewAppreciationComponent } from 'src/app/@component/dialogs/review-appreciation/review-appreciation.component';
 import { DeleteNotebookDialogResult, Review } from 'src/types';
 
 @Injectable({
@@ -71,5 +72,16 @@ export class AppDialogService {
       });
 
     return subject;
+  }
+
+  showReviewAppreciation() {
+    this.dialog.open<ReviewAppreciationComponent, any, any>(
+      ReviewAppreciationComponent,
+      {
+        maxWidth: 400,
+        minWidth: this.minWidth,
+        panelClass: `${this.panelClass}`,
+      }
+    );
   }
 }

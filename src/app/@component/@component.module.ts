@@ -38,6 +38,7 @@ import { DeleteNotebookDialogComponent } from './dialogs/delete-notebook-dialog/
 import { DeleteNoteDialogComponent } from './dialogs/delete-note-dialog/delete-note-dialog.component';
 import { AppStarsRatingComponent } from './app-stars-rating/app-stars-rating.component';
 import { LeaveAReviewComponent } from './dialogs/leave-areview/leave-areview.component';
+import { ReviewAppreciationComponent } from './dialogs/review-appreciation/review-appreciation.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { LeaveAReviewComponent } from './dialogs/leave-areview/leave-areview.com
     DeleteNoteDialogComponent,
     AppStarsRatingComponent,
     LeaveAReviewComponent,
+    ReviewAppreciationComponent,
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,24 @@
+._review-appreciation {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+
+  p,
+  h1,
+  .emoji {
+    text-align: center;
+  }
+
+  ._checkbox {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+  }
+
+  .buttons {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+}

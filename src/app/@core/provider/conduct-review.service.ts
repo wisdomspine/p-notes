@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Review } from 'src/types';
 import { AppDialogService } from './app-dialog.service';
 
 @Injectable({
@@ -8,6 +9,8 @@ export class ConductReviewService {
   constructor(private dialogService: AppDialogService) {}
 
   startReview(): void {
-    this.dialogService.startReview().subscribe(console.log);
+    this.dialogService.startReview().subscribe((review: Review) => {
+      this.dialogService.showReviewAppreciation();
+    });
   }
 }
