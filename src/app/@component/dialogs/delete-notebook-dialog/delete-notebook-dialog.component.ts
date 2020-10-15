@@ -14,7 +14,7 @@ export class DeleteNotebookDialogComponent implements OnInit {
   };
 
   constructor(
-    public dialogRef: MatDialogRef<
+    private dialogRef: MatDialogRef<
       DeleteNotebookDialogComponent,
       DeleteNotebookDialogResult
     >

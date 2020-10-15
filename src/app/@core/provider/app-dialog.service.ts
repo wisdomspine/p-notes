@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { DeleteNoteDialogComponent } from 'src/app/@component/dialogs/delete-note-dialog/delete-note-dialog.component';
 import { DeleteNotebookDialogComponent } from 'src/app/@component/dialogs/delete-notebook-dialog/delete-notebook-dialog.component';
 import { DeleteNotebookDialogResult } from 'src/types';
 
@@ -19,6 +20,26 @@ export class AppDialogService {
     this.dialog
       .open<DeleteNotebookDialogComponent, any, DeleteNotebookDialogResult>(
         DeleteNotebookDialogComponent,
+        {
+          maxWidth: 400,
+          minWidth: this.minWidth,
+          panelClass: `${this.panelClass}`,
+        }
+      )
+      .afterClosed()
+      .subscribe((result) => {
+        subject.next(result);
+        subject.complete();
+      });
+
+    return subject;
+  }
+
+  confirmNoteDelete(): Observable<boolean> {
+    const subject: Subject<boolean> = new Subject<boolean>();
+    this.dialog
+      .open<DeleteNoteDialogComponent, any, boolean>(
+        DeleteNoteDialogComponent,
         {
           maxWidth: 400,
           minWidth: this.minWidth,

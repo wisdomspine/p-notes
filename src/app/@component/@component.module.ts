@@ -35,6 +35,7 @@ import { AppTextEditorTitleComponent } from './app-text-editor-title/app-text-ed
 import { AppSearchResultListComponent } from './app-search-result-list/app-search-result-list.component';
 import { AppSearchFailedComponent } from './app-search-failed/app-search-failed.component';
 import { DeleteNotebookDialogComponent } from './dialogs/delete-notebook-dialog/delete-notebook-dialog.component';
+import { DeleteNoteDialogComponent } from './dialogs/delete-note-dialog/delete-note-dialog.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { DeleteNotebookDialogComponent } from './dialogs/delete-notebook-dialog/
     AppSearchResultListComponent,
     AppSearchFailedComponent,
     DeleteNotebookDialogComponent,
+    DeleteNoteDialogComponent,
   ],
   imports: [
     CommonModule,

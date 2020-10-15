@@ -1,19 +1,12 @@
-<div class="_delete-notebook-dialog">
-    <h1>
-        Delete Notebook
+<div class="_delete-note-dialog">
+    <h1 class="app-margin-bottom-10">
+        Delete Note?
     </h1>
-    <p>
-        This can't be undone. All notes in this notebook will be moved into the default notebook. You can delete the
-        note in this book by checking the checkbox below
+    <p class="app-margin-bottom-20">
+        This can't be undone.
     </p>
 
-    <div class="_checkbox">
-        <mat-checkbox [(ngModel)]="result.deleteNotes">
-            Delete notes in this book
-        </mat-checkbox>
-    </div>
-
-    <div class="buttons app-margin-top-14">
+    <div class="buttons">
         <button mat-button (click)="close()" color="foreground"
             class="app-cancel-button app-padding-left-40 app-padding-right-40 app-border-radius-100 app-margin-right-7">
             Cancel

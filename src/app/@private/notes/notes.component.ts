@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Note } from 'src/app/@core/models/Note';
 import { Notebook } from 'src/app/@core/models/Notebook';
+import { AppDialogService } from 'src/app/@core/provider/app-dialog.service';
 
 @Component({
   selector: 'app-notes',
@@ -10,7 +11,7 @@ import { Notebook } from 'src/app/@core/models/Notebook';
 export class NotesComponent implements OnInit {
   static routeName: string = 'notes';
   static route: String = `notes`;
-  constructor() {}
+  constructor(private dialogService: AppDialogService) {}
 
   ngOnInit(): void {}
 
@@ -49,5 +50,9 @@ export class NotesComponent implements OnInit {
 
   get canDeleteNotebook(): boolean {
     return true;
+  }
+
+  handleDelete(index: number) {
+    this.dialogService.confirmNoteDelete().subscribe(console.log);
   }
 }
