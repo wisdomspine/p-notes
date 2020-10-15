@@ -1,0 +1,26 @@
+._leave_areview {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+
+  p {
+    text-align: center;
+  }
+
+  ._message {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: stretch;
+    width: 100%;
+
+    mat-form-field {
+      width: 100% !important;
+    }
+  }
+
+  .buttons {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+}

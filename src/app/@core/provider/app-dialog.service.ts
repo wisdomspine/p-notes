@@ -3,7 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { DeleteNoteDialogComponent } from 'src/app/@component/dialogs/delete-note-dialog/delete-note-dialog.component';
 import { DeleteNotebookDialogComponent } from 'src/app/@component/dialogs/delete-notebook-dialog/delete-notebook-dialog.component';
-import { DeleteNotebookDialogResult } from 'src/types';
+import { LeaveAReviewComponent } from 'src/app/@component/dialogs/leave-areview/leave-areview.component';
+import { DeleteNotebookDialogResult, Review } from 'src/types';
 
 @Injectable({
   providedIn: 'root',
@@ -46,6 +47,23 @@ export class AppDialogService {
           panelClass: `${this.panelClass}`,
         }
       )
+      .afterClosed()
+      .subscribe((result) => {
+        subject.next(result);
+        subject.complete();
+      });
+
+    return subject;
+  }
+
+  startReview(): Observable<Review> {
+    const subject: Subject<Review> = new Subject<Review>();
+    this.dialog
+      .open<LeaveAReviewComponent, any, Review>(LeaveAReviewComponent, {
+        maxWidth: 400,
+        minWidth: this.minWidth,
+        panelClass: `${this.panelClass}`,
+      })
       .afterClosed()
       .subscribe((result) => {
         subject.next(result);

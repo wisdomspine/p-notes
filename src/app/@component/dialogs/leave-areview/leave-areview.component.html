@@ -1,0 +1,37 @@
+<div class="_leave_areview">
+    <h1 class="app-margin-bottom-15">
+        Rate this App
+    </h1>
+    <p class="app-margin-bottom-15">
+        Can you please tell us what you think about this app?
+    </p>
+
+    <div class="stars">
+        <app-stars-rating (stared)="handleStarsClick($event)" (hover)="handleStarsHover($event)"
+            [stared]="review?.stars" [static]="statice">
+
+        </app-stars-rating>
+    </div>
+
+    <div class="_message app-margin-top-15" *ngIf="clicked">
+        <mat-form-field appearance="outline" color="accent">
+            <mat-label>
+                Description (optional)
+            </mat-label>
+            <textarea matInput [(ngModel)]="review.message" placeholder="Describe your experience" tabindex="1">
+
+            </textarea>
+        </mat-form-field>
+    </div>
+
+    <div class="buttons app-margin-top-7">
+        <button mat-button (click)="close()" color="foreground"
+            class="app-cancel-button app-padding-left-40 app-padding-right-40 app-border-radius-100 app-margin-right-7">
+            Cancel
+        </button>
+        <button *ngIf="clicked" mat-flat-button color="accent" (click)="submit()"
+            class="app-padding-left-40 app-padding-right-40 app-border-radius-100 app-margin-left-7">
+            Submit
+        </button>
+    </div>
+</div>

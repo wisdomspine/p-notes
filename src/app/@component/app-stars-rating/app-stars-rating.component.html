@@ -1,0 +1,11 @@
+<div class="_stars">
+    <ng-container *ngFor="let star of stars">
+        <button mat-icon-button color="accent" (mouseover)="hoverHandle(star)" (click)="clickHandle(star)"
+            tabindex="-1">
+            <mat-icon>
+                {{ star<=stared ? 'star' : 'star_border' }}
+            </mat-icon>
+        </button>
+    </ng-container>
+
+</div>

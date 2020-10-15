@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ConductReviewService } from 'src/app/@core/provider/conduct-review.service';
 import { MenuItemModel } from 'src/types';
 
 @Component({
@@ -7,7 +8,7 @@ import { MenuItemModel } from 'src/types';
   styleUrls: ['./app-mobile-toolbar.component.scss'],
 })
 export class AppMobileToolbarComponent implements OnInit {
-  constructor() {}
+  constructor(private conductReview: ConductReviewService) {}
   @Input()
   menu: MenuItemModel[] = [];
   ngOnInit(): void {}
@@ -19,7 +20,9 @@ export class AppMobileToolbarComponent implements OnInit {
 
   logout() {}
 
-  review() {}
+  review() {
+    this.conductReview.startReview();
+  }
 
   account() {}
 }

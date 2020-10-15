@@ -21,3 +21,8 @@ export declare interface DeleteNotebookDialogResult {
   deleteNotes?: boolean;
   delete?: boolean;
 }
+
+export declare interface Review {
+  stars?: number;
+  message?: String;
+}

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppInfoService } from 'src/app/@core/provider/app-info.service';
 import { AppMenuStateService } from 'src/app/@core/provider/app-menu-state.service';
+import { ConductReviewService } from 'src/app/@core/provider/conduct-review.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -10,11 +11,16 @@ import { AppMenuStateService } from 'src/app/@core/provider/app-menu-state.servi
 export class AppToolBarComponent implements OnInit {
   constructor(
     public appInfoService: AppInfoService,
-    public menuStateService: AppMenuStateService
+    public menuStateService: AppMenuStateService,
+    private conductReview: ConductReviewService
   ) {}
 
   ngOnInit(): void {}
   toggleMenu() {
     this.menuStateService.toogleState();
+  }
+
+  review() {
+    this.conductReview.startReview();
   }
 }

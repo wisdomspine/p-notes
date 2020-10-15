@@ -36,6 +36,8 @@ import { AppSearchResultListComponent } from './app-search-result-list/app-searc
 import { AppSearchFailedComponent } from './app-search-failed/app-search-failed.component';
 import { DeleteNotebookDialogComponent } from './dialogs/delete-notebook-dialog/delete-notebook-dialog.component';
 import { DeleteNoteDialogComponent } from './dialogs/delete-note-dialog/delete-note-dialog.component';
+import { AppStarsRatingComponent } from './app-stars-rating/app-stars-rating.component';
+import { LeaveAReviewComponent } from './dialogs/leave-areview/leave-areview.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +62,8 @@ import { DeleteNoteDialogComponent } from './dialogs/delete-note-dialog/delete-n
     AppSearchFailedComponent,
     DeleteNotebookDialogComponent,
     DeleteNoteDialogComponent,
+    AppStarsRatingComponent,
+    LeaveAReviewComponent,
   ],
   imports: [
     CommonModule,
@@ -98,6 +102,7 @@ import { DeleteNoteDialogComponent } from './dialogs/delete-note-dialog/delete-n
     AppTextEditorComponent,
     AppSearchResultListComponent,
     AppSearchFailedComponent,
+    AppStarsRatingComponent,
   ],
 })
 export class ComponentModule {}
