@@ -1,14 +1,79 @@
 @import "./constant.scss";
+@import "~@angular/material/theming";
 
+@mixin app-styles($config-or-theme, $typography) {
+  $color-config: mat-get-color-config($config-or-theme);
+  $primary-palette: map-get($map: $color-config, $key: primary);
+  $accent-palette: map-get($map: $color-config, $key: accent);
+  $warn-palette: map-get($map: $color-config, $key: warn);
 
-@for $var from 0 to $kEdgePadding {
-  .padding-#{$var} {
-    padding: #{$var}px;
+  @for $var from 0 to $kEdgePadding {
+    .padding-#{$var} {
+      padding: #{$var}px;
+    }
+
+    @each $side in $kSides {
+      .padding-#{$side}-#{$var} {
+        padding-#{$side}:#{$var}px;
+      }
+    }
   }
 
-  @each $side in $kSides {
-    .padding-#{$side}-#{$var} {
-      padding-#{$side}:#{$var}px;
+  //border radius
+  @for $size from 0 to 200 {
+    .app-border-radius-#{$size} {
+      border-radius: #{$size}px !important;
     }
+
+    @each $side in $kSides {
+      .app-border-radius-#{$size}-#{$size} {
+        border-radius: #{$size}px !important;
+      }
+    }
+
+    @each $angle in $kAngles {
+      .app-border-radius-#{$angle}-#{$size} {
+        border-radius: #{$size}px !important;
+      }
+    }
+  }
+
+  //padding and margin
+  @for $size from 0 to 200 {
+    .app-padding-#{$size} {
+      padding: #{$size}px !important;
+    }
+
+    .app-margin-#{$size} {
+      margin: #{$size}px !important;
+      ;
+    }
+
+    //negative margin
+    .app-margin--#{$size} {
+      margin: #{0 - $size}px !important;
+      ;
+    }
+
+    @each $side in $kSides {
+      .app-padding-#{$side}-#{$size} {
+        padding-#{$side}: #{$size}px !important;
+      }
+
+      .app-margin-#{$side}-#{$size} {
+        margin-#{$side}: #{$size}px !important;
+        ;
+      }
+
+      //negative margin
+      .app-margin-#{$side}--#{$size} {
+        margin-#{$side}: #{ 0 - $size}px !important;
+        ;
+      }
+    }
+  }
+
+  .app-cancel-button {
+    background-color: mat-color($primary-palette, '500-contrast', .15);
   }
 }

@@ -9,6 +9,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { AppSidenavComponent } from './app-sidenav/app-sidenav.component';
 import { AppToolBarComponent } from './app-toolbar/app-toolbar.component';
@@ -32,6 +34,7 @@ import { EditorModule } from '@tinymce/tinymce-angular';
 import { AppTextEditorTitleComponent } from './app-text-editor-title/app-text-editor-title.component';
 import { AppSearchResultListComponent } from './app-search-result-list/app-search-result-list.component';
 import { AppSearchFailedComponent } from './app-search-failed/app-search-failed.component';
+import { DeleteNotebookDialogComponent } from './dialogs/delete-notebook-dialog/delete-notebook-dialog.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +57,7 @@ import { AppSearchFailedComponent } from './app-search-failed/app-search-failed.
     AppTextEditorTitleComponent,
     AppSearchResultListComponent,
     AppSearchFailedComponent,
+    DeleteNotebookDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -70,6 +74,8 @@ import { AppSearchFailedComponent } from './app-search-failed/app-search-failed.
     MatTooltipModule,
     EditorModule,
     FormsModule,
+    MatDialogModule,
+    MatCheckboxModule,
   ],
   exports: [
     AppSidenavComponent,

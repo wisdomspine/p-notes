@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Notebook } from 'src/app/@core/models/Notebook';
+import { AppDialogService } from 'src/app/@core/provider/app-dialog.service';
 import { NotesComponent } from '../notes/notes.component';
 
 @Component({
@@ -10,7 +11,7 @@ import { NotesComponent } from '../notes/notes.component';
 export class NotebooksComponent implements OnInit {
   static routeName: string = 'notebooks';
   static route: String = `notebooks`;
-  constructor() {}
+  constructor(private dialogService: AppDialogService) {}
 
   ngOnInit(): void {}
 
@@ -29,5 +30,8 @@ export class NotebooksComponent implements OnInit {
         n.id = `${i}`;
         return n;
       });
+  }
+  handleDelete(index: number) {
+    this.dialogService.confirmNotebookDelete().subscribe(console.log);
   }
 }

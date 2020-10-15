@@ -16,3 +16,8 @@ export declare interface SearchFieldOutput {
   notes?: boolean;
   notebooks?: boolean;
 }
+
+export declare interface DeleteNotebookDialogResult {
+  deleteNotes?: boolean;
+  delete?: boolean;
+}

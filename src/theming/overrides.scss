@@ -40,6 +40,11 @@
     }
   }
 
+  .app-panel {
+    border-radius: $kCardBorderRadiusMid;
+    overflow: hidden;
+  }
+
   html {
     overflow-x: hidden;
     overflow-y: hidden;
