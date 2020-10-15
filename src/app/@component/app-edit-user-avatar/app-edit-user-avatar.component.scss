@@ -1,0 +1,32 @@
+._avatar {
+  overflow: hidden;
+  position: relative;
+
+  ._content {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    ._button {
+      backdrop-filter: brightness(0.65);
+      position: absolute;
+      overflow: hidden;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      button {
+        opacity: .75;
+      }
+    }
+  }
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}

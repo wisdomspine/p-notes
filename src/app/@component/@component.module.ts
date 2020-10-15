@@ -39,6 +39,8 @@ import { DeleteNoteDialogComponent } from './dialogs/delete-note-dialog/delete-n
 import { AppStarsRatingComponent } from './app-stars-rating/app-stars-rating.component';
 import { LeaveAReviewComponent } from './dialogs/leave-areview/leave-areview.component';
 import { ReviewAppreciationComponent } from './dialogs/review-appreciation/review-appreciation.component';
+import { EditAccountComponent } from './dialogs/edit-account/edit-account.component';
+import { AppEditUserAvatarComponent } from './app-edit-user-avatar/app-edit-user-avatar.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +68,8 @@ import { ReviewAppreciationComponent } from './dialogs/review-appreciation/revie
     AppStarsRatingComponent,
     LeaveAReviewComponent,
     ReviewAppreciationComponent,
+    EditAccountComponent,
+    AppEditUserAvatarComponent,
   ],
   imports: [
     CommonModule,
@@ -105,6 +109,7 @@ import { ReviewAppreciationComponent } from './dialogs/review-appreciation/revie
     AppSearchResultListComponent,
     AppSearchFailedComponent,
     AppStarsRatingComponent,
+    AppEditUserAvatarComponent,
   ],
 })
 export class ComponentModule {}

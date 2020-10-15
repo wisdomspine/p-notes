@@ -1,6 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Review } from 'src/types';
 
 @Component({
   selector: 'app-review-appreciation',

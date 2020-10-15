@@ -1,0 +1,14 @@
+<div [style.width.px]="radius * 2" [style.height.px]="radius * 2" class="app-border-radius-{{radius}} _avatar">
+    <div class="_content">
+        <img [src]="imageUrl">
+        <div [style.width.px]="radius" [style.height.px]="radius" class="app-border-radius-{{radius}} _button"
+            [style.bottom.px]="0 - radius/4" [style.right.px]="radius/4" (click)="fileInput.click()">
+            <input type="file" style="display: none;" #fileInput (input)="handleInput($event)" accept="image/*">
+            <button mat-icon-button class="app-color-primary">
+                <mat-icon>
+                    photo_camera
+                </mat-icon>
+            </button>
+        </div>
+    </div>
+</div>

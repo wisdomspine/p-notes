@@ -11,6 +11,11 @@ export declare interface AppUser {
   image?: String;
 }
 
+export declare interface EditAccountResult {
+  user?: AppUser;
+  blob?: Blob;
+}
+
 export declare interface SearchFieldOutput {
   search?: String;
   notes?: boolean;

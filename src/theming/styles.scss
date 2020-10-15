@@ -76,4 +76,25 @@
   .app-cancel-button {
     background-color: mat-color($primary-palette, '500-contrast', .15);
   }
+
+  //app colors
+  @each $palette in $kPalettes {
+    .app-color-#{$palette} {
+      color: mat-color(map-get($map: $color-config, $key: $palette));
+    }
+
+    @each $shade in $kColorShades {
+      .app-color-#{$palette}-#{$shade} {
+        color: mat-color(map-get($map: $color-config, $key: $palette), $shade);
+      }
+    }
+
+    @each $shade in $kColorShades {
+      .app-color-#{$palette}-#{$shade}-contrast {
+        color: mat-color(map-get($map: $color-config, $key: $palette),
+          "#{$shade}-contrast"
+        );
+      }
+    }
+  }
 }
