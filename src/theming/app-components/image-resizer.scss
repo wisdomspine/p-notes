@@ -1,0 +1,13 @@
+@import "~@angular/material/theming";
+@import "../constant.scss";
+
+@mixin image-resizer($config-or-theme, $typography) {
+  $config: mat-get-color-config($config-or-theme);
+  $primary: map-get($map: $config,
+      $key: primary,
+    );
+
+  .image-resizer image-cropper {
+    --cropper-outline-color: #{mat-color($primary, '500-contrast', .75)};
+  }
+}

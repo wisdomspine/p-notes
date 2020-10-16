@@ -41,6 +41,8 @@ import { LeaveAReviewComponent } from './dialogs/leave-areview/leave-areview.com
 import { ReviewAppreciationComponent } from './dialogs/review-appreciation/review-appreciation.component';
 import { EditAccountComponent } from './dialogs/edit-account/edit-account.component';
 import { AppEditUserAvatarComponent } from './app-edit-user-avatar/app-edit-user-avatar.component';
+import { ImageResizerComponent } from './dialogs/image-resizer/image-resizer.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 @NgModule({
   declarations: [
@@ -70,6 +72,7 @@ import { AppEditUserAvatarComponent } from './app-edit-user-avatar/app-edit-user
     ReviewAppreciationComponent,
     EditAccountComponent,
     AppEditUserAvatarComponent,
+    ImageResizerComponent,
   ],
   imports: [
     CommonModule,
@@ -88,6 +91,7 @@ import { AppEditUserAvatarComponent } from './app-edit-user-avatar/app-edit-user
     FormsModule,
     MatDialogModule,
     MatCheckboxModule,
+    ImageCropperModule,
   ],
   exports: [
     AppSidenavComponent,

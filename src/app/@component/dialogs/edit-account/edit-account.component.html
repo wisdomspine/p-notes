@@ -1,20 +1,37 @@
 <div mat-dialog-title>
     <div>
-        <button mat-icon-button color="accent" (click)="close()">
+        <button mat-icon-button color="accent" (click)="close()" tabindex="-1">
             <mat-icon>
-                cancel
+                close
             </mat-icon>
         </button>
-        <h1>
+        <h1 class="app-margin-left-7 app-margin-bottom-0">
             Edit Account
         </h1>
     </div>
-    <button mat-flat-button color="accent" (click)="submit()">
+    <button mat-flat-button color="accent" (click)="submit()"
+        class="app-border-radius-100 app-padding-top-0 app-padding-bottom-0" [disabled]="control.invalid">
         Save
     </button>
 </div>
 <mat-dialog-content>
-    <div>
+    <div class="_photo">
+        <app-edit-user-avatar (change)="handleFileCange($event)" [image]="image">
 
+        </app-edit-user-avatar>
+    </div>
+
+    <div class="_form app-margin-top-30">
+        <mat-form-field appearance="fill" color="accent">
+            <mat-label>Name</mat-label>
+            <input type="text" matInput [formControl]="control" placeholder="Name" required tabindex="1">
+            <mat-error *ngIf="control.invalid && (control.touched || control.dirty)">
+                {{control.errors.username.error}}
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" color="accent">
+            <mat-label>Email</mat-label>
+            <input type="text" matInput [(ngModel)]="result.user.email" placeholder="Email(sample@domain.com)" disabled>
+        </mat-form-field>
     </div>
 </mat-dialog-content>

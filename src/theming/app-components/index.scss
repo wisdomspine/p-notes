@@ -12,6 +12,7 @@
 @import "./app-note-card.scss";
 @import "../styles.scss";
 @import "./app-text-editor.scss";
+@import "./image-resizer.scss";
 
 @mixin app-components($theme-or-config) {
   @include app-mat-toolbar($app-typography);
@@ -26,4 +27,5 @@
   @include app-note-card($theme-or-config, $app-typography);
   @include app-text-editor($theme-or-config, $app-typography);
   @include app-styles($theme-or-config, $app-typography);
+  @include image-resizer($theme-or-config, $app-typography);
 }

@@ -1,0 +1,27 @@
+<div class="image-resizer">
+    <div mat-dialog-title>
+        <div>
+            <button mat-icon-button color="accent" (click)="close()" tabindex="-1">
+                <mat-icon>
+                    arrow_back
+                </mat-icon>
+            </button>
+            <h1 class="app-margin-left-7 app-margin-bottom-0">
+                Edit Photo
+            </h1>
+        </div>
+        <button mat-flat-button color="accent" (click)="submit()"
+            class="app-border-radius-100 app-padding-top-0 app-padding-bottom-0">
+            Apply
+        </button>
+    </div>
+    <mat-dialog-content>
+        <div class="_photo">
+            <image-cropper [aspectRatio]="1" format="png" (imageCropped)="handleImageCropped($event)" [imageFile]="file"
+                [roundCropper]="true">
+
+            </image-cropper>
+        </div>
+
+    </mat-dialog-content>
+</div>

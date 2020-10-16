@@ -10,7 +10,7 @@ export class ConductReviewService {
 
   startReview(): void {
     this.dialogService.startReview().subscribe((review: Review) => {
-      this.dialogService.showReviewAppreciation();
+      if (review) this.dialogService.showReviewAppreciation();
     });
   }
 }

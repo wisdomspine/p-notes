@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+
 export type CSSUnit = 'px' | '%' | 'em' | 'rem';
 export declare interface MenuItemModel {
   link?: String;
@@ -30,4 +32,11 @@ export declare interface DeleteNotebookDialogResult {
 export declare interface Review {
   stars?: number;
   message?: String;
+}
+
+export type ImageResizerHandler = (file: File) => Observable<Blob>;
+
+export declare interface EditAccountInput {
+  imageChangeHandler: ImageResizerHandler;
+  account: AppUser;
 }
