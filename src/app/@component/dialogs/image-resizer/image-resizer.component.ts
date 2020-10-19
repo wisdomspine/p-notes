@@ -21,8 +21,10 @@ export class ImageResizerComponent implements OnInit, AfterViewInit {
   constructor(
     private sanitizer: DomSanitizer,
     private dialogRef: MatDialogRef<ImageResizerComponent>,
-    @Inject(MAT_DIALOG_DATA) public file: File
-  ) {}
+    @Inject(MAT_DIALOG_DATA) data: Partial<ImageResizerComponent>
+  ) {
+    Object.assign(this, data);
+  }
   ngAfterViewInit(): void {}
 
   ngOnInit(): void {}
@@ -34,6 +36,15 @@ export class ImageResizerComponent implements OnInit, AfterViewInit {
   async submit() {
     this.dialogRef.close(await this.getBlob());
   }
+
+  @Input()
+  aspectRatio: number = 1;
+
+  @Input()
+  round: boolean = true;
+
+  @Input()
+  file: File;
 
   handleImageCropped(event: ImageCroppedEvent) {
     this.base64String = event.base64;

@@ -1,0 +1,37 @@
+div[mat-dialog-title] {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+
+  >div {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+  }
+}
+
+mat-dialog-content {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: stretch;
+
+  p {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+
+    >span {
+      :first-child {
+        text-align: left;
+      }
+
+      :last-child {
+        text-align: right;
+      }
+    }
+
+  }
+}

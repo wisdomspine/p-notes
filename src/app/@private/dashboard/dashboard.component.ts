@@ -4,6 +4,7 @@ import { Note } from 'src/app/@core/models/Note';
 import { Notebook } from 'src/app/@core/models/Notebook';
 import { AppMediaQueryService } from 'src/app/@core/provider/app-media-query.service';
 import { AppMenuStateService } from 'src/app/@core/provider/app-menu-state.service';
+import { NotebookService } from 'src/app/@core/provider/notebook.service';
 import { SearchService } from 'src/app/@core/provider/search.service';
 import { MenuItemModel, SearchFieldOutput } from 'src/types';
 import { MobileSearchComponent } from '../mobile-search/mobile-search.component';
@@ -24,7 +25,8 @@ export class DashboardComponent implements OnInit {
   constructor(
     mediaQueryService: AppMediaQueryService,
     menuState: AppMenuStateService,
-    private searchService: SearchService
+    private searchService: SearchService,
+    private notebookService: NotebookService
   ) {
     this.isSmallScreen = mediaQueryService.isSmallScreen;
     this.menuState = menuState.onStateChange;
@@ -32,7 +34,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {}
   startSearch(output: SearchFieldOutput) {
-    console.log(output);
+    // console.log(output);
     this.search = output;
 
     this.searching = true;
@@ -61,5 +63,9 @@ export class DashboardComponent implements OnInit {
 
   get searchResults(): (Note | Notebook)[] {
     return this.searchService.search();
+  }
+
+  newNotebook() {
+    this.notebookService.addNotebook();
   }
 }

@@ -1,20 +1,25 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { DeleteNoteDialogComponent } from 'src/app/@component/dialogs/delete-note-dialog/delete-note-dialog.component';
 import { DeleteNotebookDialogComponent } from 'src/app/@component/dialogs/delete-notebook-dialog/delete-notebook-dialog.component';
 import { EditAccountComponent } from 'src/app/@component/dialogs/edit-account/edit-account.component';
+import { EditNotebookComponent } from 'src/app/@component/dialogs/edit-notebook/edit-notebook.component';
 import { ImageResizerComponent } from 'src/app/@component/dialogs/image-resizer/image-resizer.component';
 import { LeaveAReviewComponent } from 'src/app/@component/dialogs/leave-areview/leave-areview.component';
+import { NoteDetailsComponent } from 'src/app/@component/dialogs/note-details/note-details.component';
+import { NotebookDetailsComponent } from 'src/app/@component/dialogs/notebook-details/notebook-details.component';
 import { ReviewAppreciationComponent } from 'src/app/@component/dialogs/review-appreciation/review-appreciation.component';
 import {
   AppUser,
   DeleteNotebookDialogResult,
   EditAccountInput,
   EditAccountResult,
-  ImageResizerHandler,
+  EditNotebookInput,
   Review,
 } from 'src/types';
+import { Note } from '../models/Note';
+import { Notebook } from '../models/Notebook';
 
 @Injectable({
   providedIn: 'root',
@@ -108,7 +113,7 @@ export class AppDialogService {
           data: {
             account,
             imageChangeHandler: (file: File) => {
-              return this.resizeImage(file);
+              return this.resizeImage({ file: file });
             },
           },
         }
@@ -122,15 +127,18 @@ export class AppDialogService {
     return subject;
   }
 
-  resizeImage(file: File): Observable<Blob> {
+  resizeImage(data: Partial<ImageResizerComponent>): Observable<Blob> {
     const subject: Subject<Blob> = new Subject<Blob>();
     this.dialog
-      .open<ImageResizerComponent, File, Blob>(ImageResizerComponent, {
-        maxWidth: 500,
-        minWidth: 400,
-        panelClass: `${this.panelClass}`,
-        data: file,
-      })
+      .open<ImageResizerComponent, Partial<ImageResizerComponent>, Blob>(
+        ImageResizerComponent,
+        {
+          maxWidth: 500,
+          minWidth: 400,
+          panelClass: `${this.panelClass}`,
+          data: data,
+        }
+      )
       .afterClosed()
       .subscribe((result) => {
         subject.next(result);
@@ -139,4 +147,76 @@ export class AppDialogService {
 
     return subject;
   }
+
+  showNotebookDetails(notebook: Notebook): Observable<boolean> {
+    const subject: Subject<boolean> = new Subject<boolean>();
+    this.dialog
+      .open<NotebookDetailsComponent, Notebook, boolean>(
+        NotebookDetailsComponent,
+        {
+          maxWidth: 500,
+          minWidth: 300,
+          panelClass: `${this.panelClass}`,
+          data: notebook,
+        }
+      )
+      .afterClosed()
+      .subscribe((result) => {
+        subject.next(result);
+        subject.complete();
+      });
+
+    return subject;
+  }
+
+  editNotebook(notebook?: Notebook): Observable<Notebook> {
+    const subject: Subject<Notebook> = new Subject<Notebook>();
+    this.dialog
+      .open<EditNotebookComponent, EditNotebookInput, Notebook>(
+        EditNotebookComponent,
+        {
+          maxWidth: 500,
+          minWidth: 350,
+          panelClass: `${this.panelClass}`,
+          data: {
+            notebook,
+            imageChangeHandler: (file: File) => {
+              return this.resizeImage({
+                file: file,
+                aspectRatio: 0.772,
+                round: false,
+              });
+            },
+          },
+        }
+      )
+      .afterClosed()
+      .subscribe((result) => {
+        subject.next(result);
+        subject.complete();
+      });
+
+    return subject;
+  }
+
+  showNoteDetails(note: Note): Observable<boolean> {
+    const subject: Subject<boolean> = new Subject<boolean>();
+    this.dialog
+      .open<NoteDetailsComponent, Note, boolean>(
+        NoteDetailsComponent,
+        {
+          maxWidth: 500,
+          minWidth: 300,
+          panelClass: `${this.panelClass}`,
+          data: note,
+        }
+      )
+      .afterClosed()
+      .subscribe((result) => {
+        subject.next(result);
+        subject.complete();
+      });
+
+    return subject;
+  }  
 }

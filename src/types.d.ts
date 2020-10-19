@@ -1,4 +1,5 @@
 import { Observable } from 'rxjs';
+import { Notebook } from './app/@core/models/Notebook';
 
 export type CSSUnit = 'px' | '%' | 'em' | 'rem';
 export declare interface MenuItemModel {
@@ -39,4 +40,9 @@ export type ImageResizerHandler = (file: File) => Observable<Blob>;
 export declare interface EditAccountInput {
   imageChangeHandler: ImageResizerHandler;
   account: AppUser;
+}
+
+export declare interface EditNotebookInput {
+  imageChangeHandler: ImageResizerHandler;
+  notebook: Notebook;
 }

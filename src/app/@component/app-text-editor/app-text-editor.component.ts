@@ -73,7 +73,7 @@ export class AppTextEditorComponent implements OnInit {
       images_upload_handler:
         this.fileHandler ||
         function (blobInfo, success) {
-          console.log(blobInfo);
+          // console.log(blobInfo);
           success(
             'https://images.unsplash.com/photo-1602152733225-430e1cd3b9f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80'
           );

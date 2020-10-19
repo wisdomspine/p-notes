@@ -41,6 +41,7 @@
     </div>
 
     <div class="app-page-content">
-        <app-note-card-list [notes]="notes" (delete)="handleDelete($event)"></app-note-card-list>
+        <app-note-card-list [notes]="notes" (delete)="handleDelete($event)" (details)="noteService.showDetails($event)">
+        </app-note-card-list>
     </div>
 </div>

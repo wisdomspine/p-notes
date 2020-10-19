@@ -43,6 +43,11 @@ import { EditAccountComponent } from './dialogs/edit-account/edit-account.compon
 import { AppEditUserAvatarComponent } from './app-edit-user-avatar/app-edit-user-avatar.component';
 import { ImageResizerComponent } from './dialogs/image-resizer/image-resizer.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { NotebookDetailsComponent } from './dialogs/notebook-details/notebook-details.component';
+import { EditNotebookComponent } from './dialogs/edit-notebook/edit-notebook.component';
+import { AppCoverImageComponent } from './app-cover-image/app-cover-image.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { NoteDetailsComponent } from './dialogs/note-details/note-details.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +78,10 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     EditAccountComponent,
     AppEditUserAvatarComponent,
     ImageResizerComponent,
+    NotebookDetailsComponent,
+    EditNotebookComponent,
+    AppCoverImageComponent,
+    NoteDetailsComponent,
   ],
   imports: [
     CommonModule,
@@ -92,6 +101,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     MatDialogModule,
     MatCheckboxModule,
     ImageCropperModule,
+    MatExpansionModule,
   ],
   exports: [
     AppSidenavComponent,
@@ -114,6 +124,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     AppSearchFailedComponent,
     AppStarsRatingComponent,
     AppEditUserAvatarComponent,
+    AppCoverImageComponent,
   ],
 })
 export class ComponentModule {}

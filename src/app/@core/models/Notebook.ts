@@ -6,11 +6,13 @@ export class Notebook {
   createdAt?: String;
   updatedAt?: String;
   notes?: Note[];
+  notesCount?: number;
   cover?: String;
   description?: String;
   link?: String;
   permanent?: boolean;
   id?: String;
+  coverFile?: Blob;
 
   constructor(notebook: Notebook) {
     Object.assign(this, notebook);

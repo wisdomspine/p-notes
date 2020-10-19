@@ -29,7 +29,8 @@
         </app-page-actions>
     </div>
     <div class="app-page-content">
-        <app-notebook-card-list [notebooks]="notebooks" (delete)="handleDelete($event)"></app-notebook-card-list>
+        <app-notebook-card-list [notebooks]="notebooks" (delete)="handleDelete($event)"
+            (details)="notebookService.showDetails($event)"></app-notebook-card-list>
     </div>
 
 </div>

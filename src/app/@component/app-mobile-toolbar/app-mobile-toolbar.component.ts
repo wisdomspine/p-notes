@@ -18,7 +18,7 @@ export class AppMobileToolbarComponent implements OnInit {
   ngOnInit(): void {}
 
   expandMore(event) {
-    console.log(event);
+    // console.log(event);
     event.stopImmediatePropagation();
   }
 

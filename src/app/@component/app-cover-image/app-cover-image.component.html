@@ -1,0 +1,14 @@
+<div class="_container">
+
+    <div [style.width.px]="width" [style.height.px]="height" class="app-border-radius-7 _image mat-elevation-z2">
+        <img [src]="imageUrl" *ngIf="imageUrl">
+        <img alt="Notebook's cover" *ngIf="!imageUrl">
+
+    </div>
+    <input type="file" style="display: none;" #fileInput (input)="handleInput($event)" accept="image/*">
+    <button mat-flat-button color="accent" (click)="fileInput.click()"
+        class="app-padding-top-1 app-padding-bottom-1 app-padding-left-30 app-padding-right-30 app-margin-top-30 app-border-radius-100">
+        Upload
+    </button>
+
+</div>

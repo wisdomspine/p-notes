@@ -17,8 +17,8 @@
     </div>
     <mat-dialog-content>
         <div class="_photo">
-            <image-cropper [aspectRatio]="1" format="png" (imageCropped)="handleImageCropped($event)" [imageFile]="file"
-                [roundCropper]="true">
+            <image-cropper [aspectRatio]="aspectRatio" format="png" (imageCropped)="handleImageCropped($event)"
+                [imageFile]="file" [roundCropper]="round">
 
             </image-cropper>
         </div>

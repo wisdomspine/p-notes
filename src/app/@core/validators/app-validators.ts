@@ -17,4 +17,20 @@ export class AppValidators {
           };
     };
   }
+
+  static notebookName(): ValidatorFn {
+    return function (control: AbstractControl): ValidationErrors | null {
+      const value: String = control.value && `${control.value || ''}`.trim();
+
+      const isValid: boolean = value != null && value.length >= 1;
+      return isValid
+        ? null
+        : {
+            notebookName: {
+              value: value,
+              error: "Notebook's name should not be empty",
+            },
+          };
+    };
+  }
 }

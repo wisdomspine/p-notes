@@ -1,0 +1,49 @@
+<div mat-dialog-title>
+    <div>
+        <button mat-icon-button color="accent" (click)="close()" tabindex="-1">
+            <mat-icon>
+                close
+            </mat-icon>
+        </button>
+        <h1 class="app-margin-left-7 app-margin-bottom-0">
+            {{title}}
+        </h1>
+    </div>
+    <button mat-flat-button color="accent" (click)="submit()"
+        class="app-border-radius-100 app-padding-top-0 app-padding-bottom-0" [disabled]="form.invalid">
+        Save
+    </button>
+</div>
+<mat-dialog-content>
+
+    <div class="_form">
+        <form [formGroup]="form">
+            <mat-form-field appearance="fill" color="accent">
+                <mat-label>Notebook's name</mat-label>
+                <input type="text" matInput formControlName="name" placeholder="Notebook's name" required tabindex="1">
+                <mat-error *ngIf="control('name').invalid && (control('name').touched || control('name').dirty)">
+                    {{control('name')?.errors?.notebookName?.error}}
+                </mat-error>
+            </mat-form-field>
+            <mat-expansion-panel [expanded]="true"
+                class="mat-elevation-z0 app-border-boundary app-margin-bottom-30 app-margin-top-10">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Cover Image
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="_photo">
+                    <app-cover-image (change)="handleFileCange($event)" [image]="image">
+
+                    </app-cover-image>
+                </div>
+            </mat-expansion-panel>
+            <mat-form-field appearance="fill" color="accent">
+                <mat-label>Description (optional)</mat-label>
+                <textarea matInput formControlName="description" placeholder="Notebook's name (optional)" tabindex="1"
+                    maxlength="150"></textarea>
+                <mat-hint align="end">{{control('description').value?.length || 0}}/150</mat-hint>
+            </mat-form-field>
+        </form>
+    </div>
+</mat-dialog-content>

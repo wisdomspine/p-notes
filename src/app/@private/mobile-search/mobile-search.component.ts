@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Note } from 'src/app/@core/models/Note';
 import { Notebook } from 'src/app/@core/models/Notebook';
 import { AppMediaQueryService } from 'src/app/@core/provider/app-media-query.service';
+import { NotebookService } from 'src/app/@core/provider/notebook.service';
 import { SearchService } from 'src/app/@core/provider/search.service';
 import { SearchFieldOutput } from 'src/types';
 

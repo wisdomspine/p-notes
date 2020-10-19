@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Note } from 'src/app/@core/models/Note';
 import { Notebook } from 'src/app/@core/models/Notebook';
 import { AppDialogService } from 'src/app/@core/provider/app-dialog.service';
+import { NoteService } from 'src/app/@core/provider/note.service';
 
 @Component({
   selector: 'app-notes',
@@ -11,7 +12,10 @@ import { AppDialogService } from 'src/app/@core/provider/app-dialog.service';
 export class NotesComponent implements OnInit {
   static routeName: string = 'notes';
   static route: String = `notes`;
-  constructor(private dialogService: AppDialogService) {}
+  constructor(
+    private dialogService: AppDialogService,
+    public noteService: NoteService,
+  ) {}
 
   ngOnInit(): void {}
 

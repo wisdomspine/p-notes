@@ -1,0 +1,28 @@
+div[mat-dialog-title] {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+
+  >div {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+  }
+}
+
+mat-dialog-content {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+
+  ._form,
+  form {
+    display: flex;
+    width: 100%;
+    flex-flow: column nowrap;
+    align-items: stretch;
+
+  }
+}

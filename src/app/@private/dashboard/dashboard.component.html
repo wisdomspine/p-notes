@@ -21,7 +21,7 @@
 
                 </app-sidenav>
                 <div class="new-button">
-                    <app-new-object [expanded]="menuState | async"></app-new-object>
+                    <app-new-object [expanded]="menuState | async" (newNotebook)="newNotebook()"></app-new-object>
                 </div>
             </mat-sidenav>
             <mat-sidenav-content color="background">
@@ -58,7 +58,7 @@
             <div class="outlet">
                 <router-outlet></router-outlet>
             </div>
-            <app-new-object [expanded]="false"></app-new-object>
+            <app-new-object [expanded]="false" (newNotebook)="newNotebook()"></app-new-object>
             <mat-toolbar color="primary" class="app-border-boundary-top">
                 <app-mobile-toolbar [menu]="mobileMenu"></app-mobile-toolbar>
             </mat-toolbar>

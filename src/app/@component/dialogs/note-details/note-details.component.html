@@ -1,0 +1,53 @@
+<div mat-dialog-title>
+    <div>
+        <button mat-icon-button color="accent" (click)="close()" tabindex="-1">
+            <mat-icon>
+                close
+            </mat-icon>
+        </button>
+        <h1 class="app-margin-left-7 app-margin-bottom-0">
+            Note Details
+        </h1>
+    </div>
+    <button mat-icon-button (click)="edit()" tabindex="-1" matTooltip="Edit note">
+        <mat-icon>
+            edit
+        </mat-icon>
+    </button>
+</div>
+<mat-dialog-content>
+    <p>
+        <span>
+            Notebook
+        </span>
+        <span [matTooltip]="note?.notebook?.name">
+            {{note?.notebook?.name}}
+        </span>
+    </p>
+    <p>
+        <span>
+            Title
+        </span>
+        <span [matTooltip]="note?.title">
+            {{note?.title}}
+        </span>
+    </p>
+
+    <p>
+        <span>
+            Created at
+        </span>
+        <span [matTooltip]="note?.createdAt">
+            {{note?.createdAt}}
+        </span>
+    </p>
+
+    <p>
+        <span>
+            Updated at
+        </span>
+        <span [matTooltip]="note?.updatedAt">
+            {{note?.updatedAt}}
+        </span>
+    </p>
+</mat-dialog-content>
