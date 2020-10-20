@@ -4,6 +4,7 @@ import { NotesComponentRoute } from 'src/app/route-names';
 import { Note } from '../models/Note';
 import { Notebook } from '../models/Notebook';
 import { AppDialogService } from './app-dialog.service';
+import { PrintService } from './print.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class NoteService {
 
   constructor(
     private dialogService: AppDialogService,
+    private printer: PrintService,
   ) { }
   showDetails(note: Note | String) {
     this.dialogService
@@ -60,4 +62,8 @@ export class NoteService {
       ])
     });
   }  
+
+  print(note: Note){
+    this.printer.print(note);
+  }
 }

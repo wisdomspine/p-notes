@@ -1,16 +1,20 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { EditorComponent } from '@tinymce/tinymce-angular';
 import { interval, Subject } from 'rxjs';
 import { debounce } from 'rxjs/operators';
 import { FontFamily } from 'src/app/@core/models/FontFamily';
-import { EditorSettings } from 'tinymce';
+import { Bookmark, BookmarkManager, Editor, EditorSettings } from 'tinymce';
 import { UploadHandler } from 'tinymce/tinymce';
+
+const  _kPrintId: String = 'app_print';
+
 
 @Component({
   selector: 'app-text-editor',
   templateUrl: './app-text-editor.component.html',
   styleUrls: ['./app-text-editor.component.scss'],
 })
-export class AppTextEditorComponent implements OnInit {
+export class AppTextEditorComponent implements OnInit, AfterViewInit {
   @Input()
   fonts: FontFamily[] = [];
 
@@ -20,31 +24,50 @@ export class AppTextEditorComponent implements OnInit {
   @Output('input')
   onInput: EventEmitter<String> = new EventEmitter<String>();
 
+  @Output('print')
+  onPrint: EventEmitter<any> = new EventEmitter<any>();
+
   private subject: Subject<String> = new Subject<String>();
 
-  @Input()
-  content: String = 'Give God the praise';
+  @Input("content")
+  set _content(value: String){
+    this.content = value;
+    if(this.bookmark){
+      this.editor.selection.moveToBookmark(this.bookmark);
+      this.bookmark = null;      
+    }
+  }
+  content: String = null;
+
+  private editor: Editor;
+  private bookmark: Bookmark;
+  
 
   constructor() {
     //emit input events in an interval of 200ms
     //I have to delay it because handleChange can be called multiple times in a row
     //as a result of subscribing to multiple editor events in the templates
-    this.subject.pipe(debounce(() => interval(200))).subscribe((input) => {
+    this.subject.pipe(debounce(() => interval(1000))).subscribe((input) => {
       // console.log(input); //I included this line to test the debounce observable frequency
       this.onInput.emit(input);
     });
+  }
+  ngAfterViewInit(): void {
   }
 
   ngOnInit(): void {}
 
   get init(): Partial<EditorSettings> {
+    const emitter = this.onPrint;
+    const instance:AppTextEditorComponent = this;
+
     return {
       base_url: '/tinymce',
       suffix: '.min',
       menubar: false,
       toolbar:
-        'cust_formatting  align  | outdent indent | bullist numlist | image table link hr codesample  blockquote | print',
-      plugins: 'lists autolink link image table print hr codesample  toc',
+        `cust_formatting  align  | outdent indent | bullist numlist | image table link hr codesample  blockquote | ${_kPrintId}`,
+      plugins: 'lists autolink link image table hr codesample  toc',
       inline: false,
       toc_header: 'div',
       default_link_target: '_blank',
@@ -81,10 +104,29 @@ export class AppTextEditorComponent implements OnInit {
       height: '100%',
       content_style: this.fonts.map((f) => `@import url(${f.ulr});`).join(''),
       font_formats: this.fonts.map((f) => `${f.name}=${f.value}`).join('; '),
+      setup: function(editor) {
+        instance.editor = editor;
+        editor.ui.registry.addButton(`${_kPrintId}`, {
+          icon : "print",
+          tooltip: 'Print note',
+          onAction: function() {
+            emitter.emit();           
+          },
+        })
+      }
     };
   }
 
   handleChange() {
-    this.subject.next(this.content);
+    
+    if (this.editor) {
+      try {
+        this.bookmark =  this.editor.selection.getBookmark();
+      this.subject.next(this.content);
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
   }
+  
 }

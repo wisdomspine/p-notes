@@ -1,4 +1,4 @@
-<editor [init]="init" [(ngModel)]="content" (onKeyUp)="handleChange()" (cut)="handleChange()"
+<editor #editor [init]="init" [(ngModel)]="content" (onKeyUp)="handleChange()" (cut)="handleChange()"
     (onObjectResized)="handleChange()" (onObjectSelected)="handleChange()" (onRemove)="handleChange()"
     (onSetContent)="handleChange()" (onUndo)="handleChange()" (onSaveContent)="handleChange()"
     (onExecCommand)="handleChange()" (onSetAttrib)="handleChange()" (onSubmit)="handleChange()"

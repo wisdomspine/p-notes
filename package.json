@@ -24,6 +24,7 @@
     "@tinymce/tinymce-angular": "^4.2.0",
     "ngx-image-cropper": "^3.2.1",
     "rxjs": "~6.6.0",
+    "tiny-print": "^0.1.5",
     "tinymce": "^5.5.1",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

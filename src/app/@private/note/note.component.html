@@ -1,5 +1,7 @@
 <div class="app-page no-header ">
     <div class="app-page-content padding-left-0">
-        <app-text-editor [fonts]="fontsProvider.all"></app-text-editor>
+        <app-text-editor [fonts]="fontsProvider.all" (print)="handlePrint()" (input)="handleInput($event)"
+            [content]="note?.content?.value">
+        </app-text-editor>
     </div>
 </div>

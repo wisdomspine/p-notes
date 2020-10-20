@@ -82,7 +82,8 @@ export class NotesComponent implements OnInit {
   }
 
   printNote(index: number){
-    // TODO: call note service print method
+    this.noteService.print(this.notes[index]);
+    
   }
 
   deleteNotebook(){

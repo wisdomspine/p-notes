@@ -1,4 +1,5 @@
 import { Notebook } from './Notebook';
+import { NoteContent } from './NoteContent';
 
 export class Note {
   id?: String;
@@ -13,6 +14,8 @@ export class Note {
   description?: String;
   cover?: String;
   coverFile?: Blob;
+  content?: NoteContent;
+  contentId?:String;
   constructor(note: Note) {
     Object.assign(this, note);
   }
