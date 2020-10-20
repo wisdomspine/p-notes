@@ -12,7 +12,12 @@ export class Note {
   words?: number = 0;
   description?: String;
   cover?: String;
+  coverFile?: Blob;
   constructor(note: Note) {
     Object.assign(this, note);
+  }
+
+  static compareWith(note1: Note, note2: Note): boolean {
+    return note1 && note2 && note1.id == note2.id;
   }
 }

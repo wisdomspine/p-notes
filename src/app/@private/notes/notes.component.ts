@@ -3,6 +3,7 @@ import { Note } from 'src/app/@core/models/Note';
 import { Notebook } from 'src/app/@core/models/Notebook';
 import { AppDialogService } from 'src/app/@core/provider/app-dialog.service';
 import { NoteService } from 'src/app/@core/provider/note.service';
+import { NotesComponentRoute, NotesComponentRouteName } from 'src/app/route-names';
 
 @Component({
   selector: 'app-notes',
@@ -10,8 +11,8 @@ import { NoteService } from 'src/app/@core/provider/note.service';
   styleUrls: ['./notes.component.scss'],
 })
 export class NotesComponent implements OnInit {
-  static routeName: string = 'notes';
-  static route: String = `notes`;
+  static routeName: string = NotesComponentRouteName;
+  static route: String = NotesComponentRoute;
   constructor(
     private dialogService: AppDialogService,
     public noteService: NoteService,

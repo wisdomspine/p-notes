@@ -4,6 +4,7 @@ import { Note } from 'src/app/@core/models/Note';
 import { Notebook } from 'src/app/@core/models/Notebook';
 import { AppMediaQueryService } from 'src/app/@core/provider/app-media-query.service';
 import { AppMenuStateService } from 'src/app/@core/provider/app-menu-state.service';
+import { NoteService } from 'src/app/@core/provider/note.service';
 import { NotebookService } from 'src/app/@core/provider/notebook.service';
 import { SearchService } from 'src/app/@core/provider/search.service';
 import { MenuItemModel, SearchFieldOutput } from 'src/types';
@@ -26,7 +27,8 @@ export class DashboardComponent implements OnInit {
     mediaQueryService: AppMediaQueryService,
     menuState: AppMenuStateService,
     private searchService: SearchService,
-    private notebookService: NotebookService
+    private notebookService: NotebookService,
+    private noteService: NoteService,
   ) {
     this.isSmallScreen = mediaQueryService.isSmallScreen;
     this.menuState = menuState.onStateChange;
@@ -67,5 +69,9 @@ export class DashboardComponent implements OnInit {
 
   newNotebook() {
     this.notebookService.addNotebook();
+  }
+
+  newNote() {
+    this.noteService.addNote();
   }
 }

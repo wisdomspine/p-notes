@@ -33,4 +33,20 @@ export class AppValidators {
           };
     };
   }
+
+  static noteTitle(): ValidatorFn {
+    return function (control: AbstractControl): ValidationErrors | null {
+      const value: String = control.value && `${control.value || ''}`.trim();
+
+      const isValid: boolean = value != null && value.length >= 1;
+      return isValid
+        ? null
+        : {
+          noteTitle: {
+              value: value,
+              error: "Note's name should not be empty",
+            },
+          };
+    };
+  }  
 }

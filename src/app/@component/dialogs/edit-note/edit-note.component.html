@@ -19,10 +19,19 @@
     <div class="_form">
         <form [formGroup]="form">
             <mat-form-field appearance="fill" color="accent">
-                <mat-label>Notebook's name</mat-label>
-                <input type="text" matInput formControlName="name" placeholder="Notebook's name" required tabindex="1">
-                <mat-error *ngIf="control('name').invalid && (control('name').touched || control('name').dirty)">
-                    {{control('name')?.errors?.notebookName?.error}}
+                <mat-label>Select Notebook</mat-label>
+                <mat-select formControlName="notebook" [compareWith]="compareWith" placeholder="Default">
+                    <mat-option *ngFor="let notebook of notebooks" [value]="notebook">
+                        {{notebook.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" color="accent">
+                <mat-label>Title</mat-label>
+                <input type="text" matInput formControlName="title" placeholder="Note's title" required tabindex="1">
+                <mat-error *ngIf="control('title').invalid && (control('title').touched || control('title').dirty)">
+                    {{control('title')?.errors?.noteTitle?.error}}
                 </mat-error>
             </mat-form-field>
             <mat-expansion-panel [expanded]="true"
@@ -40,7 +49,7 @@
             </mat-expansion-panel>
             <mat-form-field appearance="fill" color="accent">
                 <mat-label>Description (optional)</mat-label>
-                <textarea matInput formControlName="description" placeholder="Notebook's description(optional)"
+                <textarea matInput formControlName="description" placeholder="Note's description (optional)"
                     tabindex="1" maxlength="150"></textarea>
                 <mat-hint align="end">{{control('description').value?.length || 0}}/150</mat-hint>
             </mat-form-field>

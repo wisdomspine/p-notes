@@ -4,6 +4,7 @@ import { Observable, Subject } from 'rxjs';
 import { DeleteNoteDialogComponent } from 'src/app/@component/dialogs/delete-note-dialog/delete-note-dialog.component';
 import { DeleteNotebookDialogComponent } from 'src/app/@component/dialogs/delete-notebook-dialog/delete-notebook-dialog.component';
 import { EditAccountComponent } from 'src/app/@component/dialogs/edit-account/edit-account.component';
+import { EditNoteComponent } from 'src/app/@component/dialogs/edit-note/edit-note.component';
 import { EditNotebookComponent } from 'src/app/@component/dialogs/edit-notebook/edit-notebook.component';
 import { ImageResizerComponent } from 'src/app/@component/dialogs/image-resizer/image-resizer.component';
 import { LeaveAReviewComponent } from 'src/app/@component/dialogs/leave-areview/leave-areview.component';
@@ -16,6 +17,7 @@ import {
   EditAccountInput,
   EditAccountResult,
   EditNotebookInput,
+  EditNoteInput,
   Review,
 } from 'src/types';
 import { Note } from '../models/Note';
@@ -209,6 +211,36 @@ export class AppDialogService {
           minWidth: 300,
           panelClass: `${this.panelClass}`,
           data: note,
+        }
+      )
+      .afterClosed()
+      .subscribe((result) => {
+        subject.next(result);
+        subject.complete();
+      });
+
+    return subject;
+  }  
+
+  editNote(input: EditNoteInput = {}): Observable<Note> {
+    if(input && !input.imageChangeHandler){
+      input.imageChangeHandler =  (file: File) => {
+        return this.resizeImage({
+          file: file,
+          aspectRatio: 0.772,
+          round: false,
+        });
+      };
+    }
+    const subject: Subject<Note> = new Subject<Note>();
+    this.dialog
+      .open<EditNoteComponent, EditNoteInput, Note>(
+        EditNoteComponent,
+        {
+          maxWidth: 500,
+          minWidth: 350,
+          panelClass: `${this.panelClass}`,
+          data: input,
         }
       )
       .afterClosed()

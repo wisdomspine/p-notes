@@ -1,4 +1,5 @@
 import { Observable } from 'rxjs';
+import { Note } from './app/@core/models/Note';
 import { Notebook } from './app/@core/models/Notebook';
 
 export type CSSUnit = 'px' | '%' | 'em' | 'rem';
@@ -45,4 +46,10 @@ export declare interface EditAccountInput {
 export declare interface EditNotebookInput {
   imageChangeHandler: ImageResizerHandler;
   notebook: Notebook;
+}
+
+export declare interface EditNoteInput {
+  imageChangeHandler?: ImageResizerHandler;
+  note?: Note;
+  notebooks?: Observable<Notebook[]>;
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { NotesComponent } from 'src/app/@private/notes/notes.component';
+import { from, Observable, of } from 'rxjs';
+import { NotesComponentRoute } from 'src/app/route-names';
 import { Note } from '../models/Note';
 import { Notebook } from '../models/Notebook';
 import { AppDialogService } from './app-dialog.service';
@@ -16,9 +17,9 @@ export class NoteService {
     this.dialogService
       .showNoteDetails(
         new Note({
-          notebook: new Notebook({name: 'The agony of Tom Sawyer',}),
+          notebook: new Notebook({name: 'The agony of Tom Sawyer', id: "30"}),
           title: 'Chapter 1',
-          link: `/${NotesComponent.route}/`,
+          link: `/${NotesComponentRoute}/`,
           cover: `https://images.unsplash.com/photo-1529507926971-06fcbcc8cf2f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1601&q=80`,
           description: 'The agony of Tom Sawyer',
           createdAt: 'Sep 5, 2020 11:15pm',
@@ -26,7 +27,26 @@ export class NoteService {
         })
       )
       .subscribe((e) => {
-        // if (e) this.dialogService.editNote();
+        if (e) this.dialogService.editNote();
       });
+  }
+
+  addNote() {
+    this.dialogService.editNote(
+      {note: new Note({
+          notebook: new Notebook({name: 'The agony of Tom Sawyer', id: "30"}),
+          title: 'Chapter 1',
+          link: `/${NotesComponentRoute}/`,
+          cover: `https://images.unsplash.com/photo-1529507926971-06fcbcc8cf2f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1601&q=80`,
+          description: 'The agony of Tom Sawyer',
+          createdAt: 'Sep 5, 2020 11:15pm',
+          updatedAt: 'Sep 6, 2020 11:15pm',
+        }),
+        notebooks: of([
+          new Notebook({name: 'The agony of Tom Sawyer 30', id: "30"}),
+          new Notebook({name: 'The agony of Tom Sawyer 40', id: "40"}),
+          new Notebook({name: 'The agony of Tom Sawyer 50', id: "50"}),
+        ])
+      }).subscribe(console.log);
   }
 }

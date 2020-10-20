@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Note } from '../models/Note';
 import { Notebook } from '../models/Notebook';
 import { AppValidators } from '../validators/app-validators';
 
@@ -28,4 +29,14 @@ export class FormService {
       description: notebook.description,
     });
   }
+
+  generateNoteForm(note: Note): FormGroup {
+    note = note || { notebook: null, coverFile: null, description: null, title: null };
+    return this.formBuilder.group({
+      title: [note.title, [AppValidators.noteTitle()]],
+      coverFile: [note.coverFile],
+      notebook: [note.notebook],
+      description: [note.description],
+    });
+  }  
 }

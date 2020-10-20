@@ -48,6 +48,8 @@ import { EditNotebookComponent } from './dialogs/edit-notebook/edit-notebook.com
 import { AppCoverImageComponent } from './app-cover-image/app-cover-image.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { NoteDetailsComponent } from './dialogs/note-details/note-details.component';
+import { EditNoteComponent } from './dialogs/edit-note/edit-note.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -82,6 +84,7 @@ import { NoteDetailsComponent } from './dialogs/note-details/note-details.compon
     EditNotebookComponent,
     AppCoverImageComponent,
     NoteDetailsComponent,
+    EditNoteComponent,
   ],
   imports: [
     CommonModule,
@@ -102,6 +105,7 @@ import { NoteDetailsComponent } from './dialogs/note-details/note-details.compon
     MatCheckboxModule,
     ImageCropperModule,
     MatExpansionModule,
+    MatSelectModule,
   ],
   exports: [
     AppSidenavComponent,
