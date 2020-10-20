@@ -2,36 +2,38 @@
     <div class="app-page-header">
         <app-page-actions [title]="title">
             <mat-action-list class="desktop" *ngIf="showActions">
-                <button mat-icon-button matTooltip="Notebook details">
+                <button mat-icon-button matTooltip="Notebook details" (click)="notebookDetails()">
                     <mat-icon>
                         info_outline
                     </mat-icon>
                 </button>
-                <button mat-icon-button matTooltip="Notebook settings">
+                <button mat-icon-button matTooltip="Edit notebook" (click)="editNotebook()">
                     <mat-icon>
-                        settings
+                        edit
                     </mat-icon>
                 </button>
 
-                <button mat-icon-button matTooltip="Delete notebook" *ngIf="canDeleteNotebook" class="app-warn-color">
+                <button mat-icon-button matTooltip="Delete notebook" *ngIf="canDeleteNotebook" class="app-warn-color"
+                    (click)="deleteNotebook()">
                     <mat-icon>
                         delete_forever
                     </mat-icon>
                 </button>
             </mat-action-list>
             <mat-action-list class="mobile" *ngIf="showActions">
-                <button mat-icon-button matTooltip="Notebook details">
+                <button mat-icon-button matTooltip="Notebook details" (click)="notebookDetails()">
                     <mat-icon>
                         info_outline
                     </mat-icon>
                 </button>
-                <button mat-icon-button matTooltip="Notebook settings">
+                <button mat-icon-button matTooltip="Edit notebook" (click)="editNotebook()">
                     <mat-icon>
-                        settings
+                        edit
                     </mat-icon>
                 </button>
 
-                <button mat-icon-button matTooltip="Delete notebook" *ngIf="canDeleteNotebook" class="app-warn-color">
+                <button mat-icon-button matTooltip="Delete notebook" *ngIf="canDeleteNotebook" class="app-warn-color"
+                    (click)="deleteNotebook()">
                     <mat-icon>
                         delete_forever
                     </mat-icon>
@@ -41,7 +43,9 @@
     </div>
 
     <div class="app-page-content">
-        <app-note-card-list [notes]="notes" (delete)="handleDelete($event)" (details)="noteService.showDetails($event)">
+        <app-note-card-list [notes]="notes" (delete)="handleDelete($event)"
+            (details)="noteService.showDetails(notes[$event])" (settings)="handleSettings($event)"
+            (print)="printNote($event)">
         </app-note-card-list>
     </div>
 </div>

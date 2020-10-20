@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, forwardRef, Inject, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Note } from 'src/app/@core/models/Note';
 import { Notebook } from 'src/app/@core/models/Notebook';
 import { AppDialogService } from 'src/app/@core/provider/app-dialog.service';
 import { NoteService } from 'src/app/@core/provider/note.service';
+import { NotebookService } from 'src/app/@core/provider/notebook.service';
 import { NotesComponentRoute, NotesComponentRouteName } from 'src/app/route-names';
 
 @Component({
@@ -13,10 +15,19 @@ import { NotesComponentRoute, NotesComponentRouteName } from 'src/app/route-name
 export class NotesComponent implements OnInit {
   static routeName: string = NotesComponentRouteName;
   static route: String = NotesComponentRoute;
+  
+
+  public notebookId: String;
+  private notebook: Notebook;
+
   constructor(
     private dialogService: AppDialogService,
     public noteService: NoteService,
-  ) {}
+    private notebookService: NotebookService,
+    activeRoute: ActivatedRoute,
+  ) {
+    this.notebookId = activeRoute.snapshot.queryParamMap.get("notebook");
+  }
 
   ngOnInit(): void {}
 
@@ -28,7 +39,7 @@ export class NotesComponent implements OnInit {
           key: 24,
           createdAt: '',
           updatedAt: '',
-          link: `/${NotesComponent.route}/guy`,
+          link: `/${NotesComponentRoute}/guy`,
           notebook: new Notebook({}),
           title: 'Chapter 1',
           characters: 0,
@@ -47,10 +58,11 @@ export class NotesComponent implements OnInit {
 
   get showActions(): boolean {
     return true;
+    // return Boolean(this.notebook);
   }
 
   get title(): String {
-    return 'The agony of Tom Sawyer';
+    return this.notebook && this.notebook.name || "Notes";
   }
 
   get canDeleteNotebook(): boolean {
@@ -58,6 +70,37 @@ export class NotesComponent implements OnInit {
   }
 
   handleDelete(index: number) {
-    this.dialogService.confirmNoteDelete().subscribe(console.log);
+    this.dialogService.confirmNoteDelete().subscribe(e => {
+      if(e){
+        // TODO:call note service delete method
+      }
+    });
   }
+
+  handleSettings(index: number){
+    this.noteService.editNoteDetails(this.notes[index]);
+  }
+
+  printNote(index: number){
+    // TODO: call note service print method
+  }
+
+  deleteNotebook(){
+    this.dialogService.confirmNotebookDelete().subscribe(r => {
+      if(r && r.delete){
+        // TODO:call notebook service delete method
+        
+      }
+    })
+  }
+
+  editNotebook(){
+    this.notebookService.editNotebookDetails(this.notebook);
+  }
+
+  notebookDetails(){
+    this.notebookService.showDetails(this.notebook);
+  }
+
+  
 }

@@ -36,6 +36,15 @@ export class NotebooksComponent implements OnInit {
       });
   }
   handleDelete(index: number) {
-    this.dialogService.confirmNotebookDelete().subscribe(console.log);
+    this.dialogService.confirmNotebookDelete().subscribe(r =>{
+      if(r && r.delete){
+        // TODO: call notebook service delete method
+      }
+    });
+  }
+
+
+  editNotebookDetails(index: number){
+    this.notebookService.editNotebookDetails(this.notebooks[index]);
   }
 }

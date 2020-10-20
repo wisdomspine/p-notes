@@ -32,14 +32,16 @@
                 <ng-container *ngIf="searching">
                     <div class="_result-output">
                         <ng-container *ngIf="(search?.search?.length > 0)">
-                            <app-search-result-list [results]="searchResults">
+                            <app-search-result-list [results]="searchResults" (delete)="handleDelete($event)"
+                                (print)="handlePrint($event)" (settings)="handleSettings($event)"
+                                (details)="handleDetails($event)">
 
                             </app-search-result-list>
                         </ng-container>
                         <ng-container *ngIf="search?.search?.length <= 0">
                             <app-search-failed [short]="true"></app-search-failed>
                         </ng-container>
-                        <ng-container *ngIf="search?.search?.length > 0 && (searchResults?.length > 0)">
+                        <ng-container *ngIf="search?.search?.length > 0 && (searchResults?.length <= 0)">
                             <app-search-failed [empty]="true"></app-search-failed>
                         </ng-container>
 

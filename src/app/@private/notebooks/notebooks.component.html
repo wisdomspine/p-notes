@@ -30,7 +30,8 @@
     </div>
     <div class="app-page-content">
         <app-notebook-card-list [notebooks]="notebooks" (delete)="handleDelete($event)"
-            (details)="notebookService.showDetails($event)"></app-notebook-card-list>
+            (details)="notebookService.showDetails(notebooks[$event])" (settings)="editNotebookDetails($event)">
+        </app-notebook-card-list>
     </div>
 
 </div>

@@ -27,7 +27,7 @@ export class NoteService {
         })
       )
       .subscribe((e) => {
-        if (e) this.dialogService.editNote();
+        if (e) this.editNoteDetails(note);
       });
   }
 
@@ -49,4 +49,15 @@ export class NoteService {
         ])
       }).subscribe(console.log);
   }
+
+  editNoteDetails(note: Note | String){
+    this.dialogService.editNote({
+      note: note as Note,
+      notebooks: of([
+        new Notebook({name: 'The agony of Tom Sawyer 30', id: "30"}),
+        new Notebook({name: 'The agony of Tom Sawyer 40', id: "40"}),
+        new Notebook({name: 'The agony of Tom Sawyer 50', id: "50"}),
+      ])
+    });
+  }  
 }

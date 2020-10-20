@@ -2,10 +2,8 @@ import {
   Component,
   EventEmitter,
   Input,
-  OnChanges,
   OnInit,
   Output,
-  SimpleChanges,
 } from '@angular/core';
 import { Notebook } from 'src/app/@core/models/Notebook';
 
@@ -39,7 +37,7 @@ export class NotebookCardListComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  trackBy(index: number, notebook: Notebook): number {
+  trackBy(notebook: Notebook): number {
     return notebook.key;
   }
 }
