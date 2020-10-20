@@ -1,11 +1,14 @@
 <div class="container">
     <div class="app-note-card-list">
-        <div *ngFor="let note of notes;let i=index;trackBy:trackBy">
-            <app-note-card (details)="detailsClicked.emit(i)" (settings)="settingsClicked.emit(i)"
-                (delete)="onDelete.emit(i)" [note]="note" (print)="onPrint.emit(i)">
+        <ng-container *ngIf="notes?.length > 0">
+            <div *ngFor="let note of notes;let i=index;trackBy:trackBy">
+                <app-note-card (details)="detailsClicked.emit(i)" (settings)="settingsClicked.emit(i)"
+                    (delete)="onDelete.emit(i)" [note]="note" (print)="onPrint.emit(i)">
 
-            </app-note-card>
-        </div>
+                </app-note-card>
+            </div>
+        </ng-container>
+
 
 
     </div>

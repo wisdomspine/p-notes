@@ -25,7 +25,7 @@ export class PrintService {
     document.body.appendChild(div);
 
     tinyPrint(div, {
-      scanStyles: false,
+      scanStyles: true,
       scanHTML: true,
       hidePageRule: true,
     })

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { EditorComponent } from '@tinymce/tinymce-angular';
 import { interval, Subject } from 'rxjs';
 import { debounce } from 'rxjs/operators';
@@ -14,7 +14,7 @@ const  _kPrintId: String = 'app_print';
   templateUrl: './app-text-editor.component.html',
   styleUrls: ['./app-text-editor.component.scss'],
 })
-export class AppTextEditorComponent implements OnInit, AfterViewInit {
+export class AppTextEditorComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input()
   fonts: FontFamily[] = [];
 
@@ -49,8 +49,11 @@ export class AppTextEditorComponent implements OnInit, AfterViewInit {
     //as a result of subscribing to multiple editor events in the templates
     this.subject.pipe(debounce(() => interval(1000))).subscribe((input) => {
       // console.log(input); //I included this line to test the debounce observable frequency
-      this.onInput.emit(input);
+      this.emitChange(input);
     });
+  }
+  ngOnDestroy(): void {
+    this.subject && this.subject.complete();
   }
   ngAfterViewInit(): void {
   }
@@ -120,13 +123,20 @@ export class AppTextEditorComponent implements OnInit, AfterViewInit {
   handleChange() {
     
     if (this.editor) {
+      this.subject.next(this.content);
+    }
+  }
+
+  private emitChange(input){
+    if (this.editor) {
       try {
         this.bookmark =  this.editor.selection.getBookmark();
-      this.subject.next(this.content);
+        this.onInput.emit(input);
       } catch (error) {
         console.log(error.message);
       }
     }
+    
   }
   
 }

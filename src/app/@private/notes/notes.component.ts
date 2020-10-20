@@ -57,8 +57,7 @@ export class NotesComponent implements OnInit {
   }
 
   get showActions(): boolean {
-    return true;
-    // return Boolean(this.notebook);
+    return Boolean(this.notebook);
   }
 
   get title(): String {
