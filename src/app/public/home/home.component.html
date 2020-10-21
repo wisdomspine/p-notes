@@ -1,0 +1,9 @@
+<div class="mat-app-background">
+    <app-home-desktop *ngIf="!(isSmallScreen | async)">
+
+    </app-home-desktop>
+
+    <app-home-mobile *ngIf="(isSmallScreen | async)">
+
+    </app-home-mobile>
+</div>

@@ -82,10 +82,17 @@
     .app-color-#{$palette} {
       color: mat-color(map-get($map: $color-config, $key: $palette));
     }
+    .app-background-color-#{$palette} {
+      background-color: mat-color(map-get($map: $color-config, $key: $palette));
+    }
 
     @each $shade in $kColorShades {
       .app-color-#{$palette}-#{$shade} {
         color: mat-color(map-get($map: $color-config, $key: $palette), $shade);
+      }
+
+      .app-background-color-#{$palette}-#{$shade} {
+        background-color: mat-color(map-get($map: $color-config, $key: $palette), $shade);
       }
     }
 
@@ -95,6 +102,45 @@
           "#{$shade}-contrast"
         );
       }
+
+      .app-background-color-#{$palette}-#{$shade}-contrast {
+        background-color: mat-color(map-get($map: $color-config, $key: $palette),
+          "#{$shade}-contrast"
+        );
+      }
     }
   }
+
+  //container
+  .app-max-container{
+    max-width: $kMaxContainerWidth;
+    width: 100%;
+    display: block;
+    &.center{
+      margin: auto;
+    }
+  }
+
+    //font size suffixed with their number
+    @for $size from 10 to 150 {
+      .app-font-size-#{$size} {
+        font-size: #{$size}px !important;
+        line-height: #{$size * 1.5}px !important;
+      }
+    }
+  
+    @each $weight in 300 400 500 {
+      .app-font-weight-#{$weight} {
+        font-weight: $weight;
+      }
+    }
+
+    // text alignment
+    @each $align in left center right {
+      .text-#{$align}{
+        text-align: $align;
+      }
+    }
+
+
 }

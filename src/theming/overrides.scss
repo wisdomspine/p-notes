@@ -49,4 +49,8 @@
     overflow-x: hidden;
     overflow-y: hidden;
   }
+
+  .mat-app-background{
+    background-color: mat-color($primary-palette);
+  }
 }

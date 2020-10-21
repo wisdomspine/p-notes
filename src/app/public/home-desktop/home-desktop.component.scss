@@ -1,0 +1,77 @@
+@import "~@angular/material/theming";
+
+._container{
+    mat-toolbar {
+        .app-max-container{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            ._appbar-actions{
+                display: flex;
+                align-items: center;
+            }
+        }
+        position: fixed;
+        z-index: 2;
+        top: 0;
+    }
+
+
+    ._hero{
+        min-height: max(min(calc(100vh - #{$mat-toolbar-height-desktop}), calc(100vw * 1.05 / 2.05)), 400px);
+        width: 100%;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: stretch;
+        margin-top: $mat-toolbar-height-desktop;
+        align-items: stretch;
+        position: relative;
+        ._circle-1{
+            flex-grow: 1.05;
+            border-bottom-right-radius: 10000px;
+            backdrop-filter: contrast(40%);
+        }
+        ._svg-container{
+            flex-grow: 1;
+            background-image: url("../../../assets/images/leafs.svg");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        ._hero-content{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            .app-max-container{
+                display: flex;
+                flex-flow: row nowrap;
+                justify-content: stretch;
+                align-items: stretch;
+                ._hero-tag, ._hero-tag-side{
+                    flex-grow: 1;
+                    width: 50%;
+                }
+            }
+        }
+    }
+
+    ._anytime{
+        background-image: url("../../../assets/images/time.svg");
+        min-height: 400px;
+        background-repeat: no-repeat;
+        background-position: center right;
+        background-size: contain;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        ._anytime-content{
+            display: flex;
+            // justify-content: space-around;
+            >div{
+                width: auto;
+            }
+        }
+    }
+}
