@@ -9,6 +9,11 @@ export declare interface MenuItemModel {
   icon?: String;
 }
 
+export declare interface Link {
+  link?: String;
+  text?: String;
+}
+
 export declare interface AppUser {
   name?: String;
   email?: String;

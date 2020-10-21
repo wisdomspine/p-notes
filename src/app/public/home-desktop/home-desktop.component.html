@@ -11,12 +11,12 @@
             <div class="_appbar-actions">
                 <button mat-stroked-button
                     class="app-border-radius-100 app-padding-left-35 app-padding-right-35 app-padding-bottom-4"
-                    color="accent">
+                    color="accent" (click)="login()">
                     <span class="mat-h2 app-margin-bottom-0">Login</span>
                 </button>
                 <button mat-raised-button
                     class="app-border-radius-100 app-padding-left-35 app-padding-right-35 app-padding-bottom-4 app-margin-left-20"
-                    color="accent">
+                    color="accent" (click)="register()">
                     <span class="mat-h2 app-padding-bottom-0">
                         Get Started
                     </span>
@@ -66,6 +66,73 @@
             <div>
 
             </div>
+        </div>
+    </div>
+
+    <div class="_anywhere app-margin-top-100">
+        <div class="_left">
+
+        </div>
+        <div class="_right app-background-color-accent-50">
+
+        </div>
+        <div class="_anywhere-content-wrap">
+            <div class="_anywhere-content app-max-container center app-padding-16">
+                <div>
+
+                </div>
+                <div>
+                    <h2>
+                        Anywere
+                    </h2>
+                    <p>
+                        Irrespective of where you are, (either <br>
+                        Land, Air or Sea) and whether you're <br>
+                        offline or online.
+                        Just write down that <br>
+                        important note and it will be pushed to <br>
+                        all your devices once you're back <br>
+                        online
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="_anydevice app-margin-top-150">
+        <div class="_anydevice-content app-max-container center app-padding-16">
+            <div>
+                <h2>
+                    On Any Device
+                </h2>
+                <p>
+                    Irrespective of where you are, (either Land, Air <br>
+                    or Sea) and whether you're offline or online. <br>
+                    Just write down that important note and it will be <br>
+                    pushed to all your devices once you're back online
+                </p>
+            </div>
+            <div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="_footer app-margin-top-60">
+        <div class="app-max-container">
+            <button mat-raised-button
+                class="app-border-radius-100 app-padding-left-35 app-padding-right-35 app-padding-bottom-4"
+                color="accent" (click)="register()">
+                <span class="mat-h2 app-padding-bottom-0">
+                    Get Started
+                </span>
+            </button>
+            <p class="app-margin-top-40 text-center">
+                Made with l<span class="app-color-warn app-font-size-28">❤️</span>ve by <a
+                    href="{{(appInfoService?.author | async)?.link}}" mat-button color="accent">
+                    {{(appInfoService?.author | async)?.text}}
+                </a>
+            </p>
         </div>
     </div>
 </div>

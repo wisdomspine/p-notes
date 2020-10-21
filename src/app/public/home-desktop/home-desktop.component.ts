@@ -15,4 +15,11 @@ export class HomeDesktopComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  login(){
+
+  }
+
+  register(){
+    
+  }
 }
