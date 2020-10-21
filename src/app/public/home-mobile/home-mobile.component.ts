@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { AppInfoService } from 'src/app/@core/provider/app-info.service';
 
 @Component({
   selector: 'app-home-mobile',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-mobile.component.scss']
 })
 export class HomeMobileComponent implements OnInit {
-
-  constructor() { }
+  constructor(
+    public appInfoService: AppInfoService,
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  login(){
+
+  }
+
+  register(){
+
   }
 
 }

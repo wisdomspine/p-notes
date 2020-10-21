@@ -13,6 +13,7 @@
 @import "../styles.scss";
 @import "./app-text-editor.scss";
 @import "./image-resizer.scss";
+@import "./home-mobile.scss";
 
 @mixin app-components($theme-or-config) {
   @include app-mat-toolbar($app-typography);
@@ -28,4 +29,5 @@
   @include app-text-editor($theme-or-config, $app-typography);
   @include app-styles($theme-or-config, $app-typography);
   @include image-resizer($theme-or-config, $app-typography);
+  @include home-mobile($theme-or-config);
 }

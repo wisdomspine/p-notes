@@ -1,1 +1,92 @@
-<p>home-mobile works!</p>
+<div class="_container">
+    <mat-toolbar color="primary">
+        <h1 class="mat-h1 ">
+            <a routerLink="/" mat-flat-button class="app-margin-left--16">
+                <span class="mat-h1">
+                    {{appInfoService?.name | async | uppercase}}
+                </span>
+            </a>
+        </h1>
+    </mat-toolbar>
+
+    <div class="_hero app-background-color-accent app-padding-16">
+        <h1 class="app-color-primary app-margin-top-34 app-font-size-30 app-padding-right-40">
+            Access all Your Notebooks and notes in one place
+        </h1>
+        <div class="_hero-actions">
+            <button mat-stroked-button
+                class="app-border-radius-100 app-padding-left-35 app-padding-right-35 app-padding-bottom-4 app-background-color-primary app-margin-bottom-20 mat-elevation-z1"
+                color="accent" (click)="login()">
+                <span class="mat-h2 app-margin-bottom-0">Login</span>
+            </button>
+            <button mat-raised-button
+                class="app-border-radius-100 app-padding-left-35 app-padding-right-35 app-padding-bottom-4 mat-elevation-z4"
+                color="accent" (click)="register()">
+                <span class="mat-h2 app-padding-bottom-0">
+                    Get Started
+                </span>
+            </button>
+        </div>
+    </div>
+    <div class="_body">
+        <h2 class="text-center app-font-size-22 app-margin-top-34">
+            Access All your note
+        </h2>
+        <div class="_value _anytime app-margin-top-60 app-padding-16">
+            <h2 class="text-center">
+                Anytime
+            </h2>
+            <img src="../../../assets/images/time.svg" alt="" class="app-margin-top-16">
+            <p class="app-margin-top-24">
+                You no longer have to worry of not
+                having pen and paper beside you to
+                record that important idea when it pops
+                up.
+                Just come here at anytime and you can
+                access your important ideas for life
+            </p>
+        </div>
+        <div class="_value _anywhere app-margin-top-60 app-padding-16 home-places">
+            <h2 class="text-center">
+                Anywhere
+            </h2>
+            <img src="../../../assets/images/connected_world.svg" alt="" class="app-margin-top--24">
+            <p class="app-margin-top--16">
+                Irrespective of where you are, (either
+                Land, Air or Sea) and whether you're
+                offline or online.
+                Just write down that
+                important note and it will be pushed to
+                all your devices once you're back
+                online
+            </p>
+        </div>
+        <div class="_value _anytime app-margin-top-60 app-padding-16">
+            <h2 class="text-center">
+                On Any Device
+            </h2>
+            <img src="../../../assets/images/devices.svg" alt="" class="app-margin-top-16">
+            <p class="app-margin-top-24">
+                Irrespective of where you are, (either Land, Air
+                or Sea) and whether you're offline or online.
+                Just write down that important note and it will be
+                pushed to all your devices once you're back online
+            </p>
+        </div>
+    </div>
+    <div class="_footer app-margin-top-60">
+        <button mat-raised-button
+            class="app-border-radius-100 app-padding-left-35 app-padding-right-35 app-padding-bottom-4" color="accent"
+            (click)="register()">
+            <span class="mat-h2 app-padding-bottom-0">
+                Get Started
+            </span>
+        </button>
+        <p class="app-margin-top-40 text-center">
+            Made with l<span class="app-color-warn app-font-size-28">❤️</span>ve by <a
+                href="{{(appInfoService?.author | async)?.link}}" mat-button color="accent" target="_blank">
+                {{(appInfoService?.author | async)?.text}}
+            </a>
+        </p>
+    </div>
+</div>

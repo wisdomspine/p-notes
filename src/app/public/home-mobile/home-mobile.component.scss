@@ -1,0 +1,35 @@
+._container{
+    ._hero{
+        min-height: max(min(100vh, 400px), 100vw);
+        border-bottom-right-radius: 1000px;
+        position: relative;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-between;
+        ._hero-actions{
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+        }
+    }
+    ._body{
+        ._value{
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: center;
+            img{
+                max-width: 100%;
+                max-height: 350px;
+            }
+            p:first-letter{
+                font-size: 28px;
+            }
+        }
+    }
+
+    ._footer{
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+    }
+}

@@ -1,4 +1,4 @@
-<div class="_container">
+<div class="_container" #container>
     <mat-toolbar color="primary" class="mat-elevation-z4">
         <div class="app-max-container center">
             <h1 class="mat-h1">
@@ -83,7 +83,7 @@
                 </div>
                 <div>
                     <h2>
-                        Anywere
+                        Anywhere
                     </h2>
                     <p>
                         Irrespective of where you are, (either <br>
@@ -129,7 +129,7 @@
             </button>
             <p class="app-margin-top-40 text-center">
                 Made with l<span class="app-color-warn app-font-size-28">❤️</span>ve by <a
-                    href="{{(appInfoService?.author | async)?.link}}" mat-button color="accent">
+                    href="{{(appInfoService?.author | async)?.link}}" mat-button color="accent" target="_blank">
                     {{(appInfoService?.author | async)?.text}}
                 </a>
             </p>

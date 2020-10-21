@@ -1,0 +1,13 @@
+@import "~@angular/material/theming";
+@import "../constant.scss";
+
+
+@mixin home-mobile($theme-or-config) {
+  $color-config: mat-get-color-config($theme-or-config);
+  $accent: map-get($map: $color-config, $key: accent);;
+  $primary: map-get($map: $color-config, $key: primary);;
+
+    .home-places{
+        background: linear-gradient(180deg, mat-color($primary, 50), mat-color($accent, 50));
+    }
+}
