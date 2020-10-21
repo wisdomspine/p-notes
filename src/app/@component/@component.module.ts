@@ -50,6 +50,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { NoteDetailsComponent } from './dialogs/note-details/note-details.component';
 import { EditNoteComponent } from './dialogs/edit-note/edit-note.component';
 import { MatSelectModule } from '@angular/material/select';
+import { AuthDialogComponent } from './dialogs/auth-dialog/auth-dialog.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +86,7 @@ import { MatSelectModule } from '@angular/material/select';
     AppCoverImageComponent,
     NoteDetailsComponent,
     EditNoteComponent,
+    AuthDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -129,6 +131,7 @@ import { MatSelectModule } from '@angular/material/select';
     AppStarsRatingComponent,
     AppEditUserAvatarComponent,
     AppCoverImageComponent,
+    AuthDialogComponent,
   ],
 })
 export class ComponentModule {}

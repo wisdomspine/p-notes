@@ -1,0 +1,30 @@
+<div mat-dialog-title>
+    <div>
+        <button mat-icon-button color="accent" (click)="close()" tabindex="-1">
+            <mat-icon>
+                close
+            </mat-icon>
+        </button>
+        <h1 class="app-margin-left-7 app-margin-bottom-0">
+            {{input?.login ? 'Login' : 'Getting Started'}}
+        </h1>
+    </div>
+</div>
+<mat-dialog-content>
+    <p class="text-center" *ngIf="input?.register">
+        You're about to create your first note.
+        Select a method below to continue
+    </p>
+    <p class="mat-body-2 text-center" *ngIf="input?.register">
+        Continue with?
+    </p>
+    <p class="mat-body-2 text-center" *ngIf="input?.login">
+        Login with?
+    </p>
+    <button mat-raised-button color="warn" (click)="google()" class="app-border-radius-100 app-margin-top-6">
+        Google
+    </button>
+    <button mat-raised-button color="accent" (click)="twitter()" class="app-border-radius-100 app-margin-top-16">
+        Twitter
+    </button>
+</mat-dialog-content>

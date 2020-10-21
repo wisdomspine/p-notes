@@ -58,3 +58,13 @@ export declare interface EditNoteInput {
   note?: Note;
   notebooks?: Observable<Notebook[]>;
 }
+
+export declare interface AuthDialogInput{
+  login?: boolean;
+  register?: boolean;
+}
+
+export declare interface AuthDialogOutput{
+  google?: boolean;
+  twitter?: boolean;
+}

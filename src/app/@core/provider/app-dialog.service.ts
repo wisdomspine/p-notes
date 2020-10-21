@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable, Subject } from 'rxjs';
+import { AuthDialogComponent } from 'src/app/@component/dialogs/auth-dialog/auth-dialog.component';
 import { DeleteNoteDialogComponent } from 'src/app/@component/dialogs/delete-note-dialog/delete-note-dialog.component';
 import { DeleteNotebookDialogComponent } from 'src/app/@component/dialogs/delete-notebook-dialog/delete-notebook-dialog.component';
 import { EditAccountComponent } from 'src/app/@component/dialogs/edit-account/edit-account.component';
@@ -13,6 +14,8 @@ import { NotebookDetailsComponent } from 'src/app/@component/dialogs/notebook-de
 import { ReviewAppreciationComponent } from 'src/app/@component/dialogs/review-appreciation/review-appreciation.component';
 import {
   AppUser,
+  AuthDialogInput,
+  AuthDialogOutput,
   DeleteNotebookDialogResult,
   EditAccountInput,
   EditAccountResult,
@@ -251,4 +254,25 @@ export class AppDialogService {
 
     return subject;
   }  
+
+  showAuthDialog(input: AuthDialogInput): Observable<AuthDialogOutput>{
+    const subject: Subject<AuthDialogOutput> = new Subject<AuthDialogOutput>();
+    this.dialog
+      .open<AuthDialogComponent, AuthDialogInput, AuthDialogOutput>(
+        AuthDialogComponent,
+        {
+          maxWidth: 300,
+          minWidth: 250,
+          panelClass: `${this.panelClass}`,
+          data: input,
+        }
+      )
+      .afterClosed()
+      .subscribe((result) => {
+        subject.next(result);
+        subject.complete();
+      });
+
+    return subject;    
+  }
 }

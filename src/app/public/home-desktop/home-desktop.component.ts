@@ -3,6 +3,7 @@ import { ViewportScroller } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, HostBinding, HostListener, OnInit, ViewChild } from '@angular/core';
 import { fromEvent, Observable, Subscription } from 'rxjs';
 import { AppInfoService } from 'src/app/@core/provider/app-info.service';
+import { AuthService } from 'src/app/@core/provider/auth.service';
 
 @Component({
   selector: 'app-home-desktop',
@@ -15,6 +16,7 @@ export class HomeDesktopComponent implements OnInit, AfterViewInit {
 
   constructor(
     public appInfoService: AppInfoService,
+    private authService: AuthService,
   ) {
     
    }
@@ -26,10 +28,10 @@ export class HomeDesktopComponent implements OnInit, AfterViewInit {
   }
 
   login(){
-
+    this.authService.login();
   }
 
   register(){
-
+    this.authService.register();
   }
 }
