@@ -1,10 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Note } from 'src/app/@core/models/Note';
 import { Notebook } from 'src/app/@core/models/Notebook';
 import { NoteContent } from 'src/app/@core/models/NoteContent';
+import { AccountService } from 'src/app/@core/provider/account.service';
+import { AppStorageService } from 'src/app/@core/provider/app-storage.service';
 import { FontFamilyService } from 'src/app/@core/provider/font-family.service';
 import { NoteService } from 'src/app/@core/provider/note.service';
 import { NotesComponentRoute } from 'src/app/route-names';
+import { AppUser } from 'src/types';
+import { UploadHandler } from 'tinymce';
 import { AppPrivateModuleBaseRoute } from '../@private-routing.module';
 
 @Component({
@@ -12,10 +17,13 @@ import { AppPrivateModuleBaseRoute } from '../@private-routing.module';
   templateUrl: './note.component.html',
   styleUrls: ['./note.component.scss'],
 })
-export class NoteComponent implements OnInit {
+export class NoteComponent implements OnInit, OnDestroy {
   static routeName: string = 'notes';
   static route: String = `notes`;
   static param: String = 'note';
+
+  private user: AppUser
+  private userSubscription: Subscription;
 
   note: Note = new Note({
     notebook: new Notebook({name: 'The agony of Tom Sawyer', id: "30"}),
@@ -31,8 +39,17 @@ export class NoteComponent implements OnInit {
   constructor(
     public fontsProvider: FontFamilyService,
     public noteService: NoteService,
-  ) {
+    private appStorage: AppStorageService,
+    accounService: AccountService
 
+  ) {
+    this.userSubscription = accounService.currentAccount.subscribe(u => {
+      this.user = u;
+    })
+  }
+  ngOnDestroy(): void {
+    // Clean up resources
+    this.userSubscription.unsubscribe();
   }
 
   ngOnInit(): void {
@@ -45,6 +62,10 @@ export class NoteComponent implements OnInit {
 
   handleInput(value: String){
     this.note.content = {...this.note.content, value};    
+  }
+
+  handleUpload: UploadHandler = (blobInfo, success)=>{
+    this.appStorage.upload(blobInfo.blob(), this.user).subscribe(url => success(`${url}`));
   }
 
   
