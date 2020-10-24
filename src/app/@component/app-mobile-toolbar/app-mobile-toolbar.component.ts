@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/@core/provider/auth.service';
 import { ConductReviewService } from 'src/app/@core/provider/conduct-review.service';
 import { EditAccountService } from 'src/app/@core/provider/edit-account.service';
 import { MenuItemModel } from 'src/types';
@@ -11,7 +12,8 @@ import { MenuItemModel } from 'src/types';
 export class AppMobileToolbarComponent implements OnInit {
   constructor(
     private conductReview: ConductReviewService,
-    private editAccountService: EditAccountService
+    private editAccountService: EditAccountService,
+    private authService: AuthService,
   ) {}
   @Input()
   menu: MenuItemModel[] = [];
@@ -22,7 +24,9 @@ export class AppMobileToolbarComponent implements OnInit {
     event.stopImmediatePropagation();
   }
 
-  logout() {}
+  logout(){
+    this.authService.logout();
+  }
 
   review() {
     this.conductReview.startReview();

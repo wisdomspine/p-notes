@@ -12,6 +12,9 @@ import { HomeMobileComponent } from './public/home-mobile/home-mobile.component'
 import { HomeDesktopComponent } from './public/home-desktop/home-desktop.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+import { AngularFireAuthModule } from "@angular/fire/auth";
 
 @NgModule({
   declarations: [
@@ -24,6 +27,8 @@ import { MatButtonModule } from '@angular/material/button';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
     ComponentModule,
     CoreModule,
     EditorModule,
@@ -33,6 +38,9 @@ import { MatButtonModule } from '@angular/material/button';
   ],
   providers: [
     { provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js' },
+  ],
+  exports: [
+    AngularFireModule
   ],
   bootstrap: [AppComponent],
 })
