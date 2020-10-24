@@ -18,6 +18,7 @@ export declare interface AppUser {
   name?: String;
   email?: String;
   image?: String;
+  uid?: String;
 }
 
 export declare interface EditAccountResult {

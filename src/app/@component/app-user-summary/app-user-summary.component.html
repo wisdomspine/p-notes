@@ -1,7 +1,8 @@
 <div class="comp-container">
 
 
-    <img src="{{image}}" alt="picture of {{name}}" class="user-avatar app-border-boundary">
+    <img *ngIf="image" src="{{image}}" alt="picture of {{name}}" class="user-avatar app-border-boundary">
+    <span *ngIf="!image" class="user-avatar app-border-boundary mat-title"> {{initial}} </span>
     <div class="user-info">
         <p class="mat-body-1"> {{name}} </p>
         <p class="mat-caption"> {{email}} </p>

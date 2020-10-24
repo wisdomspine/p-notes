@@ -7,15 +7,18 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class AppUserSummaryComponent implements OnInit {
   @Input()
-  image: String =
-    'https://images.generated.photos/muR2OZFMwmdV-MSCNSW6s4FDZq6v4GenjuD7-EGhM3k/rs:fit:512:512/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzA1MDIzOTAuanBn.jpg';
+  image: String;
 
   @Input()
-  name: String = 'Priest Sabo Ombugadu';
+  name: String;
 
   @Input()
-  email: String = 'sabopriest@gmail.com';
+  email: String;
   constructor() {}
+
+  get initial(): String{
+    return this.name && this.name.trim().substr(0, 1).toUpperCase() || '0';
+  }
 
   ngOnInit(): void {}
 }

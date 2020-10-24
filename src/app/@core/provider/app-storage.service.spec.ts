@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { EditAccountService } from './edit-account.service';
+import { AppStorageService } from './app-storage.service';
 
-describe('EditAccountService', () => {
-  let service: EditAccountService;
+describe('AppStorageService', () => {
+  let service: AppStorageService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(EditAccountService);
+    service = TestBed.inject(AppStorageService);
   });
 
   it('should be created', () => {

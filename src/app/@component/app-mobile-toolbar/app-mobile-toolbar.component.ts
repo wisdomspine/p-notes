@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/@core/provider/auth.service';
 import { ConductReviewService } from 'src/app/@core/provider/conduct-review.service';
-import { EditAccountService } from 'src/app/@core/provider/edit-account.service';
+import { AccountService } from 'src/app/@core/provider/account.service';
 import { MenuItemModel } from 'src/types';
 
 @Component({
@@ -12,7 +12,7 @@ import { MenuItemModel } from 'src/types';
 export class AppMobileToolbarComponent implements OnInit {
   constructor(
     private conductReview: ConductReviewService,
-    private editAccountService: EditAccountService,
+    private editAccountService: AccountService,
     private authService: AuthService,
   ) {}
   @Input()
