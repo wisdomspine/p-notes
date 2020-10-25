@@ -18,6 +18,9 @@ export class AppTextEditorComponent implements OnInit, AfterViewInit, OnDestroy 
   @Input()
   fonts: FontFamily[] = [];
 
+  @Input()
+  font: FontFamily;
+
   @Input('fileHandler')
   fileHandler: UploadHandler;
 
@@ -105,7 +108,7 @@ export class AppTextEditorComponent implements OnInit, AfterViewInit, OnDestroy 
           );
         },
       height: '100%',
-      content_style: this.fonts.map((f) => `@import url(${f.ulr});`).join(''),
+      content_style: this.contentStyle,
       font_formats: this.fonts.map((f) => `${f.name}=${f.value}`).join('; '),
       setup: function(editor) {
         instance.editor = editor;
@@ -137,6 +140,15 @@ export class AppTextEditorComponent implements OnInit, AfterViewInit, OnDestroy 
       }
     }
     
+  }
+
+  get contentStyle(): string{
+    let style = this.fonts.map((f) => `@import url(${f.ulr});`).join('');
+    if(this.font){
+      style+=`body{font-family: ${this.font.value};}`;
+    }
+
+    return style;
   }
   
 }

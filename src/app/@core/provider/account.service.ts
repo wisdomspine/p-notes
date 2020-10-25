@@ -10,7 +10,7 @@ import { AppStorageService } from './app-storage.service';
   providedIn: 'root',
 })
 export class AccountService {
-  private _userSubject: BehaviorSubject<AppUser> = new BehaviorSubject<AppUser>(null);
+  private _userSubject: BehaviorSubject<AppUser> = new BehaviorSubject<AppUser>({});
   private currentUser: AppUser;
 
   constructor(

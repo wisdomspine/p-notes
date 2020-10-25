@@ -42,7 +42,7 @@ export class FontFamilyService {
   constructor() {}
 
   get default(): FontFamily {
-    return this.families[0];
+    return this.families[2];
   }
 
   get all(): FontFamily[] {

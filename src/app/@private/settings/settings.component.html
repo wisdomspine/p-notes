@@ -26,8 +26,8 @@
                             <mat-label>
                                 Font family
                             </mat-label>
-                            <mat-select [compareWith]="fontFamilyService.isEqual" [(value)]="userFont"
-                                [style.font-family]="userFont?.value">
+                            <mat-select [compareWith]="fontFamilyService.isEqual" [(value)]="settings.fontFamily"
+                                [style.font-family]="settings.fontFamily?.value">
                                 <mat-option *ngFor="let font of fontFamilyService.all" [value]="font"
                                     [style.font-family]="font.value">
                                     {{font?.name}}
@@ -46,7 +46,7 @@
         <h2>
             Settings
         </h2>
-        <button mat-button color="accent">
+        <button mat-button color="accent" (click)="save()">
             Save
         </button>
     </div>

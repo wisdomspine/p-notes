@@ -1,4 +1,3 @@
-
 export class Notebook {
   key?: number;
   name?: String;
@@ -8,8 +7,14 @@ export class Notebook {
   link?: String;
   permanent?: boolean;
   id?: String;
+  createdAt?: String | FirebaseFirestore.FieldValue;
+  updatedAt?: String | FirebaseFirestore.FieldValue;
 
   constructor(notebook: Notebook) {
     Object.assign(this, notebook);
   }
+
+//   toJSON? = ()=>{
+//       return JSON.stringify(this);
+//   }
 }

@@ -7,6 +7,7 @@ import { AccountService } from 'src/app/@core/provider/account.service';
 import { AppStorageService } from 'src/app/@core/provider/app-storage.service';
 import { FontFamilyService } from 'src/app/@core/provider/font-family.service';
 import { NoteService } from 'src/app/@core/provider/note.service';
+import { SettingsService } from 'src/app/@core/provider/settings.service';
 import { NotesComponentRoute } from 'src/app/route-names';
 import { AppUser } from 'src/types';
 import { UploadHandler } from 'tinymce';
@@ -40,7 +41,8 @@ export class NoteComponent implements OnInit, OnDestroy {
     public fontsProvider: FontFamilyService,
     public noteService: NoteService,
     private appStorage: AppStorageService,
-    accounService: AccountService
+    accounService: AccountService,
+    public settings: SettingsService,
 
   ) {
     this.userSubscription = accounService.currentAccount.subscribe(u => {
