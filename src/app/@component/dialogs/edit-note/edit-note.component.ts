@@ -26,7 +26,6 @@ export class EditNoteComponent implements OnInit {
       this.title = "New Note";
     }
     this.form = formService.generateNoteForm(data.note);
-    console.log(data);
     data.notebooks && data.notebooks.subscribe(books => {
       
       

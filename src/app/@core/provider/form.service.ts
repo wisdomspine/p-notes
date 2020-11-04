@@ -22,7 +22,7 @@ export class FormService {
   }
 
   generateNotebookForm(notebook: Notebook): FormGroup {
-    notebook = notebook || { name: null, coverFile: null, description: null };
+    notebook = notebook || new Notebook({ name: null, coverFile: null, description: null });
     return this.formBuilder.group({
       name: [notebook.name, [AppValidators.notebookName()]],
       coverFile: notebook.coverFile,

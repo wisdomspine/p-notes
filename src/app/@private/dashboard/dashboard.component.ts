@@ -36,9 +36,9 @@ export class DashboardComponent implements OnInit {
     this.menuState = menuState.onStateChange;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
   startSearch(output: SearchFieldOutput) {
-    // console.log(output);
     this.search = output;
 
     this.searching = true;
@@ -83,11 +83,7 @@ export class DashboardComponent implements OnInit {
    */
 
   private deleteNotebook(notebook: Notebook) {
-    this.dialogService.confirmNotebookDelete().subscribe(r =>{
-      if(r && r.delete){
-        // TODO: call notebook service delete method
-      }
-    });
+    this.notebookService.delete(notebook.id);
   }
 
 

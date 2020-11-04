@@ -19,7 +19,7 @@ export class EditNotebookComponent implements OnInit {
     formService: FormService
   ) {
     if (!data.notebook) {
-      data.notebook = {};
+      data.notebook = new Notebook({});
       this.title = 'Add Notebook';
     }
 
@@ -37,8 +37,6 @@ export class EditNotebookComponent implements OnInit {
   }
 
   get image(): String {
-    // console.log(this.data);
-
     return this.data.notebook.cover;
   }
 
@@ -49,10 +47,10 @@ export class EditNotebookComponent implements OnInit {
 
     this.data.imageChangeHandler(file).subscribe((blob) => {
       this.form.setValue({ ...this.form.value, coverFile: blob });
-      this.data.notebook = {
+      this.data.notebook = new Notebook({
         ...this.data.notebook,
         cover: URL.createObjectURL(blob),
-      };
+      });
     });
   }
 

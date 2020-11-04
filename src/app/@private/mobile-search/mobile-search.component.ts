@@ -56,11 +56,7 @@ export class MobileSearchComponent implements OnInit {
   }
 
   private deleteNotebook(notebook: Notebook) {
-    this.dialogService.confirmNotebookDelete().subscribe(r =>{
-      if(r && r.delete){
-        // TODO: call notebook service delete method
-      }
-    });
+    this.notebookService.delete(notebook.id);
   }
 
 

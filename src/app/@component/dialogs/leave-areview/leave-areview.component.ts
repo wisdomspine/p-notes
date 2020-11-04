@@ -28,8 +28,6 @@ export class LeaveAReviewComponent implements OnInit {
   }
 
   handleStarsClick(star: number) {
-    // console.log(star);
-
     this.review.stars = star;
     this.clicked = true;
   }

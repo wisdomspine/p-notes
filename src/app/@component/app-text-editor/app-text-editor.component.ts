@@ -51,7 +51,6 @@ export class AppTextEditorComponent implements OnInit, AfterViewInit, OnDestroy 
     //I have to delay it because handleChange can be called multiple times in a row
     //as a result of subscribing to multiple editor events in the templates
     this.subject.pipe(debounce(() => interval(1000))).subscribe((input) => {
-      // console.log(input); //I included this line to test the debounce observable frequency
       this.emitChange(input);
     });
   }
@@ -102,7 +101,6 @@ export class AppTextEditorComponent implements OnInit, AfterViewInit, OnDestroy 
       images_upload_handler:
         this.fileHandler ||
         function (blobInfo, success) {
-          // console.log(blobInfo);
           success(
             'https://images.unsplash.com/photo-1602152733225-430e1cd3b9f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80'
           );
@@ -136,7 +134,7 @@ export class AppTextEditorComponent implements OnInit, AfterViewInit, OnDestroy 
         this.bookmark =  this.editor.selection.getBookmark();
         this.onInput.emit(input);
       } catch (error) {
-        console.log(error.message);
+        // TODO: handle error
       }
     }
     

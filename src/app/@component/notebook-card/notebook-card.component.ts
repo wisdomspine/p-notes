@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Notebook } from 'src/app/@core/models/Notebook';
-import { NotesComponent } from 'src/app/@private/notes/notes.component';
 
 @Component({
   selector: 'app-notebook-card',

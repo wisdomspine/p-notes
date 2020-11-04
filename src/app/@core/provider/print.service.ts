@@ -29,17 +29,7 @@ export class PrintService {
       scanHTML: true,
       hidePageRule: true,
     })
-    
-    // window.addEventListener("beforeprint", e => {
-    //   console.log(9090);
-    // })
-
-    // window.addEventListener("afterprint", ()=>{
-    //   div.parentNode.removeChild(div);
-    //   alert(90)
-      
-    // })
-    
+        
   }
 
   
