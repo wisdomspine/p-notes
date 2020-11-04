@@ -5,6 +5,7 @@ import { NotesComponentRoute, NotesComponentRouteName } from 'src/app/route-name
 import { Note } from './Note';
 
 export class Notebook {
+  static defaultCover:String = 'https://firebasestorage.googleapis.com/v0/b/p-notes-a0a79.appspot.com/o/default%2Fdefault%20notebook%20cover.jpeg?alt=media&token=4294c47b-d9c1-49c1-bbdd-85a6ded10a80';
   key?: number;
   name?: String;
   createdAt?: String;
@@ -25,9 +26,9 @@ export class Notebook {
   toObject(param?:{create?: boolean, update?: boolean}): object{
     const result:any=  {
       name: this.name+'', 
-      cover: this.cover+'',
-      description: this.description+'',
-      link: this.link+'',
+      cover: `${this.cover || Notebook.defaultCover}`,
+      description: `${this.description || ''}`,
+      link: `${this.link || ''}`,
       permanent: this.permanent || false,
     };
     if(param.create)result.createdAt =  firebase.firestore.FieldValue.serverTimestamp()
