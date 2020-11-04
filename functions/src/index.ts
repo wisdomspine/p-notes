@@ -8,12 +8,12 @@ export const createDefaultNotebook = functions.auth.user().onCreate((user, conte
     return admin.firestore().doc(`notebooks/${user.uid}/notebooks/default`).create(({name: 'Default Notebook', cover:defaultNotebookCover, description: 'This is the default notebook', permanent: true, createdAt: admin.firestore.FieldValue.serverTimestamp(), updatedAt: admin.firestore.FieldValue.serverTimestamp()}));
 })
 
-export const setDefaultNotebookCover = functions.firestore.document(`notebooks/{userId}/notebooks/{notebookId}`).onWrite((change, context) =>{
-    const data = change.before.data() || {};
-    if('cover' in data && !data.cover){
-        data.cover = defaultNotebookCover;
-    }
-});
+// export const setDefaultNotebookCover = functions.firestore.document(`notebooks/{userId}/notebooks/{notebookId}`).onWrite((change, context) =>{
+//     const data = change.before.data() || {};
+//     if('cover' in data && !data.cover){
+//         data.cover = defaultNotebookCover;
+//     }
+// });
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
 //
