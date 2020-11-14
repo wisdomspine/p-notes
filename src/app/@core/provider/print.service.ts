@@ -13,7 +13,7 @@ export class PrintService {
 
   }
 
-  print(note: Note = {}){
+  print(note: Note = new Note({})){
     const div: HTMLDivElement =document.querySelector(`#${this._elId}`) || document.createElement("div")
     div.style.display = "block";
     div.innerHTML = `

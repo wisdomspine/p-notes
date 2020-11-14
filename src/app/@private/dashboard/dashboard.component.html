@@ -41,7 +41,7 @@
                         <ng-container *ngIf="search?.search?.length <= 0">
                             <app-search-failed [short]="true"></app-search-failed>
                         </ng-container>
-                        <ng-container *ngIf="search?.search?.length > 0 && (searchResults?.length <= 0)">
+                        <ng-container *ngIf="search?.search?.length > 0 && ((searchResults)?.length <= 0)">
                             <app-search-failed [empty]="true"></app-search-failed>
                         </ng-container>
 

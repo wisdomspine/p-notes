@@ -8,7 +8,7 @@ import { AppStorageService } from 'src/app/@core/provider/app-storage.service';
 import { FontFamilyService } from 'src/app/@core/provider/font-family.service';
 import { NoteService } from 'src/app/@core/provider/note.service';
 import { SettingsService } from 'src/app/@core/provider/settings.service';
-import { NotesComponentRoute } from 'src/app/route-names';
+import { NoteComponentRoute, NoteComponentRouteName, NotesComponentRoute } from 'src/app/route-names';
 import { AppUser } from 'src/types';
 import { UploadHandler } from 'tinymce';
 import { AppPrivateModuleBaseRoute } from '../@private-routing.module';
@@ -19,8 +19,8 @@ import { AppPrivateModuleBaseRoute } from '../@private-routing.module';
   styleUrls: ['./note.component.scss'],
 })
 export class NoteComponent implements OnInit, OnDestroy {
-  static routeName: string = 'notes';
-  static route: String = `notes`;
+  static routeName: string = NoteComponentRouteName;
+  static route: String = NoteComponentRoute;
   static param: String = 'note';
 
   private user: AppUser
@@ -69,6 +69,4 @@ export class NoteComponent implements OnInit, OnDestroy {
   handleUpload: UploadHandler = (blobInfo, success)=>{
     this.appStorage.upload(blobInfo.blob(), this.user).subscribe(url => success(`${url}`));
   }
-
-  
 }

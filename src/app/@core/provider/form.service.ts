@@ -3,7 +3,6 @@ import {
   FormBuilder,
   FormControl,
   FormGroup,
-  Validators,
 } from '@angular/forms';
 import { Note } from '../models/Note';
 import { Notebook } from '../models/Notebook';
@@ -31,7 +30,7 @@ export class FormService {
   }
 
   generateNoteForm(note: Note): FormGroup {
-    note = note || { notebook: null, coverFile: null, description: null, title: null };
+    note = note || new Note({ notebook: null, coverFile: null, description: null, title: null });
     return this.formBuilder.group({
       title: [note.title, [AppValidators.noteTitle()]],
       coverFile: [note.coverFile],

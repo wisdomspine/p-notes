@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { Note } from 'src/app/@core/models/Note';
 import { Notebook } from 'src/app/@core/models/Notebook';
 import { AppDialogService } from 'src/app/@core/provider/app-dialog.service';
@@ -19,11 +19,13 @@ import { SettingsComponent } from '../settings/settings.component';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
   isSmallScreen: Observable<boolean>;
   menuState: Observable<boolean>;
   searching: boolean = false;
-  search: SearchFieldOutput = null;
+  search: SearchFieldOutput = {};
+  private searchSubscription: Subscription;
+  searchResults: (Notebook | Note)[] = [];
   constructor(
     mediaQueryService: AppMediaQueryService,
     menuState: AppMenuStateService,
@@ -35,17 +37,33 @@ export class DashboardComponent implements OnInit {
     this.isSmallScreen = mediaQueryService.isSmallScreen;
     this.menuState = menuState.onStateChange;
   }
+  ngOnDestroy(): void {
+    this.searchSubscription && this.searchSubscription.unsubscribe();
+  }
 
   ngOnInit(): void {
   }
+
+  private _processSearch(){
+    if(this.searchSubscription) this.searchSubscription.unsubscribe();
+    this.searchSubscription =  this.searchService.search({
+      search: `${this.search.search ||''}`, 
+      notebooks: this.search.notebooks, 
+      notes: this.search.notes,
+    }).subscribe(results => {
+      this.searchResults = results;
+    });
+  }
   startSearch(output: SearchFieldOutput) {
-    this.search = output;
+    this.search = output || {};
 
     this.searching = true;
+    this._processSearch();
   }
 
   stopSearch() {
     this.searching = false;
+    this.search = {};
   }
 
   menu: MenuItemModel[] = [
@@ -64,10 +82,6 @@ export class DashboardComponent implements OnInit {
     },
     { link: `${SettingsComponent.route}/`, text: 'Settings', icon: 'settings' },
   ];
-
-  get searchResults(): (Note | Notebook)[] {
-    return this.searchService.search();
-  }
 
   newNotebook() {
     this.notebookService.addNotebook();
@@ -98,11 +112,7 @@ export class DashboardComponent implements OnInit {
   
 
   private deleteNote(note: Note) {
-    this.dialogService.confirmNoteDelete().subscribe(e => {
-      if(e){
-        // TODO:call note service delete method
-      }
-    });
+    this.noteService.delete(note.id);
   }
 
   private editNoteDetails(note: Note){

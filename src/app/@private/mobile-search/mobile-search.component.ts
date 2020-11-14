@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Note } from 'src/app/@core/models/Note';
 import { Notebook } from 'src/app/@core/models/Notebook';
 import { AppDialogService } from 'src/app/@core/provider/app-dialog.service';
@@ -15,9 +15,12 @@ import { SearchFieldOutput } from 'src/types';
   templateUrl: './mobile-search.component.html',
   styleUrls: ['./mobile-search.component.scss'],
 })
-export class MobileSearchComponent implements OnInit {
+export class MobileSearchComponent implements OnInit, OnDestroy {
   static routeName: string = 'search';
   static route: String = `search`;
+
+  private searchSubscription: Subscription;
+  results: (Notebook | Note)[] = [];
   constructor(
     private searchService: SearchService,
     router: Router,
@@ -25,6 +28,7 @@ export class MobileSearchComponent implements OnInit {
     private dialogService: AppDialogService,
     private notebookService: NotebookService,
     private noteService: NoteService,
+    
   ) {
     appMediaQueryService.isSmallScreen.subscribe((e) => {
       if (!e) {
@@ -33,25 +37,37 @@ export class MobileSearchComponent implements OnInit {
       }
     });
   }
+  ngOnDestroy(): void {
+    this.searchSubscription && this.searchSubscription.unsubscribe();
+  }
 
   ngOnInit(): void {}
 
-  get results(): (Notebook | Note)[] {
-    return this.searchService.search();
+  private _processSearch(){
+    if(this.searchSubscription) this.searchSubscription.unsubscribe();
+    this.searchSubscription =  this.searchService.search({
+      search: `${this.search.search ||''}`, 
+      notebooks: this.search.notebooks, 
+      notes: this.search.notes,
+    }).subscribe(results => {
+      this.results = results;
+    });
   }
 
   isSmallScreen: Observable<boolean>;
   menuState: Observable<boolean>;
   searching: boolean = false;
-  search: SearchFieldOutput = null;
+  search: SearchFieldOutput = {};
 
   startSearch(output: SearchFieldOutput) {
-    this.search = output;
-
+    this.search = output || {};
+    
     this.searching = true;
+    this._processSearch();
   }
 
   stopSearch() {
+    this.search = {};
     this.searching = false;
   }
 
@@ -71,11 +87,7 @@ export class MobileSearchComponent implements OnInit {
   
 
   private deleteNote(note: Note) {
-    this.dialogService.confirmNoteDelete().subscribe(e => {
-      if(e){
-        // TODO:call note service delete method
-      }
-    });
+    this.noteService.delete(note.id);
   }
 
   private editNoteDetails(note: Note){

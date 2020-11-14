@@ -18,6 +18,7 @@ export class Notebook {
   permanent?: boolean;
   id?: String;
   coverFile?: Blob;
+  static defaultId: String = 'default';
 
   constructor(notebook: Partial<Notebook>) {
     Object.assign(this, notebook);

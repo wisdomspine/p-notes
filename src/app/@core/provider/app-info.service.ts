@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Link } from 'src/types';
-import { of, scheduled } from "rxjs";
+import { of } from "rxjs";
 
 @Injectable({
   providedIn: 'root',
