@@ -47,10 +47,10 @@ export class AppTextEditorComponent implements OnInit, AfterViewInit, OnDestroy 
   
 
   constructor() {
-    //emit input events in an interval of 200ms
+    //emit input events in an interval of 3000ms
     //I have to delay it because handleChange can be called multiple times in a row
     //as a result of subscribing to multiple editor events in the templates
-    this.subject.pipe(debounce(() => interval(1000))).subscribe((input) => {
+    this.subject.pipe(debounce(() => interval(3000))).subscribe((input) => {
       this.emitChange(input);
     });
   }
@@ -143,7 +143,7 @@ export class AppTextEditorComponent implements OnInit, AfterViewInit, OnDestroy 
   get contentStyle(): string{
     let style = this.fonts.map((f) => `@import url(${f.ulr});`).join('');
     if(this.font){
-      style+=`body{font-family: ${this.font.value};}`;
+      style+=`body{font-family: ${this.font.value};}img{max-width:100%!important;}`;
     }
 
     return style;
