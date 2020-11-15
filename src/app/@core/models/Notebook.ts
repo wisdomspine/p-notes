@@ -1,7 +1,6 @@
-import { DocumentChangeAction, DocumentSnapshot } from '@angular/fire/firestore';
+import { DocumentChangeAction } from '@angular/fire/firestore';
 import * as firebase from 'firebase';
-import { NotesComponent } from 'src/app/@private/notes/notes.component';
-import { NotesComponentRoute, NotesComponentRouteName } from 'src/app/route-names';
+import { NotesComponentRouteName } from 'src/app/route-names';
 import { Note } from './Note';
 
 export class Notebook {

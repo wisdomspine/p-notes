@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AppUser, Review } from 'src/types';
 import { AccountService } from './account.service';
-import { AppDialogService } from './app-dialog.service';
 
 @Injectable({
   providedIn: 'root'

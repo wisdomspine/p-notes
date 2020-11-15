@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Note } from 'src/app/@core/models/Note';
 import { Notebook } from 'src/app/@core/models/Notebook';
@@ -11,7 +12,6 @@ import { SettingsService } from 'src/app/@core/provider/settings.service';
 import { NoteComponentRoute, NoteComponentRouteName, NotesComponentRoute } from 'src/app/route-names';
 import { AppUser } from 'src/types';
 import { UploadHandler } from 'tinymce';
-import { AppPrivateModuleBaseRoute } from '../@private-routing.module';
 
 @Component({
   selector: 'app-note',
@@ -26,16 +26,7 @@ export class NoteComponent implements OnInit, OnDestroy {
   private user: AppUser
   private userSubscription: Subscription;
 
-  note: Note = new Note({
-    notebook: new Notebook({name: 'The agony of Tom Sawyer', id: "30"}),
-    title: 'Chapter 1',
-    link: `/${NotesComponentRoute}/`,
-    cover: `https://images.unsplash.com/photo-1529507926971-06fcbcc8cf2f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1601&q=80`,
-    description: 'The agony of Tom Sawyer',
-    createdAt: 'Sep 5, 2020 11:15pm',
-    updatedAt: 'Sep 6, 2020 11:15pm',
-    content: new NoteContent({value: "Hello world"})
-  });
+  note: Note;
 
   constructor(
     public fontsProvider: FontFamilyService,
@@ -43,11 +34,15 @@ export class NoteComponent implements OnInit, OnDestroy {
     private appStorage: AppStorageService,
     accounService: AccountService,
     public settings: SettingsService,
+    activeRoute: ActivatedRoute,
 
   ) {
     this.userSubscription = accounService.currentAccount.subscribe(u => {
       this.user = u;
     })
+    this.noteService.noteWithContent(activeRoute.snapshot.paramMap.get(`${NoteComponent.param}`)).subscribe(note => {
+      this.note = note;
+    });
   }
   ngOnDestroy(): void {
     // Clean up resources
@@ -63,7 +58,8 @@ export class NoteComponent implements OnInit, OnDestroy {
   }
 
   handleInput(value: String){
-    this.note.content = {...this.note.content, value};    
+    this.note.content = new NoteContent({...this.note.content, value});  
+    this.noteService.saveContent(this.note.id, this.note.content)  ;
   }
 
   handleUpload: UploadHandler = (blobInfo, success)=>{

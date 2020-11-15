@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { firestore } from 'firebase';
+import { BehaviorSubject, combineLatest, Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AppUser } from 'src/types';
 import { Note } from '../models/Note';
 import { Notebook } from '../models/Notebook';
+import { NoteContent } from '../models/NoteContent';
 import { AccountService } from './account.service';
 import { AppDialogService } from './app-dialog.service';
 import { AppStorageService } from './app-storage.service';
@@ -18,6 +20,7 @@ export class NoteService {
   private user: AppUser;
   private _notes: BehaviorSubject<Note[]> = new BehaviorSubject<Note[]>([]);
   private _notesSubscription: Subscription;
+  
 
   constructor(
     private dialogService: AppDialogService,
@@ -96,8 +99,15 @@ export class NoteService {
     });
   }
 
-  print(note: Note){
-    this.printer.print(note);
+  print(noteId: String | Note){
+    if(noteId instanceof Note) noteId = noteId.id;
+    
+    const subscription: Subscription = this.noteWithContent(noteId).subscribe(note => {
+      this.printer.print(note).finally(() => {
+        subscription.unsubscribe();
+      });
+    })
+    
   }
 
   get collectionPath(): string{
@@ -116,6 +126,8 @@ export class NoteService {
   note(id: String): Observable<Note>{
     return this._notes.pipe(map(notes => notes.find(note => note.id == id)));
   }
+
+
 
   notes(param:{search?:string, notebookId?: string} ={}): Observable<Note[]>{
     param.search = param.search || ''; 
@@ -152,5 +164,26 @@ export class NoteService {
         this._delete(id);
       }
     });
+  }
+
+  private  content(noteId: String): Observable<NoteContent>{
+    return this.fireStore.doc<NoteContent>(`${this.contentPath(noteId)}`).valueChanges().pipe(map(v => NoteContent.fromValueChange(v)));
+  }
+
+  noteWithContent(noteId: String): Observable<Note>{
+    
+    return combineLatest([this.note(noteId),this.content(noteId) ]).pipe(map(value => {
+      if(!value[0]) return null;
+      value[0].content = value[1];
+      return value[0];
+    }))
+  };
+
+  saveContent(noteId: String, content: NoteContent):Promise<void>{
+    return this.fireStore.doc<NoteContent>(`${this.contentPath(noteId)}`).update(content.toObject({update:true}));
+  }
+
+  private contentPath(noteId: String): String{
+    return `${this.collectionPath}/${noteId}/content/current`;
   }
 }

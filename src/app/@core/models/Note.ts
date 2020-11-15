@@ -18,7 +18,6 @@ export class Note {
   cover?: String;
   coverFile?: Blob;
   content?: NoteContent;
-  contentId?:String;
   constructor(note: Partial<Note>) {
     Object.assign(this, note);
   }
@@ -34,7 +33,6 @@ export class Note {
       description: `${this.description || ''}`,
       link: `${this.link || ''}`,
       notebookId: `${(this.notebook && this.notebook.id) ||this.notebookId || Notebook.defaultId}`,
-      contentId: `${this.contentId || ''}`,
       
     };
     if(param.create)result.createdAt =  firebase.firestore.FieldValue.serverTimestamp()

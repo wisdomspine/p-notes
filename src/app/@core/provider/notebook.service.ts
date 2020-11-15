@@ -1,6 +1,4 @@
-import { not } from '@angular/compiler/src/output/output_ast';
-import { forwardRef, Inject, Injectable, Injector } from '@angular/core';
-import { inject } from '@angular/core/testing';
+import { Injectable, Injector } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -94,19 +92,19 @@ export class NotebookService {
   }
 
   private _writeNotebook(notebook: Notebook){
-    this.fireStore.collection<Notebook>(this.collectionPath).add((new Notebook(notebook)).toObject({create: true, update: true}) as any).then(success => {
+    this.fireStore.collection<Notebook>(this.collectionPath).add((new Notebook(notebook)).toObject({create: true, update: true}) as any).then(() => {
       // success
       // TODO: handle success
-    }).catch(error => {
+    }).catch(() => {
       // TODO: handle error
     })
   }
 
   private _editNotebook(notebook: Notebook){ 
-    this.fireStore.doc<Notebook>(this.collectionPath+`/${notebook.id}`).update((new Notebook(notebook)).toObject({create: false, update: true}) as any).then(success => {
+    this.fireStore.doc<Notebook>(this.collectionPath+`/${notebook.id}`).update((new Notebook(notebook)).toObject({create: false, update: true}) as any).then(() => {
       // success
       // TODO: handle success
-    }).catch(error => {
+    }).catch(() => {
       // TODO: handle error
     })
   } 
@@ -144,7 +142,7 @@ export class NotebookService {
             transaction.delete(notebookRef);
           });
   
-        }).then(s => {
+        }).then(() => {
           
           resolve();
         }).catch(e => {
@@ -177,7 +175,7 @@ export class NotebookService {
             transaction.delete(notebookRef);
           });
   
-        }).then(s => {
+        }).then(() => {
           
           resolve();
         }).catch(e => {
@@ -196,7 +194,7 @@ export class NotebookService {
     this.dialogService.confirmNotebookDelete().subscribe(r =>{
       if(r && r.delete){
         const response: Promise<void> = r.deleteNotes? this._deleteWithNotes(id) : this._delete(id);
-        response.then(success => {
+        response.then(() => {
           // TODO: Handle notebook delete success
         }).catch(error => {
           // TODO: Handle notebook delete error

@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { AngularFireStorage, AngularFireStorageReference } from '@angular/fire/storage';
+import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable, Subject } from 'rxjs';
-import { catchError, finalize, switchMap } from 'rxjs/operators';
+import { finalize } from 'rxjs/operators';
 import { AppUser } from 'src/types';
 import { v4 as uid } from "uuid";
-import { AccountService } from './account.service';
 
 @Injectable({
   providedIn: 'root'
