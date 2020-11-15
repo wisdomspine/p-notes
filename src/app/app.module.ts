@@ -15,6 +15,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { MatSelectModule } from '@angular/material/select';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { AngularFireAnalyticsModule } from "@angular/fire/analytics";
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { MatSelectModule } from '@angular/material/select';
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAnalyticsModule,
     ComponentModule,
     CoreModule,
     EditorModule,
@@ -35,6 +38,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatToolbarModule,
     MatButtonModule,
     MatSelectModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [
     { provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js' },

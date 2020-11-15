@@ -16,8 +16,8 @@
     }
 
     .content {
-      backdrop-filter: brightness(.55);
       -webkit-backdrop-filter: brightness(.55);
+      backdrop-filter: brightness(.55);
       color: mat-color($primary-palette, 500, .75);
 
       a,
