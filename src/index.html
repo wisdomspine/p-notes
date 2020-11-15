@@ -22,7 +22,11 @@
       align-items: center;
       justify-content: center;
       height: 100vh;
+      top: 0;
+      left: 0;
+      width: 100vw;
     }
+
 
     .loading-spinner {
       width: 80px;
@@ -51,6 +55,8 @@
       animation-delay: -1.0s;
     }
 
+
+
     @-webkit-keyframes sk-bounce {
 
       0%,
@@ -75,6 +81,10 @@
         transform: scale(1.0);
         -webkit-transform: scale(1.0);
       }
+    }
+
+    body.home:not(.loading) .loading-container {
+      display: none;
     }
   </style>
 </head>

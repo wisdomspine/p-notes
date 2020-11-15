@@ -1,0 +1,23 @@
+.app-container {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  width: 100%;
+}
+.app-container .menu {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  width: calc(230px - 2 * 16px + 14px);
+}
+.app-container .menu h1 {
+  margin-left: 16px;
+}
+.app-container .search {
+  flex: 1 1 auto;
+  display: block;
+}
+.app-container .user {
+  display: flex;
+  justify-content: flex-end;
+}

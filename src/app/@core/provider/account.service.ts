@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { AppUser } from 'src/types';
 import { AppDialogService } from './app-dialog.service';
 import { AppStorageService } from './app-storage.service';
+import { SnackBarService } from './snack-bar.service';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +18,7 @@ export class AccountService {
     private dialogService: AppDialogService,
     private authService: AngularFireAuth,
     private appStorage: AppStorageService,
+    private snackBarService: SnackBarService,
     
   ) {
 
@@ -63,7 +65,10 @@ export class AccountService {
     let updateSubscription: Subscription = null;
     updateSubscription = this.authService.user.subscribe(u => {
       u.updateProfile({displayName: user.name+"", photoURL: user.image+''}).then(() => {
+        this.snackBarService.show("Account updated");
         this._userSubject.next(user);
+      }).catch(error => {
+        this.snackBarService.error("Account not updated, please try again");
       });
       updateSubscription.unsubscribe()
     })

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Notebook } from 'src/app/@core/models/Notebook';
 import { AppDialogService } from 'src/app/@core/provider/app-dialog.service';
 import { NotebookService } from 'src/app/@core/provider/notebook.service';
-import { NotesComponent } from '../notes/notes.component';
 
 @Component({
   selector: 'app-notebooks',

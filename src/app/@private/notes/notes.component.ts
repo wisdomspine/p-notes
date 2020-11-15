@@ -57,7 +57,7 @@ export class NotesComponent implements OnInit, OnDestroy {
   }
 
   get canDeleteNotebook(): boolean {
-    return true;
+    return this.notebook && !this.notebook.permanent;
   }
 
   handleDelete(index: number) {

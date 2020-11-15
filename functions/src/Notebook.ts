@@ -1,3 +1,5 @@
+import { firestore } from "firebase-admin";
+
 export class Notebook {
   key?: number;
   name?: String;
@@ -7,8 +9,8 @@ export class Notebook {
   link?: String;
   permanent?: boolean;
   id?: String;
-  createdAt?: String | FirebaseFirestore.FieldValue;
-  updatedAt?: String | FirebaseFirestore.FieldValue;
+  createdAt?: String | firestore.FieldValue;
+  updatedAt?: String | firestore.FieldValue;
 
   constructor(notebook: Notebook) {
     Object.assign(this, notebook);

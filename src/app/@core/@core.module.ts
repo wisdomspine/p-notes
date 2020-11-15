@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from "@angular/fire/storage";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
-import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import { MatSnackBar, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import { FormBuilder } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -13,6 +14,8 @@ import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
     AngularFirestoreModule,
   ],
   providers: [
+    MatSnackBar,
+    FormBuilder,
     {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 3500},}
   ]
 })

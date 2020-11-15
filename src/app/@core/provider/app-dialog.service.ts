@@ -2,16 +2,16 @@ import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable, Subject } from 'rxjs';
 import { AuthDialogComponent } from 'src/app/@component/dialogs/auth-dialog/auth-dialog.component';
-import { DeleteNoteDialogComponent } from 'src/app/@component/dialogs/delete-note-dialog/delete-note-dialog.component';
-import { DeleteNotebookDialogComponent } from 'src/app/@component/dialogs/delete-notebook-dialog/delete-notebook-dialog.component';
-import { EditAccountComponent } from 'src/app/@component/dialogs/edit-account/edit-account.component';
-import { EditNoteComponent } from 'src/app/@component/dialogs/edit-note/edit-note.component';
-import { EditNotebookComponent } from 'src/app/@component/dialogs/edit-notebook/edit-notebook.component';
-import { ImageResizerComponent } from 'src/app/@component/dialogs/image-resizer/image-resizer.component';
-import { LeaveAReviewComponent } from 'src/app/@component/dialogs/leave-areview/leave-areview.component';
-import { NoteDetailsComponent } from 'src/app/@component/dialogs/note-details/note-details.component';
-import { NotebookDetailsComponent } from 'src/app/@component/dialogs/notebook-details/notebook-details.component';
-import { ReviewAppreciationComponent } from 'src/app/@component/dialogs/review-appreciation/review-appreciation.component';
+import { DeleteNoteDialogComponent } from 'src/app/@private/components/dialogs/delete-note-dialog/delete-note-dialog.component';
+import { DeleteNotebookDialogComponent } from 'src/app/@private/components/dialogs/delete-notebook-dialog/delete-notebook-dialog.component';
+import { EditAccountComponent } from 'src/app/@private/components/dialogs/edit-account/edit-account.component';
+import { EditNoteComponent } from 'src/app/@private/components/dialogs/edit-note/edit-note.component';
+import { EditNotebookComponent } from 'src/app/@private/components/dialogs/edit-notebook/edit-notebook.component';
+import { ImageResizerComponent } from 'src/app/@private/components/dialogs/image-resizer/image-resizer.component';
+import { LeaveAReviewComponent } from 'src/app/@private/components/dialogs/leave-areview/leave-areview.component';
+import { NoteDetailsComponent } from 'src/app/@private/components/dialogs/note-details/note-details.component';
+import { NotebookDetailsComponent } from 'src/app/@private/components/dialogs/notebook-details/notebook-details.component';
+import { ReviewAppreciationComponent } from 'src/app/@private/components/dialogs/review-appreciation/review-appreciation.component';
 import {
   AppUser,
   AuthDialogInput,
