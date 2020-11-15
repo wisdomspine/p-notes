@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Note } from '../models/Note';
 import tinyPrint from "tiny-print";
-import { resolve } from 'dns';
 
 @Injectable({
   providedIn: 'root'

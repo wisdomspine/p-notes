@@ -8,6 +8,7 @@ import { AppMenuStateService } from 'src/app/@core/provider/app-menu-state.servi
 import { NoteService } from 'src/app/@core/provider/note.service';
 import { NotebookService } from 'src/app/@core/provider/notebook.service';
 import { SearchService } from 'src/app/@core/provider/search.service';
+import { SnackBarService } from 'src/app/@core/provider/snack-bar.service';
 import { MenuItemModel, SearchFieldOutput } from 'src/types';
 import { MobileSearchComponent } from '../mobile-search/mobile-search.component';
 import { NotebooksComponent } from '../notebooks/notebooks.component';
@@ -33,6 +34,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     private notebookService: NotebookService,
     private noteService: NoteService,
     private dialogService: AppDialogService,
+    private snackBarService: SnackBarService
   ) {
     this.isSmallScreen = mediaQueryService.isSmallScreen;
     this.menuState = menuState.onStateChange;

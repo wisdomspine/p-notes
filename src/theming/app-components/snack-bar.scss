@@ -1,0 +1,19 @@
+@import "~@angular/material/theming";
+@import "../constant.scss";
+
+
+@mixin snack-bar($theme-or-config) {
+  $color-config: mat-get-color-config($theme-or-config);
+  $accent: map-get($map: $color-config, $key: accent);
+  $warn: map-get($map: $color-config, $key: warn);
+
+    .snack-error{
+        background: mat-color($warn, 500);
+        color: mat-color($warn, '500-contrast');
+    }
+
+    .snack-basic{
+      background: mat-color($accent, 500);
+        color: mat-color($accent, '500-contrast');
+    }
+}

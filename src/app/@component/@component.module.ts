@@ -51,6 +51,7 @@ import { NoteDetailsComponent } from './dialogs/note-details/note-details.compon
 import { EditNoteComponent } from './dialogs/edit-note/edit-note.component';
 import { MatSelectModule } from '@angular/material/select';
 import { AuthDialogComponent } from './dialogs/auth-dialog/auth-dialog.component';
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
@@ -108,6 +109,7 @@ import { AuthDialogComponent } from './dialogs/auth-dialog/auth-dialog.component
     ImageCropperModule,
     MatExpansionModule,
     MatSelectModule,
+    MatSnackBarModule,
   ],
   exports: [
     AppSidenavComponent,

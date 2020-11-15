@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { firestore } from 'firebase';
 import { BehaviorSubject, combineLatest, Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AppUser } from 'src/types';
@@ -12,6 +11,7 @@ import { AppDialogService } from './app-dialog.service';
 import { AppStorageService } from './app-storage.service';
 import { NotebookService } from './notebook.service';
 import { PrintService } from './print.service';
+import { SnackBarService } from './snack-bar.service';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +28,8 @@ export class NoteService {
     accountService: AccountService,
     private fireStore: AngularFirestore,
     private appStorage: AppStorageService, 
-    private notebookService: NotebookService,   
+    private notebookService: NotebookService, 
+    private snackBarService: SnackBarService  
   ) { 
     accountService.currentAccount.subscribe(user => {
       this.user = user;
@@ -117,9 +118,9 @@ export class NoteService {
   private _writeNote(note: Note){
     this.fireStore.collection<Note>(this.collectionPath).add((new Note(note)).toObject({create: true, update: true}) as any).then(() => {
       // success
-      // TODO: handle success
+      this.snackBarService.show("Note created");
     }).catch(() => {
-      // TODO: handle error
+      this.snackBarService.error("Error! Note not created");
     })
   }  
 
@@ -143,10 +144,10 @@ export class NoteService {
     
     this.fireStore.doc<Note>(this.collectionPath+`/${note.id}`).update((new Note(note)).toObject({create: false, update: true}) as any).then(() => {
       // success
-      // TODO: handle success
+      this.snackBarService.show("Note uodated")
     }).catch(error => {
       console.error(error);
-      
+      this.snackBarService.error("Error! Note not updated");
     })
   } 
 
