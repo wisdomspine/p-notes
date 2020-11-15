@@ -8,6 +8,7 @@ import { AccountService } from './account.service';
 import { AppDialogService } from './app-dialog.service';
 import { AppStorageService } from './app-storage.service';
 import { NoteService } from './note.service';
+import { SnackBarService } from './snack-bar.service';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +22,8 @@ export class NotebookService {
     accountService: AccountService,
     private fireStore: AngularFirestore,
     private appStorage: AppStorageService,
-    private injector: Injector
+    private injector: Injector,
+    private snackBarService: SnackBarService,
   ) {
     accountService.currentAccount.subscribe(u => {
       this.user = u;
@@ -94,18 +96,18 @@ export class NotebookService {
   private _writeNotebook(notebook: Notebook){
     this.fireStore.collection<Notebook>(this.collectionPath).add((new Notebook(notebook)).toObject({create: true, update: true}) as any).then(() => {
       // success
-      // TODO: handle success
+      this.snackBarService.show("Notebook created");
     }).catch(() => {
-      // TODO: handle error
+      this.snackBarService.error("Couldn't create notebook, please try again");
     })
   }
 
   private _editNotebook(notebook: Notebook){ 
     this.fireStore.doc<Notebook>(this.collectionPath+`/${notebook.id}`).update((new Notebook(notebook)).toObject({create: false, update: true}) as any).then(() => {
       // success
-      // TODO: handle success
+      this.snackBarService.show("Notebook updated");
     }).catch(() => {
-      // TODO: handle error
+      this.snackBarService.error("Couldn't update notebook, please try again");
     })
   } 
   
@@ -195,10 +197,9 @@ export class NotebookService {
       if(r && r.delete){
         const response: Promise<void> = r.deleteNotes? this._deleteWithNotes(id) : this._delete(id);
         response.then(() => {
-          // TODO: Handle notebook delete success
+          this.snackBarService.show("Notebook deleted");
         }).catch(error => {
-          // TODO: Handle notebook delete error
-          console.error(error);
+          this.snackBarService.error("Couldn't delete notebook, please try again");
           
         });
       }

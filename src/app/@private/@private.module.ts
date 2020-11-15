@@ -17,6 +17,7 @@ import { NoteComponent } from './note/note.component';
 import { MobileSearchComponent } from './mobile-search/mobile-search.component';
 import { MatListModule } from '@angular/material/list';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatFormFieldModule,
     MatSelectModule,
     MatExpansionModule,
+    MatProgressSpinnerModule,
   ],
 })
 export class PrivateModule {

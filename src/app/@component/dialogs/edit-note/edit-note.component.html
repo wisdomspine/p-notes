@@ -18,7 +18,7 @@
 
     <div class="_form">
         <form [formGroup]="form">
-            <mat-form-field appearance="fill" color="accent">
+            <mat-form-field appearance="fill" color="accent" *ngIf="!notebook">
                 <mat-label>Select Notebook</mat-label>
                 <mat-select formControlName="notebook" [compareWith]="compareWith" placeholder="Default">
                     <mat-option *ngFor="let notebook of notebooks" [value]="notebook">

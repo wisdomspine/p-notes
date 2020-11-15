@@ -5,6 +5,7 @@ import { AppUser } from 'src/types';
 import { Settings } from '../models/Settings';
 import { AccountService } from './account.service';
 import { FontFamilyService } from './font-family.service';
+import { SnackBarService } from './snack-bar.service';
 
 
 @Injectable({
@@ -20,6 +21,7 @@ export class SettingsService {
     accountService: AccountService,
     private fireStore: AngularFirestore,
     fontService: FontFamilyService,
+    private snackBarService: SnackBarService,
   ) { 
     accountService.currentAccount.subscribe(u => {
       this.user = u;
@@ -42,7 +44,13 @@ export class SettingsService {
   }
 
   update(settings: Settings): Promise<any>{
-    return this.fireStore.doc<Settings>(this.path).set({...this.default.toObject(), ...settings.toObject()} as any);
+    return this.fireStore.doc<Settings>(this.path).set({...this.default.toObject(), ...settings.toObject()} as any).then(
+      e => {
+        this.snackBarService.show("New font saved");
+      }
+    ).catch(error => {
+      this.snackBarService.error("Sorry, settings couldn't be saved");
+    });
   }
 
   get path(): string{

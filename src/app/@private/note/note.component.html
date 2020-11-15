@@ -2,7 +2,7 @@
     <div class="app-page-content padding-left-0">
         <app-text-editor [fonts]="fontsProvider.all" (print)="handlePrint()" (input)="handleInput($event)"
             [content]="note?.content?.value" [fileHandler]="handleUpload"
-            [font]="(settings?.settings | async)?.fontFamily">
+            [font]="(settings?.settings | async)?.fontFamily" *ngIf="loaded">
         </app-text-editor>
     </div>
 </div>

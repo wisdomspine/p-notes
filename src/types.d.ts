@@ -58,6 +58,7 @@ export declare interface EditNoteInput {
   imageChangeHandler?: ImageResizerHandler;
   note?: Note;
   notebooks?: Observable<Notebook[]>;
+  notebook?: Notebook;
 }
 
 export declare interface AuthDialogInput{

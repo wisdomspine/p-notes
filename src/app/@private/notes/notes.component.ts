@@ -25,13 +25,15 @@ export class NotesComponent implements OnInit, OnDestroy {
   notes: Note[] = [];
 
   constructor(
-    private dialogService: AppDialogService,
     public noteService: NoteService,
     private notebookService: NotebookService,
     activeRoute: ActivatedRoute,
   ) {
     this.notebookIdSubscription = activeRoute.queryParamMap.subscribe(query => {
       this.notebookId = query.get("notebook");
+      notebookService.notebook(this.notebookId).subscribe(book => {
+        this.notebook = book;
+      })
       if(this.notesSubscription) this.notesSubscription.unsubscribe();
       this.notesSubscription = noteService.notes({notebookId: `${this.notebookId || ''}` || null}).subscribe(notes => {
         this.notes = notes;
@@ -81,6 +83,10 @@ export class NotesComponent implements OnInit, OnDestroy {
 
   notebookDetails(){
     this.notebookService.showDetails(this.notebook);
+  }
+
+  createNote(){
+    this.noteService.addNote(this.notebook);
   }
 
   

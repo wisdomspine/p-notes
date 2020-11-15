@@ -16,6 +16,7 @@ export class EditNoteComponent implements OnInit, OnDestroy {
   notebooks: Notebook[] = [];
   form: FormGroup;
   title: String = "Update Note details";
+  notebook: Notebook ;
   compareWith = Note.compareWith;
   private notebooksSubscription: Subscription;
   constructor(
@@ -27,8 +28,10 @@ export class EditNoteComponent implements OnInit, OnDestroy {
       data.note = new Note({});
       this.title = "New Note";
     }
+    this.notebook = data.notebook;
+    if(this.notebook) data.note = new Note({...data.note, notebook: this.notebook});
     this.form = formService.generateNoteForm(data.note);
-    if(data.notebooks) this.notebooksSubscription = data.notebooks.subscribe(books => {
+    if(data.notebooks && !this.notebook) this.notebooksSubscription = data.notebooks.subscribe(books => {
       
       
       this.notebooks = books;

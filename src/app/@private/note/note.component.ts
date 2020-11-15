@@ -2,14 +2,13 @@ import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Note } from 'src/app/@core/models/Note';
-import { Notebook } from 'src/app/@core/models/Notebook';
 import { NoteContent } from 'src/app/@core/models/NoteContent';
 import { AccountService } from 'src/app/@core/provider/account.service';
 import { AppStorageService } from 'src/app/@core/provider/app-storage.service';
 import { FontFamilyService } from 'src/app/@core/provider/font-family.service';
 import { NoteService } from 'src/app/@core/provider/note.service';
 import { SettingsService } from 'src/app/@core/provider/settings.service';
-import { NoteComponentRoute, NoteComponentRouteName, NotesComponentRoute } from 'src/app/route-names';
+import { NoteComponentRoute, NoteComponentRouteName } from 'src/app/route-names';
 import { AppUser } from 'src/types';
 import { UploadHandler } from 'tinymce';
 
@@ -26,7 +25,7 @@ export class NoteComponent implements OnInit, OnDestroy, AfterViewInit {
   private user: AppUser
   private userSubscription: Subscription;
   private contentSubscription: Subscription;
-  loaded: boolean;
+  loaded: boolean = false;
 
   note: Note;
 
@@ -41,8 +40,11 @@ export class NoteComponent implements OnInit, OnDestroy, AfterViewInit {
   ) {
     this.userSubscription = this.accounService.currentAccount.subscribe(u => {
       this.user = u;
+      if(!u || !u.uid) return;
+      
       if(!this.contentSubscription){
-        this.noteService.noteWithContent(this.activeRoute.snapshot.paramMap.get(`${NoteComponent.param}`)).subscribe(note => {
+        this.contentSubscription =  this.noteService.noteWithContent(this.activeRoute.snapshot.paramMap.get(`${NoteComponent.param}`)).subscribe(note => {
+          this.loaded = true;     
           this.note = note;
         });
       }
@@ -66,7 +68,7 @@ export class NoteComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   handleInput(value: String){
-    if(!this.note || !this.user) return;
+    if(!this.note || !this.user || !this.loaded) return;
     this.note.content = new NoteContent({...this.note.content, value});  
     this.noteService.saveContent(this.note.id, this.note.content)  ;
   }

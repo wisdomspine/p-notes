@@ -45,7 +45,10 @@
     <div class="app-page-content">
         <app-note-card-list [notes]="notes" (delete)="handleDelete($event)"
             (details)="noteService.showDetails(notes[$event])" (settings)="handleSettings($event)"
-            (print)="printNote($event)">
+            (print)="printNote($event)" *ngIf="notes?.length>0">
         </app-note-card-list>
+        <app-no-notes-in-notebook *ngIf="notes?.length<=0" [notebook]="notebook" (create)="createNote()">
+
+        </app-no-notes-in-notebook>
     </div>
 </div>

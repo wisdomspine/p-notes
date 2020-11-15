@@ -52,6 +52,7 @@ import { EditNoteComponent } from './dialogs/edit-note/edit-note.component';
 import { MatSelectModule } from '@angular/material/select';
 import { AuthDialogComponent } from './dialogs/auth-dialog/auth-dialog.component';
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { NoNotesInNotebookComponent } from './no-notes-in-notebook/no-notes-in-notebook.component';
 
 @NgModule({
   declarations: [
@@ -88,6 +89,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     NoteDetailsComponent,
     EditNoteComponent,
     AuthDialogComponent,
+    NoNotesInNotebookComponent,
   ],
   imports: [
     CommonModule,
@@ -134,6 +136,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     AppEditUserAvatarComponent,
     AppCoverImageComponent,
     AuthDialogComponent,
+    NoNotesInNotebookComponent,
   ],
 })
 export class ComponentModule {}

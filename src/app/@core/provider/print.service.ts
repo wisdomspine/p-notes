@@ -9,7 +9,9 @@ export class PrintService {
 
   private _elId: String = "_k_app_tiny";
 
-  constructor() { 
+  constructor(
+    
+  ) { 
 
   }
 

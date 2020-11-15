@@ -81,9 +81,10 @@ export class NoteService {
     });
   }  
 
-  addNote() {
+  addNote(notebook?: Notebook) {
     this.dialogService.editNote({
-      notebooks: this.notebookService.notebooks()
+      notebooks: this.notebookService.notebooks(),
+      notebook: notebook,
     }).subscribe(async note => {
       if(!note) return;
       if(note.coverFile){
@@ -153,9 +154,10 @@ export class NoteService {
 
   private _delete(id: String){
     this.fireStore.doc(this.collectionPath+`/${id}`).delete().then(() => {
-
+      this.snackBarService.show("Note Deleted");
     }).catch(() => {
-
+      // TODO: Add a button to try again
+      this.snackBarService.error("Sorry, your note was not deleted");
     })
   }
 
@@ -181,7 +183,9 @@ export class NoteService {
   };
 
   saveContent(noteId: String, content: NoteContent):Promise<void>{
-    return this.fireStore.doc<NoteContent>(`${this.contentPath(noteId)}`).update(content.toObject({update:true}));
+    return this.fireStore.doc<NoteContent>(`${this.contentPath(noteId)}`).update(content.toObject({update:true})).catch(e => {
+      this.snackBarService.error("Error saving note, retrying...");
+    });
   }
 
   private contentPath(noteId: String): String{

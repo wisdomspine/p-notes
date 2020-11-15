@@ -19,7 +19,7 @@ export class ReviewService {
     })
   }
 
-  createReview(review){
+  createReview(review): Promise<any>{
     return this.fireStore.collection<Review>(`${this.path}`).add(review);
   }
 
