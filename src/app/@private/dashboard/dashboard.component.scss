@@ -4,7 +4,25 @@
 .app-container {
   width: 100vw;
   height: 100vh;
+  position: relative;
+  >div{
+    position: relative;
+    min-height: 100%;
+    z-index: 4;
 
+  }
+  >div.background-div{
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+
+    top: 0;
+    height: 100%;
+    overflow: hidden;
+    img{
+      max-width: 100%;
+    }
+  }
   mat-toolbar {
     app-toolbar {
       width: 100%;

@@ -1,4 +1,4 @@
-<div class="app-container">
+<div class="app-container app-dashboard">
     <!-- Dashboard layout for larg screens -->
     <div *ngIf="!(isSmallScreen | async) ">
         <mat-toolbar color="primary" class="app-border-boundary-bottom">
@@ -65,6 +65,14 @@
             <mat-toolbar color="primary" class="app-border-boundary-top">
                 <app-mobile-toolbar [menu]="mobileMenu"></app-mobile-toolbar>
             </mat-toolbar>
+        </div>
+    </div>
+
+    <!-- This div is for background actions like printing -->
+    <div class="background-div">
+        <!-- Printer div -->
+        <div id="{{printService.elId}}">
+
         </div>
     </div>
 </div>

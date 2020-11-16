@@ -7,6 +7,7 @@ import { AppMediaQueryService } from 'src/app/@core/provider/app-media-query.ser
 import { AppMenuStateService } from 'src/app/@core/provider/app-menu-state.service';
 import { NoteService } from 'src/app/@core/provider/note.service';
 import { NotebookService } from 'src/app/@core/provider/notebook.service';
+import { PrintService } from 'src/app/@core/provider/print.service';
 import { SearchService } from 'src/app/@core/provider/search.service';
 import { SnackBarService } from 'src/app/@core/provider/snack-bar.service';
 import { MenuItemModel, SearchFieldOutput } from 'src/types';
@@ -34,10 +35,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
     private notebookService: NotebookService,
     private noteService: NoteService,
     private dialogService: AppDialogService,
-    private snackBarService: SnackBarService
+    private snackBarService: SnackBarService,
+    public printService: PrintService,
   ) {
     this.isSmallScreen = mediaQueryService.isSmallScreen;
     this.menuState = menuState.onStateChange;
+    
   }
   ngOnDestroy(): void {
     this.searchSubscription && this.searchSubscription.unsubscribe();

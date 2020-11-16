@@ -15,6 +15,7 @@
 @import "./image-resizer.scss";
 @import "./home-mobile.scss";
 @import "./snack-bar.scss";
+@import "./app-dashboard.scss";
 
 @mixin app-components($theme-or-config) {
   @include app-mat-toolbar($app-typography);
@@ -32,4 +33,5 @@
   @include image-resizer($theme-or-config, $app-typography);
   @include home-mobile($theme-or-config);
   @include snack-bar($theme-or-config);
+  @include app-dashboard($theme-or-config);
 }

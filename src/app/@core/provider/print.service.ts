@@ -17,15 +17,13 @@ export class PrintService {
 
   print(note: Note = new Note({})):Promise<void>{
     const promise: Promise<void> = new Promise((resolve) => {
-      const div: HTMLDivElement =document.querySelector(`#${this._elId}`) || document.createElement("div")
+      const div: HTMLDivElement =document.querySelector(`#${this.elId}`);
       div.style.display = "block";
       div.innerHTML = `
         <h1 style='text-transform: capitalize;'>${note.title}</h1>
         ${note.content && note.content.value || ''}
       `
-      div.id = `${this._elId}`;
       div.style.padding="24px";
-      document.body.appendChild(div);
 
       tinyPrint(div, {
         scanStyles: true,
@@ -37,5 +35,8 @@ export class PrintService {
     return promise;;
   }
 
+  get elId():String{
+    return this._elId;
+  }
   
 }

@@ -1,0 +1,13 @@
+@import "~@angular/material/theming";
+@import "../constant.scss";
+
+@mixin app-dashboard($config-or-theme) {
+  $color-config: mat-get-color-config($config-or-theme);
+  $primary-palette: map-get($map: $color-config, $key: primary);
+
+  .app-container.app-dashboard{
+      >div{
+          background-color: mat-color($primary-palette);
+      }
+  }
+}
