@@ -11,7 +11,7 @@ PNotes was built using Angular & Firebase.
 
 ## Setting up
 
-Clone the project to your computer and run `npm install` **Ensure you that NodeJs and npm are installed on your computer**
+Clone the project to your computer and run `npm install` **Ensure that NodeJs and npm are installed on your computer**
 
 ## Development server
 
